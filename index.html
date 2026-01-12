@@ -1,106 +1,75 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>사회적기업 ㈜문화락 | 공연·전시·문화콘텐츠 기획사</title>
+  <meta charset="UTF-8" />
+  <title>사회적기업 ㈜문화락 | 공연·문화콘텐츠 전문기업</title>
 
   <!-- SEO -->
-  <meta name="description" content="사회적기업 ㈜문화락은 연극·뮤지컬 제작, 공연기획, 문화예술 교육, 지역축제 및 기업행사 공연콘텐츠를 전문으로 하는 부산 문화공연기획사입니다.">
-  <meta name="keywords" content="문화락, 사회적기업 문화락, 부산 공연기획사, 연극 제작, 뮤지컬 제작, 학교폭력 뮤지컬, 찾아가는 문화활동">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="사회적기업 ㈜문화락은 공연·전시·문화콘텐츠를 기획·제작·연출하는 부산 기반 공연기획사입니다. 연극·뮤지컬·교육공연·지역축제 전문." />
+  <meta name="keywords" content="문화락, 사회적기업, 공연기획사, 부산공연, 연극제작, 뮤지컬제작, 학교폭력예방공연" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- 모바일 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="사회적기업 ㈜문화락">
-  <meta property="og:description" content="공연콘텐츠 개발·제작·기획을 전문으로 하는 부산 문화공연기획사">
-  <meta property="og:url" content="https://culturelock.co.kr">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="사회적기업 ㈜문화락" />
+  <meta property="og:description" content="공연·전시·문화콘텐츠를 기획·제작·연출하는 공연전문기업" />
+  <meta property="og:url" content="https://culturelock.co.kr" />
 
   <style>
     body {
       margin: 0;
-      font-family: 'Noto Sans KR', Arial, sans-serif;
-      background: #0f0f0f;
-      color: #ffffff;
+      font-family: "Noto Sans KR", sans-serif;
+      color: #222;
       line-height: 1.7;
     }
-
     header {
-      padding: 90px 20px;
+      background: #111;
+      color: #fff;
+      padding: 40px 20px;
       text-align: center;
-      background: linear-gradient(135deg, #111, #2d2d2d);
     }
-
-    header h1 {
-      font-size: 3rem;
-      letter-spacing: 3px;
-      margin-bottom: 15px;
+    header img {
+      max-width: 180px;
     }
-
-    header p {
-      font-size: 1.15rem;
-      color: #d0d0d0;
-    }
-
     section {
+      padding: 60px 20px;
       max-width: 1100px;
-      margin: 0 auto;
-      padding: 70px 20px;
+      margin: auto;
     }
-
     h2 {
-      font-size: 2.1rem;
-      margin-bottom: 25px;
-      border-left: 5px solid #c8a05a;
-      padding-left: 14px;
+      font-size: 28px;
+      margin-bottom: 20px;
     }
-
-    .about p {
-      color: #dddddd;
-    }
-
-    .hall {
-      margin-top: 30px;
-      background: #1b1b1b;
-      padding: 30px;
-      border-radius: 10px;
-    }
-
-    .business {
+    .grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-      margin-top: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
     }
-
-    .business div {
-      background: #1a1a1a;
-      padding: 35px 25px;
-      border-radius: 10px;
+    .card {
+      border: 1px solid #eee;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .card img {
+      width: 100%;
+      border-radius: 6px;
+    }
+    .hero {
+      background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+                  url('images/posters.jpg') center/cover no-repeat;
+      color: #fff;
       text-align: center;
+      padding: 100px 20px;
     }
-
-    .business h3 {
-      margin-bottom: 15px;
-      color: #c8a05a;
-    }
-
     footer {
-      background: #000;
+      background: #111;
+      color: #fff;
       text-align: center;
-      padding: 50px 20px;
-      font-size: 0.9rem;
-      color: #888;
-    }
-
-    /* 모바일 반응형 */
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.3rem;
-      }
-
-      .business {
-        grid-template-columns: 1fr;
-      }
+      padding: 30px 20px;
+      font-size: 14px;
     }
   </style>
 </head>
@@ -108,60 +77,82 @@
 <body>
 
 <header>
-  <h1>사회적기업 ㈜문화락</h1>
-  <p>
-    공연콘텐츠 개발 · 제작 · 기획 전문 문화공연기획사
-  </p>
+  <img src="images/logo.png" alt="문화락 로고" />
+  <p>사회적기업 · 공연콘텐츠 전문기업</p>
 </header>
 
-<section class="about">
-  <h2>회사 소개</h2>
-  <p>
-    사회적기업 ㈜문화락은 공연 콘텐츠를 개발·제작·육성하여 보급하고,
-    공연 및 기업행사, 지역축제 등에 적합한 공연콘텐츠를 추천·기획·연출하는
-    전문 공연기획사입니다.
-  </p>
-  <p>
-    문화락은 연극과 뮤지컬 제작을 중심으로 초청공연, 찾아가는 문화활동,
-    교육 공연사업 등을 통해 청소년과 성인 모두가 공감할 수 있는
-    공연문화를 만들어가고 있습니다.
-  </p>
+<section class="hero">
+  <h1>공연으로 사회와 연결하다</h1>
+  <p>연극 · 뮤지컬 · 교육공연 · 문화기획</p>
+</section>
 
-  <div class="hall">
-    <strong>가온아트홀</strong><br>
-    부산 자성로133번길 10 지하1층<br>
-    소극장 1관 (약 170석) · 소극장 2관 (약 100석)
+<section>
+  <h2>기업 소개</h2>
+  <p>
+    사회적기업 ㈜문화락은 공연 콘텐츠를 개발·제작·육성하여 보급하며  
+    학교, 기업, 지역축제 등 다양한 행사에 적합한 공연 콘텐츠를  
+    기획·연출하는 공연전문기업입니다.
+  </p>
+  <p>
+    부산 자성로133번길 10 지하1층 가온아트홀을 기반으로  
+    연극, 뮤지컬, 교육공연, 찾아가는 문화활동을 꾸준히 제작하고 있습니다.
+  </p>
+</section>
+
+<section>
+  <h2>공연장 안내</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="images/hall1.jpg" alt="가온아트홀 1관">
+      <h3>가온아트홀 1관</h3>
+      <p>170석 규모 / 연극·뮤지컬 전문 공연장</p>
+    </div>
+    <div class="card">
+      <img src="images/hall2.jpg" alt="가온아트홀 2관">
+      <h3>가온아트홀 2관</h3>
+      <p>100석 규모 / 발표회·교육·소극장</p>
+    </div>
+    <div class="card">
+      <img src="images/gallery.jpg" alt="가온갤러리">
+      <h3>가온갤러리</h3>
+      <p>전시 및 대기 공간</p>
+    </div>
   </div>
 </section>
 
 <section>
   <h2>주요 사업</h2>
-  <div class="business">
-    <div>
-      <h3>공연 제작</h3>
-      <p>연극·뮤지컬 콘텐츠 개발 및 제작</p>
-    </div>
-    <div>
-      <h3>교육·공익 공연</h3>
-      <p>
-        학교폭력 예방 뮤지컬<br>
-        약물오남용 예방 교육 공연
-      </p>
-    </div>
-    <div>
-      <h3>문화예술 사업</h3>
-      <p>
-        찾아가는 문화활동 지원사업<br>
-        민간 오케스트라 공연<br>
-        문화바우처·메세나 사업
-      </p>
-    </div>
-  </div>
+  <ul>
+    <li>연극·뮤지컬 제작 및 초청공연</li>
+    <li>학교폭력 예방 교육 공연</li>
+    <li>약물·오남용 예방 교육 공연</li>
+    <li>찾아가는 문화활동 지원사업</li>
+    <li>지역축제 및 기업 행사 기획</li>
+  </ul>
+</section>
+
+<section>
+  <h2>공연 실적</h2>
+  <p>
+    2017년부터 현재까지 부산 지역 초·중·고등학교  
+    100여 곳 이상 교육공연 진행  
+  </p>
+  <p>
+    부산시교육청 · 문화회관 · 마약퇴치운동본부  
+    다수 공공기관 사업 수행
+  </p>
+</section>
+
+<section>
+  <h2>문의</h2>
+  <p>
+    📍 부산광역시 동구 자성로133번길 10 지하1층<br>
+    ☎ 대표번호 1600-1602
+  </p>
 </section>
 
 <footer>
-  © 사회적기업 ㈜문화락 | CultureLock Co., Ltd.<br>
-  부산광역시 자성로133번길 10 지하1층 (가온아트홀)
+  © 사회적기업 ㈜문화락 | culturelock.co.kr
 </footer>
 
 </body>
