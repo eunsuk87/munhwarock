@@ -2,338 +2,564 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>문화락</title>
-  <meta name="description" content="문화락 - 공연/예술/교육 프로그램" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>문화락 | 공연·교육·문화예술 플랫폼</title>
+
+  <!-- 깔끔한 한글/영문 폰트 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#0b0f17;
-      --card:#121a28;
-      --text:#e9eef7;
-      --muted:#9bb0d1;
-      --line:rgba(255,255,255,.12);
-      --accent:#4fd1c5;
-      --radius:18px;
-      --max:1100px;
+      --bg:#ffffff;
+      --text:#111827;      /* 거의 검정 */
+      --muted:#6b7280;     /* 회색 */
+      --line:#e5e7eb;      /* 테두리 */
+      --card:#ffffff;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --radius: 18px;
+      --max: 1120px;
     }
-    *{box-sizing:border-box}
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", sans-serif;
-      background: radial-gradient(1200px 800px at 10% 0%, #1b2a4a 0%, rgba(27,42,74,0) 60%),
-                  radial-gradient(900px 700px at 100% 20%, #1a3a2f 0%, rgba(26,58,47,0) 55%),
-                  var(--bg);
+      background:var(--bg);
       color:var(--text);
+      font-family:"Noto Sans KR", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.55;
+      letter-spacing:-0.2px;
     }
-    a{color:inherit; text-decoration:none}
-    .container{max-width:var(--max); margin:0 auto; padding:20px}
-    header{
-      position:sticky; top:0; z-index:50;
-      background: rgba(11,15,23,.72);
+
+    a{ color:inherit; text-decoration:none; }
+    button{ font-family:inherit; }
+
+    /* 상단 바 */
+    .topbar{
+      position:sticky; top:0; z-index:10;
+      background:rgba(255,255,255,.88);
       backdrop-filter: blur(10px);
       border-bottom:1px solid var(--line);
     }
-    .topbar{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:12px; padding:14px 20px;
-      max-width:var(--max); margin:0 auto;
+    .topbar-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
     }
-    .brand{display:flex; align-items:center; gap:10px}
-    .logo{
-      width:34px; height:34px; border-radius:10px;
-      background: linear-gradient(135deg, var(--accent), #6aa7ff);
-      box-shadow: 0 10px 30px rgba(79,209,197,.18);
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:700;
+      letter-spacing:-0.4px;
     }
-    .brand b{font-size:18px}
-    nav{display:flex; gap:10px; flex-wrap:wrap}
-    .pill{
-      padding:8px 10px; border:1px solid var(--line); border-radius:999px;
-      color:var(--muted); font-size:13px;
+    .brand-badge{
+      width:34px;height:34px;border-radius:10px;
+      background:#eef2ff;
+      display:grid;place-items:center;
+      border:1px solid #e0e7ff;
+      font-weight:800;
     }
-    .pill:hover{border-color: rgba(255,255,255,.25); color:var(--text)}
+    .nav{
+      display:flex; gap:10px; flex-wrap:wrap;
+      align-items:center; justify-content:flex-end;
+    }
+    .nav a{
+      font-size:14px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    .nav a:hover{ border-color:#cbd5e1; }
 
-    .hero{padding:22px 0 8px}
-    .hero h1{margin:0 0 8px; font-size:28px; letter-spacing:-.3px}
-    .hero p{margin:0; color:var(--muted); line-height:1.5}
+    /* 레이아웃 */
+    .wrap{ max-width:var(--max); margin:0 auto; padding:28px 18px 80px; }
+    .hero{
+      padding:22px 0 8px;
+    }
+    .hero h1{
+      margin:0 0 8px;
+      font-size:30px;
+      line-height:1.25;
+      letter-spacing:-0.8px;
+    }
+    .hero p{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+    }
 
-    /* ===== 메인 슬라이더(천천히 왼쪽 무한 이동) ===== */
-    .slider-wrap{
+    /* 메인 슬라이더(무한 좌측 이동) */
+    .slider-card{
       margin-top:18px;
       border:1px solid var(--line);
       border-radius:var(--radius);
       overflow:hidden;
-      background: rgba(18,26,40,.55);
-      box-shadow: 0 18px 60px rgba(0,0,0,.35);
+      background:var(--card);
+      box-shadow: 0 6px 18px rgba(0,0,0,.04);
     }
-    .marquee{
-      display:flex;
-      width:100%;
-      overflow:hidden;
-    }
-    .track{
-      display:flex;
-      gap:14px;
-      padding:14px;
-      will-change: transform;
-      animation: scroll-left 55s linear infinite;
-    }
-    /* 사용자 모션 선호 배려 */
-    @media (prefers-reduced-motion: reduce){
-      .track{animation:none}
-    }
-    @keyframes scroll-left{
-      from{transform: translateX(0)}
-      to{transform: translateX(-50%)}
-    }
-    .slide{
-      flex:0 0 auto;
-      width:min(420px, 86vw);
-      aspect-ratio: 16/9;
-      border-radius:14px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.2);
-    }
-    .slide img{
-      width:100%; height:100%; object-fit:cover;
-      display:block;
-    }
-    .slide .cap{
-      position:absolute;
-      left:10px; bottom:10px;
-      padding:6px 10px;
-      font-size:12px;
-      color:#fff;
-      background: rgba(0,0,0,.45);
-      border:1px solid rgba(255,255,255,.18);
-      border-radius:999px;
-      backdrop-filter: blur(6px);
-    }
-    .slide-inner{position:relative; width:100%; height:100%}
-
-    /* ===== 섹션 카드 ===== */
-    section{padding:26px 0}
-    .grid{
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:14px;
-    }
-    @media (max-width: 920px){
-      .grid{grid-template-columns:1fr}
-    }
-    .card{
-      background: rgba(18,26,40,.65);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:16px;
-    }
-    .card h2{
-      margin:0 0 10px;
-      font-size:18px;
-      letter-spacing:-.2px;
-    }
-    .muted{color:var(--muted); line-height:1.6; margin:0}
-
-    .poster-grid{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
+    .slider-head{
+      padding:14px 16px;
+      display:flex; justify-content:space-between; align-items:baseline;
       gap:12px;
-      margin-top:12px;
+      border-bottom:1px solid var(--line);
     }
-    @media (max-width: 560px){
-      .poster-grid{grid-template-columns:1fr}
+    .slider-head .title{
+      font-weight:700;
+      letter-spacing:-0.4px;
     }
-    .poster{
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:14px;
-      overflow:hidden;
-      background: rgba(0,0,0,.18);
-    }
-    .poster img{width:100%; height:auto; display:block}
-
-    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
-    .chip{
-      font-size:12px; color:var(--muted);
-      border:1px solid var(--line);
-      border-radius:999px;
-      padding:7px 10px;
-    }
-
-    footer{
-      border-top:1px solid var(--line);
-      padding:18px 0 34px;
+    .slider-head .hint{
       color:var(--muted);
       font-size:13px;
     }
-    .tiny{font-size:12px; opacity:.9}
+
+    .marquee{
+      --speed: 60s; /* 숫자 줄이면 더 빠름 */
+      position:relative;
+      width:100%;
+      overflow:hidden;
+      background:#fff;
+    }
+    .marquee-track{
+      display:flex;
+      width:max-content;
+      gap:14px;
+      padding:14px;
+      animation: scrollLeft var(--speed) linear infinite;
+    }
+    .marquee:hover .marquee-track{ animation-play-state: paused; }
+    @keyframes scrollLeft{
+      from{ transform:translateX(0); }
+      to{ transform:translateX(-50%); }
+    }
+
+    .slide{
+      width:520px;
+      max-width:80vw;
+      aspect-ratio: 16 / 9;
+      border-radius:14px;
+      border:1px solid var(--line);
+      overflow:hidden;
+      background:#f3f4f6;
+      flex:0 0 auto;
+      position:relative;
+    }
+    .slide img{
+      width:100%; height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    /* 섹션 타이틀 */
+    .section{
+      margin-top:34px;
+    }
+    .section-header{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:12px;
+    }
+    .section-header h2{
+      margin:0;
+      font-size:20px;
+      letter-spacing:-0.6px;
+    }
+    .section-header .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* 포스터 그리드 */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:16px;
+    }
+    @media (max-width: 760px){
+      .grid{ grid-template-columns: 1fr; }
+      .hero h1{ font-size:26px; }
+    }
+
+    .poster{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:#fff;
+      box-shadow: 0 6px 18px rgba(0,0,0,.04);
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+      cursor:pointer;
+      display:flex;
+      flex-direction:column;
+      min-height: 320px;
+    }
+    .poster:hover{
+      transform: translateY(-2px);
+      border-color:#cbd5e1;
+      box-shadow: var(--shadow);
+    }
+
+    .poster-thumb{
+      width:100%;
+      aspect-ratio: 3 / 4;
+      background:#f3f4f6;
+      overflow:hidden;
+      border-bottom:1px solid var(--line);
+    }
+    .poster-thumb img{
+      width:100%; height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .poster-body{
+      padding:14px 14px 16px;
+    }
+    .poster-title{
+      margin:0 0 4px;
+      font-size:16px;
+      font-weight:700;
+      letter-spacing:-0.5px;
+    }
+    .poster-date{
+      margin:0;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    /* 모달 */
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(17,24,39,.55);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      z-index:9999;
+    }
+    .modal.open{ display:flex; }
+
+    .modal-panel{
+      width:min(980px, 100%);
+      max-height: min(92vh, 900px);
+      background:#fff;
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,.30);
+      display:flex;
+      flex-direction:column;
+      border:1px solid rgba(255,255,255,.25);
+    }
+    .modal-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 16px;
+      border-bottom:1px solid var(--line);
+    }
+    .modal-top .meta{
+      display:flex;
+      flex-direction:column;
+      gap:3px;
+      min-width:0;
+    }
+    .modal-top .meta .t{
+      font-weight:800;
+      letter-spacing:-0.6px;
+      font-size:16px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .modal-top .meta .d{
+      color:var(--muted);
+      font-size:13px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .modal-close{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:12px;
+      padding:8px 10px;
+      cursor:pointer;
+      font-weight:700;
+    }
+    .modal-close:hover{ border-color:#cbd5e1; }
+
+    .modal-content{
+      overflow:auto;
+      padding:16px;
+      background:#fff;
+    }
+    .detail-img{
+      width:100%;
+      display:block;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:#f3f4f6;
+    }
+
+    /* 푸터 */
+    footer{
+      margin-top:44px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+    }
   </style>
 </head>
 
 <body>
-<header>
-  <div class="topbar">
-    <div class="brand">
-      <div class="logo" aria-hidden="true"></div>
-      <b>문화락</b>
+  <!-- 상단 메뉴 -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top">
+        <span class="brand-badge">문</span>
+        <span>문화락</span>
+      </a>
+      <nav class="nav">
+        <a href="#current">현재공연</a>
+        <a href="#past">이전공연</a>
+        <a href="#about">공연단체소개</a>
+        <a href="/admin/">관리자</a>
+      </nav>
     </div>
-    <nav>
-      <a class="pill" href="#now">현재공연</a>
-      <a class="pill" href="#past">이전공연</a>
-      <a class="pill" href="#hall">가온아트홀</a>
-      <a class="pill" href="#intro">공연단체소개</a>
-      <a class="pill" href="/admin/">관리자</a>
-    </nav>
-  </div>
-</header>
+  </header>
 
-<main class="container">
-  <div class="hero">
-    <h1>공연 · 교육 · 문화예술 플랫폼</h1>
-    <p>이미지와 내용은 아래 폴더에 업로드만 하면 됩니다. (CMS를 붙이면 관리자 화면에서 입력도 가능)</p>
-  </div>
+  <main id="top" class="wrap">
+    <section class="hero">
+      <h1>공연 · 교육 · 문화예술 플랫폼</h1>
+      <p>포스터를 클릭하면 상세 페이지(긴 이미지)가 크게 열립니다. (모바일/PC 모두 최적화)</p>
+    </section>
 
-  <!-- 메인 슬라이더 (PC용 4장) -->
-  <div class="slider-wrap" aria-label="메인 슬라이더">
-    <div class="marquee">
-      <!-- track을 2번 반복(복제)해서 끊김 없이 무한 이동 -->
-      <div class="track" id="mainTrack">
-        <!-- 1회차 4장 -->
-        <div class="slide"><div class="slide-inner">
-          <img src="images/main/slide1.jpg" alt="메인 슬라이드 1" />
-        </div></div>
-        <div class="slide"><div class="slide-inner">
-          <img src="images/main/slide2.jpg" alt="메인 슬라이드 2" />
-        </div></div>
-        <div class="slide"><div class="slide-inner">
-          <img src="images/main/slide3.jpg" alt="메인 슬라이드 3" />
-        </div></div>
-        <div class="slide"><div class="slide-inner">
-          <img src="images/main/slide4.jpg" alt="메인 슬라이드 4" />
-        </div></div>
-
-        <!-- 2회차(복제) 4장 -->
-        <div class="slide"><div class="slide-inner">
-          <img src="images/main/slide1.jpg" alt="메인 슬라이드 1 (복제)" />
-        </div></div>
-        <div class="slide"><div class="slide-inner">
-          <img src="images/main/slide2.jpg" alt="메인 슬라이드 2 (복제)" />
-        </div></div>
-        <div class="slide"><div class="slide-inner">
-          <img src="images/main/slide3.jpg" alt="메인 슬라이드 3 (복제)" />
-        </div></div>
-        <div class="slide"><div class="slide-inner">
-          <img src="images/main/slide4.jpg" alt="메인 슬라이드 4 (복제)" />
-        </div></div>
+    <!-- 메인 슬라이더 -->
+    <section class="slider-card" aria-label="메인 슬라이더">
+      <div class="slider-head">
+        <div class="title">메인 슬라이더</div>
+        <div class="hint">마우스를 올리면 잠시 멈춥니다</div>
       </div>
-    </div>
-  </div>
 
-  <!-- 모바일 메인 이미지(1장) 예: CSS로 모바일에서만 보이게 하고 싶으면 추후 추가 가능 -->
-  <section id="intro">
-    <div class="grid">
-      <div class="card">
+      <div class="marquee">
+        <!-- 무한루프를 위해 같은 4장을 2번 반복 -->
+        <div class="marquee-track" id="marqueeTrack">
+          <!-- JS가 채웁니다 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 현재공연 -->
+    <section id="current" class="section">
+      <div class="section-header">
+        <h2>현재공연</h2>
+        <p class="sub">포스터 아래에 제목/날짜가 표시됩니다</p>
+      </div>
+      <div class="grid" id="currentGrid"></div>
+    </section>
+
+    <!-- 이전공연 (원하면 나중에 추가/확장) -->
+    <section id="past" class="section">
+      <div class="section-header">
+        <h2>이전공연</h2>
+        <p class="sub">원하면 공연을 계속 추가할 수 있어요</p>
+      </div>
+      <div class="grid" id="pastGrid"></div>
+    </section>
+
+    <!-- 단체 소개 -->
+    <section id="about" class="section">
+      <div class="section-header">
         <h2>공연단체 소개</h2>
-        <p class="muted">
-          (여기는 CMS로도 편집 가능하게 열어뒀어요)<br/>
-          소개/실적/홍보 문구를 관리자 화면에서 입력하면 자동 반영됩니다.
+        <p class="sub">여기는 나중에 글만 바꿔도 됩니다</p>
+      </div>
+
+      <div style="border:1px solid var(--line); border-radius:var(--radius); padding:16px; background:#fff;">
+        <p style="margin:0 0 10px; font-weight:700;">(주)문화락</p>
+        <p style="margin:0; color:var(--muted);">
+          아이들과 가족이 함께 즐길 수 있는 공연·교육 콘텐츠를 제작하고 운영합니다.
+          공연 문의/섭외/단체관람 등은 아래 연락처로 주세요.
         </p>
-        <div class="chips">
-          <span class="chip">공연기획</span>
-          <span class="chip">교육공연</span>
-          <span class="chip">가족공연</span>
-          <span class="chip">지역문화</span>
+        <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+          <span style="border:1px solid var(--line); border-radius:999px; padding:6px 10px; font-size:13px;">공연기획</span>
+          <span style="border:1px solid var(--line); border-radius:999px; padding:6px 10px; font-size:13px;">교육공연</span>
+          <span style="border:1px solid var(--line); border-radius:999px; padding:6px 10px; font-size:13px;">가족공연</span>
+          <span style="border:1px solid var(--line); border-radius:999px; padding:6px 10px; font-size:13px;">지역문화</span>
         </div>
       </div>
 
-      <div class="card">
-        <h2>모바일 메인 이미지</h2>
-        <p class="muted">모바일용 대표 이미지를 아래 경로에 올리면 됩니다.</p>
-        <div class="poster-grid">
-          <div class="poster">
-            <img src="images/mobile/hero.jpg" alt="모바일 메인 이미지" />
-          </div>
+      <footer>
+        © 문화락. 포스터/상세 이미지는 <b>images/</b> 폴더에 업로드 후 경로만 맞추면 자동 반영됩니다.
+      </footer>
+    </section>
+  </main>
+
+  <!-- 상세 모달 -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="공연 상세">
+    <div class="modal-panel">
+      <div class="modal-top">
+        <div class="meta">
+          <div class="t" id="modalTitle">공연 제목</div>
+          <div class="d" id="modalDate">기간</div>
         </div>
-        <p class="tiny muted" style="margin-top:10px">
-          파일 경로: <b>images/mobile/hero.jpg</b>
-        </p>
+        <button class="modal-close" id="modalClose" aria-label="닫기">닫기 ✕</button>
+      </div>
+      <div class="modal-content" id="modalContent">
+        <img class="detail-img" id="modalImg" alt="공연 상세 이미지" />
       </div>
     </div>
-  </section>
-
-  <section id="now">
-    <div class="card">
-      <h2>현재공연 포스터</h2>
-      <p class="muted">예: 리온의 신비한 과자상점, 황소와 도깨비 등</p>
-      <div class="poster-grid">
-        <div class="poster"><img src="images/poster/current/poster1.jpg" alt="현재공연 포스터 1" /></div>
-        <div class="poster"><img src="images/poster/current/poster2.jpg" alt="현재공연 포스터 2" /></div>
-      </div>
-      <p class="tiny muted" style="margin-top:10px">
-        파일 경로: <b>images/poster/current/</b>
-      </p>
-    </div>
-  </section>
-
-  <section id="past">
-    <div class="card">
-      <h2>이전공연 포스터</h2>
-      <p class="muted">예: 죽여주는 이야기, 론 브랜튼 재즈, 조항조 콘서트 등</p>
-      <div class="poster-grid">
-        <div class="poster"><img src="images/poster/past/past1.jpg" alt="이전공연 포스터 1" /></div>
-        <div class="poster"><img src="images/poster/past/past2.jpg" alt="이전공연 포스터 2" /></div>
-      </div>
-      <p class="tiny muted" style="margin-top:10px">
-        파일 경로: <b>images/poster/past/</b>
-      </p>
-    </div>
-  </section>
-
-  <section id="hall">
-    <div class="grid">
-      <div class="card">
-        <h2>가온아트홀 1관 / 2관</h2>
-        <p class="muted">공간 소개 이미지(최대 2장) 업로드용 자리입니다.</p>
-        <div class="poster-grid">
-          <div class="poster"><img src="images/hall/hall1.jpg" alt="가온아트홀 1관" /></div>
-          <div class="poster"><img src="images/hall/hall2.jpg" alt="가온아트홀 2관" /></div>
-        </div>
-      </div>
-      <div class="card">
-        <h2>로비</h2>
-        <p class="muted">로비 사진 업로드용 자리입니다.</p>
-        <div class="poster-grid">
-          <div class="poster"><img src="images/hall/lobby.jpg" alt="가온아트홀 로비" /></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="records">
-    <div class="card">
-      <h2>문화락 실적</h2>
-      <p class="muted">실적 자료 이미지를 업로드해서 보여주는 영역입니다.</p>
-      <div class="poster-grid">
-        <div class="poster"><img src="images/intro/record.jpg" alt="문화락 실적 이미지" /></div>
-        <div class="poster"><img src="images/intro/team.jpg" alt="공연단체 소개 이미지" /></div>
-      </div>
-      <p class="tiny muted" style="margin-top:10px">
-        파일 경로: <b>images/intro/</b>
-      </p>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="container">
-    <div>© 문화락</div>
-    <div class="tiny">관리자 화면: <a href="/admin/" style="text-decoration:underline;">/admin</a></div>
   </div>
-</footer>
 
-<script>
-  // (선택) 슬라이더가 너무 빠르거나 느리면 CSS의 55s 값을 조절하면 됩니다.
-  // (예: 더 느리게 = 70s, 더 빠르게 = 40s)
-</script>
+  <script>
+    /**
+     * ✅ 여기만 수정하면 됩니다.
+     * - thumb: 포스터(썸네일) 이미지 경로
+     * - detail: 클릭 시 열릴 상세(긴 이미지) 경로
+     * - title/date: 포스터 밑에 표시될 텍스트
+     */
+
+    const SLIDES = [
+      "images/slider/slide1.jpg",
+      "images/slider/slide2.jpg",
+      "images/slider/slide3.jpg",
+      "images/slider/slide4.jpg"
+    ];
+
+    const SHOWS_CURRENT = [
+      {
+        title: "연극_황소와 도깨비",
+        date: "2025.12.21 ~ 2026.01.31",
+        thumb: "images/posters/current/bull-goblin.jpg",
+        detail: "images/details/bull-goblin-detail.jpg"
+      },
+      {
+        title: "공연·마술_리온의 신비한 과자상점",
+        date: "2026.01.24 ~ 04.26",
+        thumb: "images/posters/current/lion-magic.jpg",
+        detail: "images/details/lion-magic-detail.jpg"
+      }
+    ];
+
+    // 이전공연은 비워둬도 됩니다. 추가하고 싶으면 아래처럼 넣으면 끝.
+    const SHOWS_PAST = [
+      // 예시)
+      // {
+      //   title: "죽여주는 이야기",
+      //   date: "2025.11.27 ~ 12.28",
+      //   thumb: "images/posters/past/kill-story.jpg",
+      //   detail: "images/details/kill-story-detail.jpg"
+      // }
+    ];
+
+    // -------------------------
+    // 렌더링
+    // -------------------------
+    function createSlide(src){
+      const el = document.createElement("div");
+      el.className = "slide";
+      el.innerHTML = `<img src="${src}" alt="메인 슬라이드" loading="lazy">`;
+      return el;
+    }
+
+    function createPosterCard(show){
+      const card = document.createElement("article");
+      card.className = "poster";
+      card.innerHTML = `
+        <div class="poster-thumb">
+          <img src="${show.thumb}" alt="${show.title} 포스터" loading="lazy">
+        </div>
+        <div class="poster-body">
+          <h3 class="poster-title">${escapeHtml(show.title)}</h3>
+          <p class="poster-date">${escapeHtml(show.date)}</p>
+        </div>
+      `;
+      card.addEventListener("click", () => openModal(show));
+      card.addEventListener("keydown", (e) => {
+        if(e.key === "Enter" || e.key === " ") openModal(show);
+      });
+      card.tabIndex = 0;
+      return card;
+    }
+
+    function renderGrid(gridId, list){
+      const grid = document.getElementById(gridId);
+      grid.innerHTML = "";
+      if(!list || list.length === 0){
+        const empty = document.createElement("div");
+        empty.style.cssText = "border:1px dashed var(--line); border-radius: var(--radius); padding:16px; color:var(--muted);";
+        empty.textContent = "아직 등록된 공연이 없습니다. (추가하려면 SHOWS_PAST 배열에 한 줄 추가)";
+        empty.style.gridColumn = "1 / -1";
+        grid.appendChild(empty);
+        return;
+      }
+      list.forEach(item => grid.appendChild(createPosterCard(item)));
+    }
+
+    // -------------------------
+    // 모달
+    // -------------------------
+    const modal = document.getElementById("modal");
+    const modalClose = document.getElementById("modalClose");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDate = document.getElementById("modalDate");
+    const modalImg = document.getElementById("modalImg");
+
+    function openModal(show){
+      modalTitle.textContent = show.title;
+      modalDate.textContent = show.date;
+      modalImg.src = show.detail;
+      modal.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal(){
+      modal.classList.remove("open");
+      document.body.style.overflow = "";
+      modalImg.src = "";
+    }
+
+    modalClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => {
+      if(e.target === modal) closeModal();
+    });
+    window.addEventListener("keydown", (e) => {
+      if(e.key === "Escape" && modal.classList.contains("open")) closeModal();
+    });
+
+    // -------------------------
+    // 슬라이더(무한 반복)
+    // -------------------------
+    function renderMarquee(){
+      const track = document.getElementById("marqueeTrack");
+      track.innerHTML = "";
+      // 4장 + 4장(반복)
+      const doubled = [...SLIDES, ...SLIDES];
+      doubled.forEach(src => track.appendChild(createSlide(src)));
+    }
+
+    // 간단한 HTML 이스케이프
+    function escapeHtml(str){
+      return String(str)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    // 시작
+    renderMarquee();
+    renderGrid("currentGrid", SHOWS_CURRENT);
+    renderGrid("pastGrid", SHOWS_PAST);
+  </script>
 </body>
 </html>
