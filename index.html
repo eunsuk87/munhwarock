@@ -1,159 +1,339 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <title>사회적기업 ㈜문화락 | 공연·문화콘텐츠 전문기업</title>
-
-  <!-- SEO -->
-  <meta name="description" content="사회적기업 ㈜문화락은 공연·전시·문화콘텐츠를 기획·제작·연출하는 부산 기반 공연기획사입니다. 연극·뮤지컬·교육공연·지역축제 전문." />
-  <meta name="keywords" content="문화락, 사회적기업, 공연기획사, 부산공연, 연극제작, 뮤지컬제작, 학교폭력예방공연" />
-  <meta name="robots" content="index, follow" />
-
-  <!-- 모바일 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="사회적기업 ㈜문화락" />
-  <meta property="og:description" content="공연·전시·문화콘텐츠를 기획·제작·연출하는 공연전문기업" />
-  <meta property="og:url" content="https://culturelock.co.kr" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>문화락</title>
+  <meta name="description" content="문화락 - 공연/예술/교육 프로그램" />
 
   <style>
-    body {
-      margin: 0;
-      font-family: "Noto Sans KR", sans-serif;
-      color: #222;
-      line-height: 1.7;
+    :root{
+      --bg:#0b0f17;
+      --card:#121a28;
+      --text:#e9eef7;
+      --muted:#9bb0d1;
+      --line:rgba(255,255,255,.12);
+      --accent:#4fd1c5;
+      --radius:18px;
+      --max:1100px;
     }
-    header {
-      background: #111;
-      color: #fff;
-      padding: 40px 20px;
-      text-align: center;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", sans-serif;
+      background: radial-gradient(1200px 800px at 10% 0%, #1b2a4a 0%, rgba(27,42,74,0) 60%),
+                  radial-gradient(900px 700px at 100% 20%, #1a3a2f 0%, rgba(26,58,47,0) 55%),
+                  var(--bg);
+      color:var(--text);
     }
-    header img {
-      max-width: 180px;
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:20px}
+    header{
+      position:sticky; top:0; z-index:50;
+      background: rgba(11,15,23,.72);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
     }
-    section {
-      padding: 60px 20px;
-      max-width: 1100px;
-      margin: auto;
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; padding:14px 20px;
+      max-width:var(--max); margin:0 auto;
     }
-    h2 {
-      font-size: 28px;
-      margin-bottom: 20px;
+    .brand{display:flex; align-items:center; gap:10px}
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg, var(--accent), #6aa7ff);
+      box-shadow: 0 10px 30px rgba(79,209,197,.18);
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+    .brand b{font-size:18px}
+    nav{display:flex; gap:10px; flex-wrap:wrap}
+    .pill{
+      padding:8px 10px; border:1px solid var(--line); border-radius:999px;
+      color:var(--muted); font-size:13px;
     }
-    .card {
-      border: 1px solid #eee;
-      padding: 20px;
-      border-radius: 8px;
+    .pill:hover{border-color: rgba(255,255,255,.25); color:var(--text)}
+
+    .hero{padding:22px 0 8px}
+    .hero h1{margin:0 0 8px; font-size:28px; letter-spacing:-.3px}
+    .hero p{margin:0; color:var(--muted); line-height:1.5}
+
+    /* ===== 메인 슬라이더(천천히 왼쪽 무한 이동) ===== */
+    .slider-wrap{
+      margin-top:18px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      background: rgba(18,26,40,.55);
+      box-shadow: 0 18px 60px rgba(0,0,0,.35);
     }
-    .card img {
-      width: 100%;
-      border-radius: 6px;
+    .marquee{
+      display:flex;
+      width:100%;
+      overflow:hidden;
     }
-    .hero {
-      background: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
-                  url('images/posters.jpg') center/cover no-repeat;
-      color: #fff;
-      text-align: center;
-      padding: 100px 20px;
+    .track{
+      display:flex;
+      gap:14px;
+      padding:14px;
+      will-change: transform;
+      animation: scroll-left 55s linear infinite;
     }
-    footer {
-      background: #111;
-      color: #fff;
-      text-align: center;
-      padding: 30px 20px;
-      font-size: 14px;
+    /* 사용자 모션 선호 배려 */
+    @media (prefers-reduced-motion: reduce){
+      .track{animation:none}
     }
+    @keyframes scroll-left{
+      from{transform: translateX(0)}
+      to{transform: translateX(-50%)}
+    }
+    .slide{
+      flex:0 0 auto;
+      width:min(420px, 86vw);
+      aspect-ratio: 16/9;
+      border-radius:14px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.2);
+    }
+    .slide img{
+      width:100%; height:100%; object-fit:cover;
+      display:block;
+    }
+    .slide .cap{
+      position:absolute;
+      left:10px; bottom:10px;
+      padding:6px 10px;
+      font-size:12px;
+      color:#fff;
+      background: rgba(0,0,0,.45);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      backdrop-filter: blur(6px);
+    }
+    .slide-inner{position:relative; width:100%; height:100%}
+
+    /* ===== 섹션 카드 ===== */
+    section{padding:26px 0}
+    .grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+    }
+    @media (max-width: 920px){
+      .grid{grid-template-columns:1fr}
+    }
+    .card{
+      background: rgba(18,26,40,.65);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:16px;
+    }
+    .card h2{
+      margin:0 0 10px;
+      font-size:18px;
+      letter-spacing:-.2px;
+    }
+    .muted{color:var(--muted); line-height:1.6; margin:0}
+
+    .poster-grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:12px;
+      margin-top:12px;
+    }
+    @media (max-width: 560px){
+      .poster-grid{grid-template-columns:1fr}
+    }
+    .poster{
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:14px;
+      overflow:hidden;
+      background: rgba(0,0,0,.18);
+    }
+    .poster img{width:100%; height:auto; display:block}
+
+    .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px}
+    .chip{
+      font-size:12px; color:var(--muted);
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:7px 10px;
+    }
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:18px 0 34px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .tiny{font-size:12px; opacity:.9}
   </style>
 </head>
 
 <body>
-
 <header>
-  <img src="images/logo.png" alt="문화락 로고" />
-  <p>사회적기업 · 공연콘텐츠 전문기업</p>
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <b>문화락</b>
+    </div>
+    <nav>
+      <a class="pill" href="#now">현재공연</a>
+      <a class="pill" href="#past">이전공연</a>
+      <a class="pill" href="#hall">가온아트홀</a>
+      <a class="pill" href="#intro">공연단체소개</a>
+      <a class="pill" href="/admin/">관리자</a>
+    </nav>
+  </div>
 </header>
 
-<section class="hero">
-  <h1>공연으로 사회와 연결하다</h1>
-  <p>연극 · 뮤지컬 · 교육공연 · 문화기획</p>
-</section>
+<main class="container">
+  <div class="hero">
+    <h1>공연 · 교육 · 문화예술 플랫폼</h1>
+    <p>이미지와 내용은 아래 폴더에 업로드만 하면 됩니다. (CMS를 붙이면 관리자 화면에서 입력도 가능)</p>
+  </div>
 
-<section>
-  <h2>기업 소개</h2>
-  <p>
-    사회적기업 ㈜문화락은 공연 콘텐츠를 개발·제작·육성하여 보급하며  
-    학교, 기업, 지역축제 등 다양한 행사에 적합한 공연 콘텐츠를  
-    기획·연출하는 공연전문기업입니다.
-  </p>
-  <p>
-    부산 자성로133번길 10 지하1층 가온아트홀을 기반으로  
-    연극, 뮤지컬, 교육공연, 찾아가는 문화활동을 꾸준히 제작하고 있습니다.
-  </p>
-</section>
+  <!-- 메인 슬라이더 (PC용 4장) -->
+  <div class="slider-wrap" aria-label="메인 슬라이더">
+    <div class="marquee">
+      <!-- track을 2번 반복(복제)해서 끊김 없이 무한 이동 -->
+      <div class="track" id="mainTrack">
+        <!-- 1회차 4장 -->
+        <div class="slide"><div class="slide-inner">
+          <img src="images/main/slide1.jpg" alt="메인 슬라이드 1" />
+        </div></div>
+        <div class="slide"><div class="slide-inner">
+          <img src="images/main/slide2.jpg" alt="메인 슬라이드 2" />
+        </div></div>
+        <div class="slide"><div class="slide-inner">
+          <img src="images/main/slide3.jpg" alt="메인 슬라이드 3" />
+        </div></div>
+        <div class="slide"><div class="slide-inner">
+          <img src="images/main/slide4.jpg" alt="메인 슬라이드 4" />
+        </div></div>
 
-<section>
-  <h2>공연장 안내</h2>
-  <div class="grid">
-    <div class="card">
-      <img src="images/hall1.jpg" alt="가온아트홀 1관">
-      <h3>가온아트홀 1관</h3>
-      <p>170석 규모 / 연극·뮤지컬 전문 공연장</p>
-    </div>
-    <div class="card">
-      <img src="images/hall2.jpg" alt="가온아트홀 2관">
-      <h3>가온아트홀 2관</h3>
-      <p>100석 규모 / 발표회·교육·소극장</p>
-    </div>
-    <div class="card">
-      <img src="images/gallery.jpg" alt="가온갤러리">
-      <h3>가온갤러리</h3>
-      <p>전시 및 대기 공간</p>
+        <!-- 2회차(복제) 4장 -->
+        <div class="slide"><div class="slide-inner">
+          <img src="images/main/slide1.jpg" alt="메인 슬라이드 1 (복제)" />
+        </div></div>
+        <div class="slide"><div class="slide-inner">
+          <img src="images/main/slide2.jpg" alt="메인 슬라이드 2 (복제)" />
+        </div></div>
+        <div class="slide"><div class="slide-inner">
+          <img src="images/main/slide3.jpg" alt="메인 슬라이드 3 (복제)" />
+        </div></div>
+        <div class="slide"><div class="slide-inner">
+          <img src="images/main/slide4.jpg" alt="메인 슬라이드 4 (복제)" />
+        </div></div>
+      </div>
     </div>
   </div>
-</section>
 
-<section>
-  <h2>주요 사업</h2>
-  <ul>
-    <li>연극·뮤지컬 제작 및 초청공연</li>
-    <li>학교폭력 예방 교육 공연</li>
-    <li>약물·오남용 예방 교육 공연</li>
-    <li>찾아가는 문화활동 지원사업</li>
-    <li>지역축제 및 기업 행사 기획</li>
-  </ul>
-</section>
+  <!-- 모바일 메인 이미지(1장) 예: CSS로 모바일에서만 보이게 하고 싶으면 추후 추가 가능 -->
+  <section id="intro">
+    <div class="grid">
+      <div class="card">
+        <h2>공연단체 소개</h2>
+        <p class="muted">
+          (여기는 CMS로도 편집 가능하게 열어뒀어요)<br/>
+          소개/실적/홍보 문구를 관리자 화면에서 입력하면 자동 반영됩니다.
+        </p>
+        <div class="chips">
+          <span class="chip">공연기획</span>
+          <span class="chip">교육공연</span>
+          <span class="chip">가족공연</span>
+          <span class="chip">지역문화</span>
+        </div>
+      </div>
 
-<section>
-  <h2>공연 실적</h2>
-  <p>
-    2017년부터 현재까지 부산 지역 초·중·고등학교  
-    100여 곳 이상 교육공연 진행  
-  </p>
-  <p>
-    부산시교육청 · 문화회관 · 마약퇴치운동본부  
-    다수 공공기관 사업 수행
-  </p>
-</section>
+      <div class="card">
+        <h2>모바일 메인 이미지</h2>
+        <p class="muted">모바일용 대표 이미지를 아래 경로에 올리면 됩니다.</p>
+        <div class="poster-grid">
+          <div class="poster">
+            <img src="images/mobile/hero.jpg" alt="모바일 메인 이미지" />
+          </div>
+        </div>
+        <p class="tiny muted" style="margin-top:10px">
+          파일 경로: <b>images/mobile/hero.jpg</b>
+        </p>
+      </div>
+    </div>
+  </section>
 
-<section>
-  <h2>문의</h2>
-  <p>
-    📍 부산광역시 동구 자성로133번길 10 지하1층<br>
-    ☎ 대표번호 1600-1602
-  </p>
-</section>
+  <section id="now">
+    <div class="card">
+      <h2>현재공연 포스터</h2>
+      <p class="muted">예: 리온의 신비한 과자상점, 황소와 도깨비 등</p>
+      <div class="poster-grid">
+        <div class="poster"><img src="images/poster/current/poster1.jpg" alt="현재공연 포스터 1" /></div>
+        <div class="poster"><img src="images/poster/current/poster2.jpg" alt="현재공연 포스터 2" /></div>
+      </div>
+      <p class="tiny muted" style="margin-top:10px">
+        파일 경로: <b>images/poster/current/</b>
+      </p>
+    </div>
+  </section>
+
+  <section id="past">
+    <div class="card">
+      <h2>이전공연 포스터</h2>
+      <p class="muted">예: 죽여주는 이야기, 론 브랜튼 재즈, 조항조 콘서트 등</p>
+      <div class="poster-grid">
+        <div class="poster"><img src="images/poster/past/past1.jpg" alt="이전공연 포스터 1" /></div>
+        <div class="poster"><img src="images/poster/past/past2.jpg" alt="이전공연 포스터 2" /></div>
+      </div>
+      <p class="tiny muted" style="margin-top:10px">
+        파일 경로: <b>images/poster/past/</b>
+      </p>
+    </div>
+  </section>
+
+  <section id="hall">
+    <div class="grid">
+      <div class="card">
+        <h2>가온아트홀 1관 / 2관</h2>
+        <p class="muted">공간 소개 이미지(최대 2장) 업로드용 자리입니다.</p>
+        <div class="poster-grid">
+          <div class="poster"><img src="images/hall/hall1.jpg" alt="가온아트홀 1관" /></div>
+          <div class="poster"><img src="images/hall/hall2.jpg" alt="가온아트홀 2관" /></div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>로비</h2>
+        <p class="muted">로비 사진 업로드용 자리입니다.</p>
+        <div class="poster-grid">
+          <div class="poster"><img src="images/hall/lobby.jpg" alt="가온아트홀 로비" /></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="records">
+    <div class="card">
+      <h2>문화락 실적</h2>
+      <p class="muted">실적 자료 이미지를 업로드해서 보여주는 영역입니다.</p>
+      <div class="poster-grid">
+        <div class="poster"><img src="images/intro/record.jpg" alt="문화락 실적 이미지" /></div>
+        <div class="poster"><img src="images/intro/team.jpg" alt="공연단체 소개 이미지" /></div>
+      </div>
+      <p class="tiny muted" style="margin-top:10px">
+        파일 경로: <b>images/intro/</b>
+      </p>
+    </div>
+  </section>
+</main>
 
 <footer>
-  © 사회적기업 ㈜문화락 | culturelock.co.kr
+  <div class="container">
+    <div>© 문화락</div>
+    <div class="tiny">관리자 화면: <a href="/admin/" style="text-decoration:underline;">/admin</a></div>
+  </div>
 </footer>
 
+<script>
+  // (선택) 슬라이더가 너무 빠르거나 느리면 CSS의 55s 값을 조절하면 됩니다.
+  // (예: 더 느리게 = 70s, 더 빠르게 = 40s)
+</script>
 </body>
 </html>
