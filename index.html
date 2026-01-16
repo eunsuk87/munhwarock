@@ -11,19 +11,14 @@
       --gray-2:#333;
       --gray-3:#666;
       --line:#e8e8e8;
-
-      /* 요청: 푸터 배경 M15, Y10 느낌(대략) */
       --footer-bg: #efe6d9;
-
       --max: 1200px;
       --shadow: 0 10px 30px rgba(0,0,0,.12);
       --radius: 14px;
-
-      --badge1:#d81b60; /* ① */
-      --badge2:#039be5; /* ② */
+      --badge1:#d81b60;
+      --badge2:#039be5;
     }
 
-    /* 고딕 */
     body{
       margin:0;
       font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -33,10 +28,8 @@
     a{ color:inherit; text-decoration:none; }
     img{ max-width:100%; display:block; }
     button{ font-family:inherit; }
-
     .wrap{ width:min(var(--max), calc(100% - 32px)); margin:0 auto; }
 
-    /* ===== Header ===== */
     header{
       position:sticky;
       top:0;
@@ -65,7 +58,7 @@
     }
     .brand-title{
       text-align:center;
-      font-weight:800; /* Bold */
+      font-weight:800;
       letter-spacing:-.02em;
       font-size:18px;
     }
@@ -77,10 +70,7 @@
       min-height:44px;
     }
 
-    /* 메뉴(중앙정렬 / 박스X / 고딕 / K100) */
-    nav{
-      border-top:1px solid var(--line);
-    }
+    nav{ border-top:1px solid var(--line); }
     .menu{
       display:flex;
       gap:22px;
@@ -94,7 +84,7 @@
       color:var(--k100);
       font-size:15px;
       letter-spacing:-.02em;
-      padding:6px 2px; /* 박스/버튼 느낌 없이 */
+      padding:6px 2px;
     }
     .menu a.active{
       text-decoration: underline;
@@ -102,19 +92,15 @@
       text-decoration-thickness: 2px;
     }
 
-    /* ===== Sections ===== */
-    .section{
-      padding:38px 0 26px;
-    }
+    .section{ padding:38px 0 26px; }
     .section-title{
       font-size:30px;
-      font-weight:800; /* Bold */
+      font-weight:800;
       letter-spacing:-.03em;
       margin:0 0 18px;
     }
     .muted{ color:var(--gray-3); }
 
-    /* ===== Hero Slider (풀폭, 좌우 꽉 채움) ===== */
     .hero{
       position:relative;
       width:100%;
@@ -138,13 +124,13 @@
     .hero-slide img{
       width:100%;
       height:100%;
-      object-fit:cover; /* “좌우 꽉 채움” */
+      object-fit:cover;
       opacity:.92;
     }
     .hero-overlay{
       position:absolute;
       inset:0;
-      background: radial-gradient(ellipse at center, rgba(0,0,0,.15), rgba(0,0,0,.55));
+      background: radial-gradient(ellipse at center, rgba(0,0,0,.12), rgba(0,0,0,.55));
       pointer-events:none;
     }
     .hero-dots{
@@ -164,7 +150,6 @@
     }
     .dot.active{ background:#fff; }
 
-    /* ===== Posters grid ===== */
     .grid{
       display:grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -199,23 +184,20 @@
     }
     .poster:hover img{ transform: scale(1.06); }
 
-    .meta{
-      padding:14px 14px 16px;
-    }
+    .meta{ padding:14px 14px 16px; }
     .show-title{
-      font-weight:800; /* Bold */
+      font-weight:800;
       font-size:18px;
       letter-spacing:-.02em;
       margin:0 0 6px;
     }
     .show-date{
-      font-weight:400; /* Regular */
+      font-weight:400;
       color:var(--gray-2);
       margin:0;
       line-height:1.5;
     }
 
-    /* ===== Social icons row (이전공연 아래 중앙정렬) ===== */
     .social-row{
       margin-top:18px;
       display:flex;
@@ -234,13 +216,8 @@
       box-shadow: 0 6px 20px rgba(0,0,0,.06);
       font-weight:800;
     }
-    .icon-btn img{
-      width:22px;
-      height:22px;
-      object-fit:contain;
-    }
+    .icon-btn img{ width:22px; height:22px; object-fit:contain; }
 
-    /* ===== Modal (상세페이지) ===== */
     .modal-backdrop{
       position:fixed;
       inset:0;
@@ -273,10 +250,7 @@
       background:#fff;
       z-index:2;
     }
-    .modal-header .mh-title{
-      font-weight:900;
-      letter-spacing:-.02em;
-    }
+    .modal-header .mh-title{ font-weight:900; letter-spacing:-.02em; }
     .close{
       border:1px solid var(--line);
       background:#fff;
@@ -293,7 +267,6 @@
       border:1px solid var(--line);
     }
 
-    /* ===== About (탭 3개) ===== */
     .tabs{
       display:flex;
       justify-content:center;
@@ -340,7 +313,6 @@
       border:1px solid var(--line);
     }
 
-    /* ===== Rental Calendar ===== */
     .cal-wrap{
       border:1px solid var(--line);
       border-radius: var(--radius);
@@ -354,10 +326,7 @@
       padding:12px 14px;
       border-bottom:1px solid var(--line);
     }
-    .cal-head .month{
-      font-weight:900;
-      letter-spacing:-.02em;
-    }
+    .cal-head .month{ font-weight:900; letter-spacing:-.02em; }
     .cal-head button{
       border:1px solid var(--line);
       background:#fff;
@@ -366,10 +335,7 @@
       cursor:pointer;
       font-weight:800;
     }
-    .cal-grid{
-      display:grid;
-      grid-template-columns: repeat(7, minmax(0,1fr));
-    }
+    .cal-grid{ display:grid; grid-template-columns: repeat(7, minmax(0,1fr)); }
     .dow{
       background:#fafafa;
       padding:10px 8px;
@@ -401,13 +367,7 @@
       flex-direction:column;
       gap:6px;
     }
-    .ev{
-      display:flex;
-      align-items:center;
-      gap:6px;
-      font-size:12px;
-      line-height:1.25;
-    }
+    .ev{ display:flex; align-items:center; gap:6px; font-size:12px; line-height:1.25; }
     .badge{
       display:inline-flex;
       align-items:center;
@@ -429,7 +389,6 @@
       white-space:nowrap;
     }
 
-    /* ===== Admin ===== */
     .admin-box{
       border:1px solid var(--line);
       border-radius: var(--radius);
@@ -457,6 +416,26 @@
       cursor:pointer;
       font-weight:900;
     }
+    .admin-tools{
+      margin-top:10px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .admin-tools button{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:10px;
+      padding:10px 12px;
+      cursor:pointer;
+      font-weight:900;
+    }
+    .admin-tools button.danger{
+      border-color:#b00020;
+      color:#b00020;
+    }
+
     .admin-grid{
       display:grid;
       grid-template-columns: 1fr 1fr;
@@ -504,7 +483,6 @@
       margin:8px 0 0;
     }
 
-    /* ===== Footer ===== */
     footer{
       margin-top:46px;
       background: var(--footer-bg);
@@ -520,11 +498,10 @@
       line-height:1.6;
       color:#000;
     }
-    .b{ font-weight:900; } /* Bold */
-    .r{ font-weight:400; } /* Regular */
+    .b{ font-weight:900; }
+    .r{ font-weight:400; }
     .footer-lines a{ text-decoration: underline; text-underline-offset: 3px; }
 
-    /* anchor offset for sticky header */
     .anchor { scroll-margin-top: 120px; }
   </style>
 </head>
@@ -534,19 +511,13 @@
 <header>
   <div class="wrap">
     <div class="topbar">
-      <!-- 1) 상단 왼쪽 로고 -->
       <div class="brand-left">
-        <!-- ✅ 여기 파일명만 맞추면 됩니다 -->
-        <img src="문화락로고cmyk.png" alt="문화락 로고" />
+        <img src="images/logo/문화락로고cmyk.png" alt="문화락 로고" />
       </div>
-
-      <!-- 2) 상단 중앙 타이틀 -->
       <div class="brand-title">인증사회적기업(주)문화락</div>
-
       <div class="brand-right"></div>
     </div>
 
-    <!-- 3) 메뉴 중앙정렬 (박스X) -->
     <nav>
       <div class="menu" id="menu">
         <a href="#current" data-link="current">현재공연</a>
@@ -559,7 +530,6 @@
   </div>
 </header>
 
-<!-- 4) 메인 슬라이드(풀폭) -->
 <section class="hero" aria-label="메인 슬라이드">
   <div class="hero-track" id="heroTrack"></div>
   <div class="hero-overlay"></div>
@@ -567,8 +537,6 @@
 </section>
 
 <main>
-
-  <!-- 현재공연 -->
   <section class="section anchor" id="current">
     <div class="wrap">
       <h2 class="section-title">현재공연</h2>
@@ -576,27 +544,24 @@
     </div>
   </section>
 
-  <!-- 이전공연 -->
   <section class="section anchor" id="past">
     <div class="wrap">
       <h2 class="section-title">이전공연</h2>
       <div class="grid" id="pastGrid"></div>
 
-      <!-- 5) 이전공연 아래: 중앙정렬 SNS 아이콘만 -->
       <div class="social-row" aria-label="SNS 링크">
         <a class="icon-btn" href="https://www.instagram.com/gaonarthall" target="_blank" rel="noreferrer">
-          <img src="Instagram로고.png" alt="Instagram" />
+          <img src="images/icons/Instagram로고.png" alt="Instagram" />
           <span>Instagram</span>
         </a>
         <a class="icon-btn" href="https://blog.naver.com/gaonarthall12" target="_blank" rel="noreferrer">
-          <img src="블로그로고.png" alt="Blog" />
+          <img src="images/icons/블로그로고.png" alt="Blog" />
           <span>Blog</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- 공연단체소개 -->
   <section class="section anchor" id="about">
     <div class="wrap">
       <h2 class="section-title">공연단체소개</h2>
@@ -611,7 +576,6 @@
     </div>
   </section>
 
-  <!-- 공연대관일정 -->
   <section class="section anchor" id="rental">
     <div class="wrap">
       <h2 class="section-title">공연대관일정</h2>
@@ -631,7 +595,6 @@
     </div>
   </section>
 
-  <!-- 관리자 -->
   <section class="section anchor" id="admin">
     <div class="wrap">
       <h2 class="section-title">관리자</h2>
@@ -640,7 +603,14 @@
         <div class="admin-login" id="adminLogin">
           <input id="adminPass" type="password" placeholder="관리자 비밀번호 입력" />
           <button id="adminEnter" type="button">로그인</button>
-          <p class="hint">※ 이 페이지는 “브라우저에 저장(localStorage)” 방식입니다. PC가 바뀌면 저장내용도 달라질 수 있어요.</p>
+          <p class="hint">※ 이 페이지는 브라우저(localStorage) 저장 방식입니다.</p>
+        </div>
+
+        <div class="admin-tools" id="adminTools" style="display:none;">
+          <input id="newPass" type="password" placeholder="새 비밀번호" />
+          <input id="newPass2" type="password" placeholder="새 비밀번호 확인" />
+          <button id="changePass" type="button">비밀번호 변경</button>
+          <button class="danger" id="resetPass" type="button">비밀번호 초기화</button>
         </div>
 
         <div id="adminPanel" style="display:none;">
@@ -667,21 +637,18 @@
           </div>
 
           <p class="hint">
-            ✅ JSON 예시(공연): {"title":"공연명","dateText":"2026.1.24~4.26","poster":"poster.jpg","detail":"detail.jpg"}<br/>
-            ✅ JSON 예시(대관): {"date":"2026-01-03","hall":1,"title":"리온의 신비한 과자상점"} (hall: 1이면 ① / 2이면 ②)
+            ✅ JSON 예시(공연): {"title":"공연명","dateText":"2026.1.24~4.26","poster":"images/posters/current/current_01.jpg","detail":"images/details/리온마술-상세.jpg"}<br/>
+            ✅ JSON 예시(대관): {"date":"2026-01-03","hall":1,"title":"리온의 신비한 과자상점"}
           </p>
         </div>
       </div>
     </div>
   </section>
-
 </main>
 
-<!-- Footer -->
 <footer>
   <div class="wrap">
     <div class="footer-lines">
-      <!-- 3줄 / 중앙정렬 -->
       <div>
         <span class="b">상호명</span> <span class="r">(주)문화락</span>
         &nbsp;&nbsp;|&nbsp;&nbsp;
@@ -705,7 +672,6 @@
   </div>
 </footer>
 
-<!-- 상세 모달 -->
 <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-label="공연 상세">
   <div class="modal">
     <div class="modal-header">
@@ -720,29 +686,24 @@
 
 <script>
   /********************
-   * 0) 기본 데이터(초기값)
-   *    - 관리자에서 바꾼 값은 브라우저(localStorage)에 저장됨
+   * 기본 데이터(초기값)
    ********************/
   const DEFAULT = {
     hero: [
-      // ✅ 슬라이드 이미지 1~3개 넣기 (포스터/메인 배경)
-      //    파일만 올리고 이름만 바꾸면 됩니다.
-      "slide1.jpg",
-      "slide2.jpg",
-      "slide3.jpg",
+      "images/slides/slide1.jpg",
+      "images/slides/slide2.jpg",
+      "images/slides/slide3.jpg",
     ],
     currentShows: [
-      // ✅ 예시(원하시면 제목/날짜/이미지명만 바꾸세요)
-      {"title":"연극 황소와 도깨비","dateText":"2025.12.21 ~ 2026.01.31","poster":"current_01.jpg","detail":"황소와도깨비-상세.jpg"},
-      {"title":"공연·마술 리온의 신비한 과자상점","dateText":"2026.01.24 ~ 2026.04.26","poster":"current_02.jpg","detail":"리온마술-상세.jpg"}
+      {"title":"연극 황소와 도깨비","dateText":"2025.12.21 ~ 2026.01.31","poster":"images/posters/current/current_01.jpg","detail":"images/details/황소와도깨비-상세.jpg"},
+      {"title":"공연·마술 리온의 신비한 과자상점","dateText":"2026.01.24 ~ 2026.04.26","poster":"images/posters/current/current_02.jpg","detail":"images/details/리온마술-상세.jpg"}
     ],
     pastShows: [
-      {"title":"연극 죽여주는 이야기","dateText":"2025.11.27 ~ 2025.12.28","poster":"past_01.jpg","detail":"죽여주는이야기-상세.jpg"},
-      {"title":"조항조 콘서트","dateText":"2025.05.17","poster":"past_02.jpg","detail":"조항조부산-상세페이지2탄.jpg"},
-      {"title":"2025 Jazz Christmas","dateText":"2025.12.05","poster":"past_03.jpg","detail":"25년상세최종.jpg"}
+      {"title":"연극 죽여주는 이야기","dateText":"2025.11.27 ~ 2025.12.28","poster":"images/posters/past/past_01.jpg","detail":"images/details/죽여주는이야기-상세.jpg"},
+      {"title":"조항조 콘서트","dateText":"2025.05.17","poster":"images/posters/past/past_02.jpg","detail":"images/details/조항조부산-상세페이지2탄.jpg"},
+      {"title":"2025 Jazz Christmas","dateText":"2025.12.05","poster":"images/posters/past/past_03.jpg","detail":"images/details/25년상세최종.jpg"}
     ],
     rental: [
-      // ✅ 대관 예시: 날짜칸에 ①/② 뜨게
       {"date":"2026-01-03","hall":1,"title":"리온의 신비한 과자상점"},
       {"date":"2026-01-03","hall":2,"title":"안형순"},
       {"date":"2026-01-10","hall":1,"title":"리온의 신비한 과자상점"},
@@ -753,46 +714,50 @@
 `(주)문화락은 공연 컨텐츠를 개발, 제작, 육성하여 보급하며 학교 단체공연 및 각종 기업, 지역 축제 등 행사에 적합한 공연 컨텐츠를 추천 및 기획과 연출을 전문으로 하는 공연기획사입니다.
 가온아트홀 1관은 170석 규모를 갖추고 있으며 연극, 뮤지컬 등 다양한 장르의 공연을 수용할 수 있는 다목적 공연장에 음향, 조명설비를 완비하여 각종 공연과 행사를 진행 할 수 있는 공연장입니다.
 가온아트홀 2관은 100석 규모의 공간으로 연극, 뮤지컬 등 각종발표회 강연회, 교육등을 할 수 있도록 꾸며진 공연장입니다.`,
-      // ✅ 요청: 소개글 밑에 이미지(7,8번째 이미지) 넣기
-      //    여기 파일명만 바꿔서 넣으시면 됩니다.
-      introImages: ["문화락소개2.jpg","문화락소개3.jpg"],
-
-      historyImages: ["문화락소개19.jpg"],
-
-      worksImages: ["문화락소개9.jpg"] // 제작공연(포스터 모음) 같은 이미지
+      introImages: ["images/about/문화락소개2.jpg","images/about/문화락소개3.jpg"],
+      historyImages: ["images/about/문화락소개19.jpg"],
+      worksImages: ["images/about/문화락소개9.jpg"]
     }
   };
 
   /********************
-   * 1) 저장/로드 (localStorage)
+   * 저장/로드
    ********************/
   const LS_KEY = "culturelock_site_v1";
+  const LS_ADMIN_PASS = "culturelock_admin_pass_v1";
+  const ADMIN_DEFAULT_PASS = "1600-1602";
+
   function loadData(){
     try{
       const raw = localStorage.getItem(LS_KEY);
       if(!raw) return structuredClone(DEFAULT);
       const parsed = JSON.parse(raw);
-      return {
-        ...structuredClone(DEFAULT),
-        ...parsed,
-      };
+      return { ...structuredClone(DEFAULT), ...parsed };
     }catch(e){
       return structuredClone(DEFAULT);
     }
   }
-  function saveData(data){
-    localStorage.setItem(LS_KEY, JSON.stringify(data));
-  }
+  function saveData(data){ localStorage.setItem(LS_KEY, JSON.stringify(data)); }
   function resetData(){
     localStorage.removeItem(LS_KEY);
     DATA = loadData();
     renderAll();
   }
 
+  function getAdminPass(){
+    return localStorage.getItem(LS_ADMIN_PASS) || ADMIN_DEFAULT_PASS;
+  }
+  function setAdminPass(pw){
+    localStorage.setItem(LS_ADMIN_PASS, pw);
+  }
+  function resetAdminPass(){
+    localStorage.removeItem(LS_ADMIN_PASS);
+  }
+
   let DATA = loadData();
 
   /********************
-   * 2) 상단 메뉴 active 표시
+   * 메뉴 active
    ********************/
   const menu = document.getElementById("menu");
   function setActiveMenu(){
@@ -805,8 +770,7 @@
   setActiveMenu();
 
   /********************
-   * 3) Hero Slider
-   *    - 1~3장 반복
+   * Hero Slider
    ********************/
   const heroTrack = document.getElementById("heroTrack");
   const heroDots  = document.getElementById("heroDots");
@@ -815,11 +779,10 @@
 
   function renderHero(){
     const slides = (DATA.hero || []).filter(Boolean);
-    const safeSlides = slides.length ? slides : ["slide1.jpg"];
+    const safeSlides = slides.length ? slides : ["images/slides/slide1.jpg"];
+
     heroTrack.innerHTML = safeSlides.map(src => `
-      <div class="hero-slide">
-        <img src="${src}" alt="메인 슬라이드">
-      </div>
+      <div class="hero-slide"><img src="${src}" alt="메인 슬라이드"></div>
     `).join("");
 
     heroDots.innerHTML = safeSlides.map((_, i)=>`
@@ -833,7 +796,7 @@
     heroTimer = setInterval(()=>{
       heroIndex = (heroIndex + 1) % safeSlides.length;
       moveHero(heroIndex);
-    }, 5500); // 천천히
+    }, 6500);
   }
 
   function moveHero(idx){
@@ -844,7 +807,7 @@
   }
 
   /********************
-   * 4) 공연 카드 렌더링 (현재/이전)
+   * 공연 카드
    ********************/
   const currentGrid = document.getElementById("currentGrid");
   const pastGrid = document.getElementById("pastGrid");
@@ -867,7 +830,6 @@
     currentGrid.innerHTML = (DATA.currentShows || []).map(showCardHTML).join("");
     pastGrid.innerHTML    = (DATA.pastShows || []).map(showCardHTML).join("");
 
-    // 클릭 → 모달
     document.querySelectorAll(".poster").forEach(el=>{
       el.addEventListener("click", ()=>{
         const detail = el.dataset.detail;
@@ -882,7 +844,7 @@
   }
 
   /********************
-   * 5) 모달
+   * 모달
    ********************/
   const modalBackdrop = document.getElementById("modalBackdrop");
   const modalClose = document.getElementById("modalClose");
@@ -899,15 +861,11 @@
     modalImg.src = "";
   }
   modalClose.addEventListener("click", closeModal);
-  modalBackdrop.addEventListener("click", (e)=>{
-    if(e.target === modalBackdrop) closeModal();
-  });
-  window.addEventListener("keydown", (e)=>{
-    if(e.key === "Escape") closeModal();
-  });
+  modalBackdrop.addEventListener("click", (e)=>{ if(e.target === modalBackdrop) closeModal(); });
+  window.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeModal(); });
 
   /********************
-   * 6) 공연단체소개 탭
+   * 공연단체소개 탭
    ********************/
   const aboutPanel = document.getElementById("aboutPanel");
   const tabs = [...document.querySelectorAll(".tab")];
@@ -935,7 +893,6 @@
       return;
     }
 
-    // works
     aboutPanel.innerHTML = `
       <p class="about-text"><b>문화락 제작 공연</b> (이미지로 표시)</p>
       <div class="about-images">
@@ -953,7 +910,7 @@
   });
 
   /********************
-   * 7) 대관 달력
+   * 대관 달력
    ********************/
   const calDows = document.getElementById("calDows");
   const calDays = document.getElementById("calDays");
@@ -964,7 +921,7 @@
   const DOWS = ["일","월","화","수","목","금","토"];
   calDows.innerHTML = DOWS.map(d=>`<div class="dow">${d}</div>`).join("");
 
-  let viewDate = new Date(); // 현재 달
+  let viewDate = new Date();
   viewDate.setDate(1);
 
   function ymd(d){
@@ -973,6 +930,7 @@
     const day = String(d.getDate()).padStart(2,"0");
     return `${y}-${m}-${day}`;
   }
+
   function renderCalendar(){
     const y = viewDate.getFullYear();
     const m = viewDate.getMonth();
@@ -983,7 +941,6 @@
     const startDow = first.getDay();
     const totalDays = last.getDate();
 
-    // rental map by date
     const rentalList = DATA.rental || [];
     const map = new Map();
     rentalList.forEach(r=>{
@@ -994,11 +951,10 @@
     });
 
     const cells = [];
-    // empty before
     for(let i=0;i<startDow;i++){
       cells.push(`<div class="day" style="background:#fcfcfc;"></div>`);
     }
-    // days
+
     for(let d=1; d<=totalDays; d++){
       const dt = new Date(y,m,d);
       const key = ymd(dt);
@@ -1022,7 +978,7 @@
         </div>
       `);
     }
-    // fill trailing to complete rows (optional)
+
     const totalCells = startDow + totalDays;
     const extra = (7 - (totalCells % 7)) % 7;
     for(let i=0;i<extra;i++){
@@ -1042,13 +998,18 @@
   });
 
   /********************
-   * 8) 관리자(로컬 비번)
+   * 관리자 (비번 변경/초기화 + 데이터 저장)
    ********************/
-  const ADMIN_PASS = "1600-1602"; // ✅ 원하시면 바꾸세요
   const adminEnter = document.getElementById("adminEnter");
   const adminPass  = document.getElementById("adminPass");
   const adminLogin = document.getElementById("adminLogin");
   const adminPanel = document.getElementById("adminPanel");
+
+  const adminTools = document.getElementById("adminTools");
+  const newPass = document.getElementById("newPass");
+  const newPass2 = document.getElementById("newPass2");
+  const changePassBtn = document.getElementById("changePass");
+  const resetPassBtn = document.getElementById("resetPass");
 
   const adminCurrent = document.getElementById("adminCurrent");
   const adminPast    = document.getElementById("adminPast");
@@ -1060,6 +1021,7 @@
 
   function openAdmin(){
     adminLogin.style.display = "none";
+    adminTools.style.display = "flex";
     adminPanel.style.display = "block";
 
     adminCurrent.value = JSON.stringify(DATA.currentShows || [], null, 2);
@@ -1068,10 +1030,37 @@
   }
 
   adminEnter.addEventListener("click", ()=>{
-    if((adminPass.value || "").trim() === ADMIN_PASS){
+    const input = (adminPass.value || "").trim();
+    if(input === getAdminPass()){
       openAdmin();
     }else{
-      alert("비밀번호가 틀렸습니다.");
+      alert("비밀번호가 틀렸습니다.\n(기본값: 1600-1602 / 또는 본인이 변경한 비번)");
+    }
+  });
+
+  changePassBtn.addEventListener("click", ()=>{
+    const p1 = (newPass.value||"").trim();
+    const p2 = (newPass2.value||"").trim();
+    if(!p1 || p1.length < 4){
+      alert("새 비밀번호를 4자 이상으로 입력하세요.");
+      return;
+    }
+    if(p1 !== p2){
+      alert("새 비밀번호 확인이 일치하지 않습니다.");
+      return;
+    }
+    setAdminPass(p1);
+    newPass.value = "";
+    newPass2.value = "";
+    alert("비밀번호가 변경되었습니다. (이 브라우저에 저장됨)");
+  });
+
+  resetPassBtn.addEventListener("click", ()=>{
+    if(confirm("비밀번호를 기본값(1600-1602)으로 초기화할까요?")){
+      resetAdminPass();
+      newPass.value = "";
+      newPass2.value = "";
+      alert("초기화 완료! 기본 비번은 1600-1602 입니다.");
     }
   });
 
@@ -1091,10 +1080,11 @@
   });
 
   resetAllBtn.addEventListener("click", ()=>{
-    if(confirm("기본값으로 되돌릴까요?")){
+    if(confirm("사이트 데이터(공연/대관)를 기본값으로 되돌릴까요?")){
       resetData();
       alert("기본값으로 되돌렸습니다.");
       adminPanel.style.display = "none";
+      adminTools.style.display = "none";
       adminLogin.style.display = "flex";
       adminPass.value = "";
     }
@@ -1102,12 +1092,13 @@
 
   logoutBtn.addEventListener("click", ()=>{
     adminPanel.style.display = "none";
+    adminTools.style.display = "none";
     adminLogin.style.display = "flex";
     adminPass.value = "";
   });
 
   /********************
-   * 9) 전체 렌더
+   * 전체 렌더
    ********************/
   function renderAll(){
     setActiveMenu();
@@ -1117,9 +1108,6 @@
     renderCalendar();
   }
 
-  /********************
-   * Utils
-   ********************/
   function escapeHtml(str){
     return String(str ?? "")
       .replaceAll("&","&amp;")
