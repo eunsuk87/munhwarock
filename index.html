@@ -5,45 +5,29 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>문화락 | 공연·교육·문화예술 플랫폼</title>
 
-  <!-- 폰트(고딕 느낌) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --k100:#111;            /* K100 느낌(진한 블랙) */
-      --k70:#444;
-      --k40:#888;
-      --line:#E9E9E9;
-      --bg:#ffffff;
-      --card:#ffffff;
+      --k100:#111; --k70:#444; --k40:#888;
+      --line:#E9E9E9; --bg:#fff; --card:#fff;
       --shadow: 0 10px 30px rgba(0,0,0,.08);
-      --radius: 18px;
-
-      /* 푸터 색 (M15 Y10 근사) */
-      --footer-bg:#F4E9D8;   /* 연한 베이지 */
+      --radius:18px;
+      --footer-bg:#F4E9D8;   /* M15 Y10 근사 */
       --footer-text:#111;
-
-      /* 포인트 */
-      --accent:#0B6BFF;
     }
-
     *{box-sizing:border-box}
     html,body{margin:0; padding:0; background:var(--bg); color:var(--k100); font-family:"Noto Sans KR", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;}
     a{color:inherit; text-decoration:none}
     img{max-width:100%; display:block}
 
-    /* 레이아웃 */
-    .container{width:min(1120px, 92vw); margin:0 auto;}
+    .container{width:min(1120px,92vw); margin:0 auto;}
     .section{padding:48px 0;}
-    .section-title{
-      font-size:26px; font-weight:700; letter-spacing:-.5px;
-      margin:0 0 18px;
-    }
+    .section-title{font-size:26px; font-weight:700; letter-spacing:-.5px; margin:0 0 18px;}
     .section-sub{color:var(--k70); margin:0 0 24px; line-height:1.6}
 
-    /* 헤더 */
     header{
       position:sticky; top:0; z-index:50;
       background:rgba(255,255,255,.92);
@@ -51,489 +35,122 @@
       border-bottom:1px solid var(--line);
     }
     .topbar{
-      display:grid;
-      grid-template-columns: 160px 1fr 160px;
-      align-items:center;
-      padding:14px 0 6px;
-      gap:10px;
+      display:grid; grid-template-columns:160px 1fr 160px;
+      align-items:center; padding:14px 0 6px; gap:10px;
     }
-    .brand-left{
-      display:flex; align-items:center; gap:10px;
-    }
-    .logo{
-      width:44px; height:44px; border-radius:12px;
-      object-fit:cover;
-      border:1px solid var(--line);
-      background:#fff;
-    }
-    .brand-center{
-      text-align:center;
-      font-weight:700;
-      letter-spacing:-.6px;
-      font-size:18px;
-      line-height:1.2;
-    }
-    .brand-center small{
-      display:block;
-      font-weight:400;
-      color:var(--k40);
-      margin-top:4px;
-      font-size:12px;
-    }
-    .topbar-right{
-      display:flex;
-      justify-content:flex-end;
-      gap:10px;
-      align-items:center;
-    }
-    .tiny-pill{
-      border:1px solid var(--line);
-      background:#fff;
-      padding:8px 10px;
-      border-radius:999px;
-      font-size:12px;
-      color:var(--k70);
-    }
+    .brand-left{display:flex; align-items:center; gap:10px;}
+    .logo{width:44px; height:44px; border-radius:12px; object-fit:cover; border:1px solid var(--line); background:#fff;}
+    .brand-center{text-align:center; font-weight:700; letter-spacing:-.6px; font-size:18px; line-height:1.2;}
+    .brand-center small{display:block; font-weight:400; color:var(--k40); margin-top:4px; font-size:12px;}
+    .topbar-right{display:flex; justify-content:flex-end; gap:10px; align-items:center;}
+    .tiny-pill{border:1px solid var(--line); background:#fff; padding:8px 10px; border-radius:999px; font-size:12px; color:var(--k70);}
 
-    /* 메뉴(중앙정렬, 박스X 느낌) */
-    nav{
-      display:flex;
-      justify-content:center;
-      gap:18px;
-      padding:10px 0 14px;
-    }
+    nav{display:flex; justify-content:center; gap:18px; padding:10px 0 14px; flex-wrap:wrap;}
     .nav-link{
-      font-weight:700;
-      font-size:14px;
-      color:var(--k100);
-      padding:6px 2px;
-      border-bottom:2px solid transparent; /* 박스 대신 밑줄 포커스 */
+      font-weight:700; font-size:14px; color:var(--k100);
+      padding:6px 2px; border-bottom:2px solid transparent;
     }
-    .nav-link:hover{border-bottom-color: var(--k100);}
-    .nav-link.active{border-bottom-color: var(--k100);}
+    .nav-link:hover{border-bottom-color:var(--k100);}
+    .nav-link.active{border-bottom-color:var(--k100);}
 
-    /* 히어로 슬라이더 */
-    .hero{
-      padding:18px 0 0;
-    }
+    .hero{padding:18px 0 0;}
     .slider{
-      position:relative;
-      border-radius: 24px;
-      overflow:hidden;
-      border:1px solid var(--line);
-      background:#f7f7f7;
-      box-shadow: var(--shadow);
+      position:relative; border-radius:24px; overflow:hidden;
+      border:1px solid var(--line); background:#f7f7f7; box-shadow:var(--shadow);
     }
-    .slides{
-      display:flex;
-      transition: transform .6s ease;
-      will-change: transform;
-    }
-    .slide{
-      min-width:100%;
-      height:420px;
-      position:relative;
-      background:#f2f2f2;
-    }
-    .slide img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      filter: saturate(1.02);
-    }
+    .slides{display:flex; transition:transform .6s ease; will-change:transform;}
+    .slide{min-width:100%; height:420px; position:relative; background:#f2f2f2;}
+    .slide img{width:100%; height:100%; object-fit:cover;}
     .slide-overlay{
-      position:absolute;
-      left:0; right:0; bottom:0;
-      padding:18px 20px 18px;
-      background: linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0));
+      position:absolute; left:0; right:0; bottom:0; padding:18px 20px;
+      background:linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0));
       color:#fff;
     }
-    .slide-overlay h1{
-      margin:0;
-      font-size:26px;
-      letter-spacing:-.6px;
-      font-weight:700;
-    }
-    .slide-overlay p{
-      margin:6px 0 0;
-      opacity:.9;
-      line-height:1.4;
-      font-size:14px;
-      font-weight:400;
-    }
-    .dots{
-      position:absolute;
-      left:0; right:0; bottom:12px;
-      display:flex;
-      justify-content:center;
-      gap:8px;
-    }
-    .dot{
-      width:8px; height:8px;
-      border-radius:999px;
-      background:rgba(255,255,255,.55);
-      border:1px solid rgba(0,0,0,.15);
-      cursor:pointer;
-    }
+    .slide-overlay h1{margin:0; font-size:26px; letter-spacing:-.6px; font-weight:700;}
+    .slide-overlay p{margin:6px 0 0; opacity:.9; line-height:1.4; font-size:14px; font-weight:400;}
+    .dots{position:absolute; left:0; right:0; bottom:12px; display:flex; justify-content:center; gap:8px;}
+    .dot{width:8px; height:8px; border-radius:999px; background:rgba(255,255,255,.55); border:1px solid rgba(0,0,0,.15); cursor:pointer;}
     .dot.active{background:#fff;}
 
-    /* 공연 카드 그리드 */
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:18px;
-    }
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
     @media (max-width:980px){
-      .grid{grid-template-columns: repeat(2, 1fr);}
+      .grid{grid-template-columns:repeat(2,1fr);}
       .slide{height:340px;}
-      .topbar{grid-template-columns: 120px 1fr 120px;}
+      .topbar{grid-template-columns:120px 1fr 120px;}
     }
     @media (max-width:620px){
-      .grid{grid-template-columns: 1fr;}
+      .grid{grid-template-columns:1fr;}
       .slide{height:280px;}
       .brand-center{font-size:16px;}
-      nav{gap:12px; flex-wrap:wrap;}
     }
 
     .card{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      overflow:hidden;
-      background:var(--card);
-      box-shadow: 0 8px 20px rgba(0,0,0,.06);
+      border:1px solid var(--line); border-radius:var(--radius);
+      overflow:hidden; background:var(--card);
+      box-shadow:0 8px 20px rgba(0,0,0,.06);
       cursor:pointer;
-      transition: transform .15s ease, box-shadow .15s ease;
+      transition:transform .15s ease, box-shadow .15s ease;
     }
-    .card:hover{transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0,0,0,.10);}
-    .poster{
-      aspect-ratio: 3 / 4;
-      background:#f4f4f4;
-      border-bottom:1px solid var(--line);
-    }
+    .card:hover{transform:translateY(-2px); box-shadow:0 14px 30px rgba(0,0,0,.10);}
+    .poster{aspect-ratio:3/4; background:#f4f4f4; border-bottom:1px solid var(--line);}
     .poster img{width:100%; height:100%; object-fit:cover;}
-    .card-body{
-      padding:14px 14px 16px;
-    }
-    .title-bold{
-      font-weight:700; /* 고딕 Bold */
-      font-size:15px;
-      line-height:1.35;
-      margin:0 0 6px;
-    }
-    .date-regular{
-      font-weight:400; /* 고딕 Regular */
-      color:var(--k70);
-      font-size:13px;
-      margin:0;
-    }
+    .card-body{padding:14px 14px 16px;}
+    .title-bold{font-weight:700; font-size:15px; line-height:1.35; margin:0 0 6px;}
+    .date-regular{font-weight:400; color:var(--k70); font-size:13px; margin:0;}
 
-    /* 이전공연 SNS 아이콘 */
-    .sns-row{
-      display:flex;
-      gap:14px;
-      align-items:center;
-      margin-top:18px;
-    }
+    .sns-row{display:flex; gap:14px; align-items:center; margin-top:18px; flex-wrap:wrap;}
     .sns-icon{
-      display:inline-flex;
-      gap:8px;
-      align-items:center;
-      padding:10px 12px;
-      border:1px solid var(--line);
-      border-radius:999px;
-      background:#fff;
-      font-size:13px;
-      color:var(--k100);
+      display:inline-flex; gap:8px; align-items:center;
+      padding:10px 12px; border:1px solid var(--line);
+      border-radius:999px; background:#fff; font-size:13px; color:var(--k100);
     }
-    .sns-icon:hover{box-shadow: 0 8px 18px rgba(0,0,0,.08);}
-    .svg{
-      width:18px; height:18px;
-      display:block;
-    }
+    .sns-icon:hover{box-shadow:0 8px 18px rgba(0,0,0,.08);}
+    .svg{width:18px; height:18px; display:block;}
 
-    /* 공연단체소개 탭 */
-    .tabs{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin:0 0 16px;
-    }
-    .tab{
-      border:1px solid var(--line);
-      background:#fff;
-      padding:10px 12px;
-      border-radius:999px;
-      font-weight:700;
-      font-size:13px;
-      cursor:pointer;
-    }
-    .tab.active{
-      border-color: var(--k100);
-    }
+    .tabs{display:flex; gap:10px; flex-wrap:wrap; margin:0 0 16px;}
+    .tab{border:1px solid var(--line); background:#fff; padding:10px 12px; border-radius:999px; font-weight:700; font-size:13px; cursor:pointer;}
+    .tab.active{border-color:var(--k100);}
     .tab-content{
-      border:1px solid var(--line);
-      border-radius: 18px;
-      padding:18px;
-      background:#fff;
-      box-shadow: 0 10px 24px rgba(0,0,0,.06);
+      border:1px solid var(--line); border-radius:18px;
+      padding:18px; background:#fff; box-shadow:0 10px 24px rgba(0,0,0,.06);
     }
     .tab-content p{margin:0 0 12px; line-height:1.8; color:var(--k70);}
-    .two-img{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-      margin-top:10px;
-    }
-    @media (max-width:740px){
-      .two-img{grid-template-columns:1fr;}
-    }
-    .two-img img{
-      border-radius: 14px;
-      border:1px solid var(--line);
-      height:280px;
-      object-fit:cover;
-      background:#f6f6f6;
-    }
-    .gallery{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:12px;
-      margin-top:10px;
-    }
-    @media (max-width:980px){.gallery{grid-template-columns: repeat(2,1fr);}}
+    .two-img{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:10px;}
+    @media (max-width:740px){.two-img{grid-template-columns:1fr;}}
+    .two-img img{border-radius:14px; border:1px solid var(--line); height:280px; object-fit:cover; background:#f6f6f6;}
+    .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:10px;}
+    @media (max-width:980px){.gallery{grid-template-columns:repeat(2,1fr);}}
     @media (max-width:620px){.gallery{grid-template-columns:1fr;}}
-    .gallery img{
-      border-radius: 14px;
-      border:1px solid var(--line);
-      height:220px;
-      object-fit:cover;
-      background:#f6f6f6;
-    }
+    .gallery img{border-radius:14px; border:1px solid var(--line); height:220px; object-fit:cover; background:#f6f6f6;}
 
-    /* 공연대관일정(달력) */
-    .cal-wrap{
-      border:1px solid var(--line);
-      border-radius: 18px;
-      background:#fff;
-      box-shadow: 0 10px 24px rgba(0,0,0,.06);
-      overflow:hidden;
-    }
-    .cal-head{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:14px 14px;
-      border-bottom:1px solid var(--line);
-    }
-    .cal-head .month{
-      font-weight:700;
-      letter-spacing:-.4px;
-    }
-    .cal-btn{
-      border:1px solid var(--line);
-      background:#fff;
-      padding:8px 10px;
-      border-radius:10px;
-      cursor:pointer;
-      font-weight:700;
-      font-size:13px;
-    }
-    .cal-grid{
-      display:grid;
-      grid-template-columns: repeat(7, 1fr);
-    }
-    .dow{
-      padding:10px 0;
-      text-align:center;
-      font-size:12px;
-      color:var(--k70);
-      border-bottom:1px solid var(--line);
-      background:#fafafa;
-      font-weight:700;
-    }
-    .cell{
-      min-height:110px;
-      border-right:1px solid var(--line);
-      border-bottom:1px solid var(--line);
-      padding:10px 10px 8px;
-      position:relative;
-    }
+    .cal-wrap{border:1px solid var(--line); border-radius:18px; background:#fff; box-shadow:0 10px 24px rgba(0,0,0,.06); overflow:hidden;}
+    .cal-head{display:flex; align-items:center; justify-content:space-between; padding:14px; border-bottom:1px solid var(--line);}
+    .cal-head .month{font-weight:700; letter-spacing:-.4px;}
+    .cal-btn{border:1px solid var(--line); background:#fff; padding:8px 10px; border-radius:10px; cursor:pointer; font-weight:700; font-size:13px;}
+    .cal-grid{display:grid; grid-template-columns:repeat(7,1fr);}
+    .dow{padding:10px 0; text-align:center; font-size:12px; color:var(--k70); border-bottom:1px solid var(--line); background:#fafafa; font-weight:700;}
+    .cell{min-height:110px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); padding:10px; position:relative;}
     .cell:nth-child(7n){border-right:none;}
-    .daynum{
-      font-size:12px;
-      color:var(--k70);
-      font-weight:700;
-    }
-    .badges{
-      display:flex; gap:6px; flex-wrap:wrap;
-      margin-top:8px;
-    }
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      padding:6px 8px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:#fff;
-      font-size:12px;
-      cursor:pointer;
-      max-width:100%;
-    }
-    .badge .hall{
-      width:18px; height:18px;
-      border-radius:6px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:700;
-      font-size:12px;
-      color:#fff;
-      flex:0 0 auto;
-    }
-    .hall1{background:#E11D48;} /* ① 핑크 */
-    .hall2{background:#0284C7;} /* ② 블루 */
-    .badge .txt{
-      overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
-      color:var(--k100);
-      font-weight:700;
-    }
+    .daynum{font-size:12px; color:var(--k70); font-weight:700;}
+    .badges{display:flex; gap:6px; flex-wrap:wrap; margin-top:8px;}
+    .badge{display:inline-flex; align-items:center; gap:6px; padding:6px 8px; border-radius:999px; border:1px solid var(--line); background:#fff; font-size:12px; max-width:100%;}
+    .badge .hall{width:18px; height:18px; border-radius:6px; display:inline-flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; color:#fff; flex:0 0 auto;}
+    .hall1{background:#E11D48;} .hall2{background:#0284C7;}
+    .badge .txt{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--k100); font-weight:700;}
 
-    /* 모달(상세페이지) */
-    .modal-backdrop{
-      position:fixed; inset:0;
-      background:rgba(0,0,0,.55);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:18px;
-      z-index:100;
-    }
-    .modal{
-      width:min(980px, 96vw);
-      max-height:90vh;
-      overflow:auto;
-      background:#fff;
-      border-radius: 18px;
-      box-shadow: 0 30px 70px rgba(0,0,0,.35);
-      border:1px solid rgba(255,255,255,.25);
-    }
-    .modal-head{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:10px;
-      padding:16px 16px 10px;
-      border-bottom:1px solid var(--line);
-      position:sticky;
-      top:0;
-      background:#fff;
-      z-index:1;
-    }
-    .modal-title{
-      margin:0;
-      font-size:18px;
-      font-weight:700;
-      letter-spacing:-.4px;
-    }
-    .modal-sub{
-      margin:6px 0 0;
-      font-size:13px;
-      color:var(--k70);
-    }
-    .close{
-      border:1px solid var(--line);
-      background:#fff;
-      border-radius:12px;
-      width:40px; height:40px;
-      font-size:18px;
-      cursor:pointer;
-    }
-    .modal-body{
-      padding:16px;
-    }
-    .detail-img{
-      width:100%;
-      border-radius: 16px;
-      border:1px solid var(--line);
-      background:#f6f6f6;
-    }
+    .modal-backdrop{position:fixed; inset:0; background:rgba(0,0,0,.55); display:none; align-items:center; justify-content:center; padding:18px; z-index:100;}
+    .modal{width:min(980px,96vw); max-height:90vh; overflow:auto; background:#fff; border-radius:18px; box-shadow:0 30px 70px rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.25);}
+    .modal-head{display:flex; align-items:flex-start; justify-content:space-between; gap:10px; padding:16px 16px 10px; border-bottom:1px solid var(--line); position:sticky; top:0; background:#fff; z-index:1;}
+    .modal-title{margin:0; font-size:18px; font-weight:700; letter-spacing:-.4px;}
+    .modal-sub{margin:6px 0 0; font-size:13px; color:var(--k70);}
+    .close{border:1px solid var(--line); background:#fff; border-radius:12px; width:40px; height:40px; font-size:18px; cursor:pointer;}
+    .modal-body{padding:16px;}
+    .detail-img{width:100%; border-radius:16px; border:1px solid var(--line); background:#f6f6f6;}
 
-    /* 관리자 */
-    .admin-panel{
-      display:none;
-      border:1px solid var(--line);
-      border-radius: 18px;
-      background:#fff;
-      box-shadow: 0 10px 24px rgba(0,0,0,.06);
-      padding:16px;
-    }
-    .admin-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-    }
-    @media (max-width:980px){.admin-grid{grid-template-columns:1fr;}}
-    textarea{
-      width:100%;
-      min-height:260px;
-      border:1px solid var(--line);
-      border-radius:14px;
-      padding:12px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      font-size:12px;
-      line-height:1.5;
-      outline:none;
-    }
-    .admin-actions{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:10px;
-    }
-    .btn{
-      border:1px solid var(--line);
-      background:#fff;
-      padding:10px 12px;
-      border-radius:12px;
-      font-weight:700;
-      font-size:13px;
-      cursor:pointer;
-    }
-    .btn.primary{
-      border-color: var(--k100);
-      background: var(--k100);
-      color:#fff;
-    }
-    .note{
-      font-size:12px;
-      color:var(--k70);
-      line-height:1.6;
-      margin:10px 0 0;
-    }
-
-    /* 푸터 */
-    footer{
-      background: var(--footer-bg);
-      color: var(--footer-text);
-      padding:26px 0;
-      border-top:1px solid rgba(0,0,0,.08);
-    }
-    .footer-grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:10px;
-      font-size:14px;
-      line-height:1.8;
-    }
-    .footer-bold{font-weight:700;}    /* 고딕 Bold */
-    .footer-regular{font-weight:400;} /* 고딕 Regular */
-
-    /* 유틸 */
-    .hidden{display:none !important;}
-    .spacer{height:10px;}
+    footer{background:var(--footer-bg); color:var(--footer-text); padding:26px 0; border-top:1px solid rgba(0,0,0,.08);}
+    .footer-grid{display:grid; grid-template-columns:1fr; gap:10px; font-size:14px; line-height:1.8;}
+    .footer-bold{font-weight:700;}
+    .footer-regular{font-weight:400;}
   </style>
 </head>
 
@@ -541,16 +158,13 @@
   <header>
     <div class="container">
       <div class="topbar">
-        <!-- 1) 상단 왼쪽 로고 -->
         <div class="brand-left">
-          <!-- 로고 파일 경로만 바꾸면 됨 -->
-          <img class="logo" src="images/logo.png" alt="문화락 로고" onerror="this.style.display='none'">
+          <img class="logo" id="logoEl" src="/images/logo.png" alt="문화락 로고" onerror="this.style.display='none'">
         </div>
 
-        <!-- 2) 상단 중앙 타이틀 -->
-        <div class="brand-center">
+        <div class="brand-center" id="headerTitle">
           인증사회적기업(주)문화락
-          <small>공연 · 교육 · 문화예술 플랫폼</small>
+          <small id="headerSubtitle">공연 · 교육 · 문화예술 플랫폼</small>
         </div>
 
         <div class="topbar-right">
@@ -558,29 +172,26 @@
         </div>
       </div>
 
-      <!-- 3) 중앙 메뉴 -->
       <nav id="nav">
         <a class="nav-link" href="#now" data-route="now">현재공연</a>
         <a class="nav-link" href="#past" data-route="past">이전공연</a>
         <a class="nav-link" href="#about" data-route="about">공연단체소개</a>
         <a class="nav-link" href="#rent" data-route="rent">공연대관일정</a>
-        <a class="nav-link" href="#admin" data-route="admin">관리자</a>
+        <a class="nav-link" href="/admin/" target="_blank" rel="noopener">관리자</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <!-- 6) 슬라이드(자동) -->
     <section class="hero">
       <div class="container">
-        <div class="slider" aria-label="메인 슬라이드">
+        <div class="slider">
           <div class="slides" id="slides"></div>
           <div class="dots" id="dots"></div>
         </div>
       </div>
     </section>
 
-    <!-- 5) 타이틀 -->
     <section class="section" id="nowSection">
       <div class="container">
         <h2 class="section-title">현재공연</h2>
@@ -595,10 +206,8 @@
         <p class="section-sub">포스터를 클릭하면 상세페이지가 열립니다.</p>
         <div class="grid" id="pastGrid"></div>
 
-        <!-- 9) 이전공연 아래 SNS 아이콘만 노출 -->
         <div class="sns-row" aria-label="SNS 링크">
           <a class="sns-icon" href="https://www.instagram.com/gaonarthall" target="_blank" rel="noopener">
-            <!-- Instagram 오리지널 느낌 SVG -->
             <svg class="svg" viewBox="0 0 24 24" aria-hidden="true">
               <path fill="#C13584" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z"/>
               <path fill="#fff" d="M12 7.3A4.7 4.7 0 1 0 16.7 12 4.7 4.7 0 0 0 12 7.3zm0 7.7A3 3 0 1 1 15 12a3 3 0 0 1-3 3z"/>
@@ -608,7 +217,6 @@
           </a>
 
           <a class="sns-icon" href="https://blog.naver.com/gaonarthall12" target="_blank" rel="noopener">
-            <!-- Blog(네이버 느낌) SVG -->
             <svg class="svg" viewBox="0 0 24 24" aria-hidden="true">
               <rect x="3" y="3" width="18" height="18" rx="4" fill="#03C75A"/>
               <path fill="#fff" d="M8 16V8h2.3l3.2 4.6V8H16v8h-2.3l-3.2-4.6V16H8z"/>
@@ -619,12 +227,11 @@
       </div>
     </section>
 
-    <!-- 11) 공연단체소개(탭) -->
     <section class="section" id="aboutSection">
       <div class="container">
         <h2 class="section-title">공연단체소개</h2>
 
-        <div class="tabs" role="tablist" aria-label="공연단체소개 탭">
+        <div class="tabs" role="tablist">
           <button class="tab active" data-tab="intro" type="button">문화락 소개</button>
           <button class="tab" data-tab="history" type="button">실적</button>
           <button class="tab" data-tab="works" type="button">문화락 제작 공연</button>
@@ -634,114 +241,44 @@
       </div>
     </section>
 
-    <!-- 공연대관일정 -->
     <section class="section" id="rentSection">
       <div class="container">
         <h2 class="section-title">공연대관일정</h2>
-        <p class="section-sub">달력의 ①/②는 각 관(1관/2관)을 의미합니다. 일정 클릭 시 제목이 표시됩니다.</p>
+        <p class="section-sub">달력의 ①/②는 각 관(1관/2관)을 의미합니다.</p>
 
         <div class="cal-wrap">
           <div class="cal-head">
             <button class="cal-btn" id="prevMonth" type="button">◀</button>
-            <div class="month" id="monthLabel">2026.01</div>
+            <div class="month" id="monthLabel">YYYY.MM</div>
             <button class="cal-btn" id="nextMonth" type="button">▶</button>
           </div>
 
           <div class="cal-grid" id="dowRow"></div>
           <div class="cal-grid" id="calGrid"></div>
         </div>
-
-        <div class="spacer"></div>
-        <p class="note">
-          ※ “관리자”에서 대관일정을 직접 추가/수정할 수 있습니다(저장은 이 브라우저에 저장됩니다).
-        </p>
-      </div>
-    </section>
-
-    <!-- 관리자(비밀번호 로그인 후 노출) -->
-    <section class="section" id="adminSection">
-      <div class="container">
-        <h2 class="section-title">관리자</h2>
-        <p class="section-sub">관리자 비밀번호를 입력하면 “공연/대관일정”을 직접 수정할 수 있습니다.</p>
-
-        <div class="admin-panel" id="adminPanel">
-          <div class="admin-grid">
-            <div>
-              <h3 style="margin:0 0 8px;font-size:16px;">현재/이전 공연 데이터(JSON)</h3>
-              <textarea id="showsJson" spellcheck="false"></textarea>
-              <div class="admin-actions">
-                <button class="btn primary" id="saveShows" type="button">공연 데이터 저장</button>
-                <button class="btn" id="resetShows" type="button">기본값으로 초기화</button>
-              </div>
-            </div>
-
-            <div>
-              <h3 style="margin:0 0 8px;font-size:16px;">대관일정 데이터(JSON)</h3>
-              <textarea id="rentJson" spellcheck="false"></textarea>
-              <div class="admin-actions">
-                <button class="btn primary" id="saveRent" type="button">대관일정 저장</button>
-                <button class="btn" id="resetRent" type="button">기본값으로 초기화</button>
-              </div>
-            </div>
-          </div>
-
-          <p class="note">
-            • JSON을 저장하면 즉시 화면에 반영됩니다.<br>
-            • 이 방식은 “정적 사이트”라서 서버 DB 없이도 수정 가능하지만, <b>다른 PC/브라우저에는 자동 공유되지 않습니다.</b><br>
-            • 여러 사람이 같이 관리하려면(공유/권한) Netlify CMS/Identity 방식으로 확장해야 합니다.
-          </p>
-        </div>
-
-        <div class="admin-actions" id="adminLoginActions">
-          <button class="btn primary" id="openLogin" type="button">관리자 로그인</button>
-        </div>
-
-        <p class="note">※ 지금은 간단한 관리자(비밀번호) 방식입니다. (원하면 Netlify Identity 로그인 방식으로 바꿔드릴게요)</p>
       </div>
     </section>
   </main>
 
-  <!-- 10) 푸터 -->
   <footer>
     <div class="container">
       <div class="footer-grid">
+        <div><span class="footer-bold">상호명</span><span class="footer-regular"> 주식회사문화락</span></div>
+        <div><span class="footer-bold">사업장 주소</span><span class="footer-regular"> 부산광역시 동구 자성로133번길 지하1층</span></div>
         <div>
-          <span class="footer-bold">상호명</span>
-          <span class="footer-regular"> 주식회사문화락</span>
+          <span class="footer-bold">대표전화</span><span class="footer-regular"> 1600-1602</span>
+          <span class="footer-bold" style="margin-left:14px;">이메일</span><span class="footer-regular"> 16001602@hanmail.net</span>
         </div>
-        <div>
-          <span class="footer-bold">사업장 주소</span>
-          <span class="footer-regular"> 부산광역시 동구 자성로133번길 지하1층</span>
-        </div>
-        <div>
-          <span class="footer-bold">대표전화</span>
-          <span class="footer-regular"> 1600-1602</span>
-          <span class="footer-bold" style="margin-left:14px;">이메일</span>
-          <span class="footer-regular"> 16001602@hanmail.net</span>
-        </div>
-        <div>
-          <span class="footer-bold">홈페이지</span>
-          <span class="footer-regular"> https://culturelock.co.kr</span>
-        </div>
-        <div>
-          <span class="footer-bold">인스타</span>
-          <span class="footer-regular"> https://www.instagram.com/gaonarthall</span>
-        </div>
-        <div>
-          <span class="footer-bold">블로그</span>
-          <span class="footer-regular"> https://blog.naver.com/gaonarthall12</span>
-        </div>
-        <div>
-          <span class="footer-bold">사업자 등록번호</span>
-          <span class="footer-regular"> 605-86-13527</span>
-        </div>
+        <div><span class="footer-bold">홈페이지</span><span class="footer-regular"> https://culturelock.co.kr</span></div>
+        <div><span class="footer-bold">인스타</span><span class="footer-regular"> https://www.instagram.com/gaonarthall</span></div>
+        <div><span class="footer-bold">블로그</span><span class="footer-regular"> https://blog.naver.com/gaonarthall12</span></div>
+        <div><span class="footer-bold">사업자 등록번호</span><span class="footer-regular"> 605-86-13527</span></div>
       </div>
     </div>
   </footer>
 
-  <!-- 상세 모달 -->
   <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-label="상세페이지">
+    <div class="modal" role="dialog" aria-modal="true">
       <div class="modal-head">
         <div>
           <h3 class="modal-title" id="modalTitle">공연 제목</h3>
@@ -753,233 +290,78 @@
     </div>
   </div>
 
-  <!-- 로그인 모달 -->
-  <div class="modal-backdrop" id="loginBackdrop" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-label="관리자 로그인" style="max-width:520px;">
-      <div class="modal-head">
-        <div>
-          <h3 class="modal-title">관리자 로그인</h3>
-          <div class="modal-sub">비밀번호를 입력하세요.</div>
-        </div>
-        <button class="close" id="closeLogin" type="button" aria-label="닫기">×</button>
-      </div>
-      <div class="modal-body">
-        <div style="display:flex; gap:10px; align-items:center;">
-          <input id="adminPw" type="password" placeholder="비밀번호" style="flex:1; padding:12px 12px; border-radius:12px; border:1px solid var(--line); font-size:14px;">
-          <button class="btn primary" id="doLogin" type="button">로그인</button>
-        </div>
-        <p class="note">※ 데모 비밀번호: <b>1234</b> (원하는 비밀번호로 코드에서 바꿀 수 있어요)</p>
-      </div>
-    </div>
-  </div>
-
   <script>
-    /***********************
-     * 0) 기본 설정
-     ***********************/
-    const ADMIN_PASSWORD = "1234"; // ← 여기만 바꾸면 관리자 비밀번호 변경됨
-
     // 오늘 표시
     const today = new Date();
     document.getElementById("todayText").textContent =
       today.toLocaleDateString("ko-KR", {year:"numeric", month:"2-digit", day:"2-digit"});
 
-    /***********************
-     * 1) 이미지/데이터 (기본값)
-     *    - "관리자"에서 저장하면 localStorage 값이 우선 적용됨
-     ***********************/
-    const DEFAULT_HERO = [
-      {
-        img: "images/hero/slide1.jpg",
-        title: "공연 · 교육 · 문화예술 플랫폼",
-        desc: "문화락의 공연 포스터와 소식을 한 곳에서 확인하세요."
-      },
-      {
-        img: "images/hero/slide2.jpg",
-        title: "현재공연 / 이전공연",
-        desc: "포스터를 클릭하면 상세페이지가 열립니다."
-      },
-      {
-        img: "images/hero/slide3.jpg",
-        title: "공연대관일정",
-        desc: "달력에서 ①(1관), ②(2관) 대관일정을 확인하세요."
-      }
-    ];
-
-    // 공연 데이터(현재/이전)
-    const DEFAULT_SHOWS = {
-      now: [
-        {
-          id: "hwangso",
-          title: "연극 황소와 도깨비",
-          dateText: "2025.12.21 ~ 2026.01.31",
-          poster: "images/posters/now/hwangso_poster.jpg",
-          detailImage: "images/details/황소와도깨비-상세.jpg"
-        },
-        {
-          id: "magic",
-          title: "공연·마술 리온의 신비한 과자상점",
-          dateText: "2026.01.24 ~ 2026.04.26",
-          poster: "images/posters/now/lion_poster.jpg",
-          detailImage: "images/details/리온마술-상세.jpg"
-        }
-      ],
-      past: [
-        {
-          id: "juk",
-          title: "연극 죽여주는 이야기",
-          dateText: "2025.11.27 ~ 2025.12.28",
-          poster: "images/posters/past/juk_poster.jpg",
-          detailImage: "images/details/죽여주는이야기-상세.jpg"
-        },
-        {
-          id: "cho",
-          title: "조항조 콘서트",
-          dateText: "2025.05.17",
-          poster: "images/posters/past/cho_poster.jpg",
-          detailImage: "images/details/조항조부산-상세페이지2탄.jpg"
-        },
-        {
-          id: "jazz",
-          title: "Ronn Branton’s Jazz Christmas",
-          dateText: "2025.12.05",
-          poster: "images/posters/past/jazz_poster.jpg",
-          detailImage: "images/details/25년상세최종.jpg"
-        }
-      ]
-    };
-
-    // 대관일정(달력) 데이터
-    // date는 YYYY-MM-DD, hall은 1 또는 2 (달력에 ①/②로 표시)
-    const DEFAULT_RENTS = [
-      { date:"2026-01-03", hall:1, title:"리온의 신비한 과자상점" },
-      { date:"2026-01-03", hall:2, title:"안현숲" },
-      { date:"2026-01-10", hall:1, title:"리온의 신비한 과자상점" },
-      { date:"2026-01-10", hall:2, title:"안현숲" },
-      { date:"2026-01-24", hall:1, title:"리온의 신비한 과자상점" },
-      { date:"2026-01-24", hall:2, title:"안현숲" }
-    ];
-
-    // 소개/실적/제작공연 (이미지들은 사용자가 넣으면 표시됨)
-    const ABOUT_CONTENT = {
-      intro: {
-        html: `
-          <p><b>(주)문화락 소개</b></p>
-          <p>
-            (주)문화락은 공연 컨텐츠를 개발, 제작, 육성하여 보급하며 학교 단체공연 및 각종 기업, 지역 축제 등 행사에
-            적합한 공연 컨텐츠를 추천 및 기획과 연출을 전문으로 하는 공연기획사입니다.
-            가온아트홀 1관은 170석 규모를 갖추고 있으며 연극, 뮤지컬 등 다양한 장르의 공연을 수용할 수 있는 다목적 공연장에
-            음향, 조명설비를 완비하여 각종 공연과 행사를 진행 할 수 있는 공연장입니다.
-            가온아트홀 2관은 100석 규모의 공간으로 연극, 뮤지컬 등 각종발표회 강연회, 교육등을 할 수 있도록 꾸며진 공연장입니다.
-          </p>
-          <p style="margin-top:14px;"><b>공간 소개 이미지</b> (요청하신 7번째, 8번째 이미지를 소개글 아래에 배치)</p>
-          <div class="two-img">
-            <img src="images/about/문화락소개2.jpg" alt="문화락 소개 이미지 1" onerror="this.style.display='none'">
-            <img src="images/about/문화락소개3.jpg" alt="문화락 소개 이미지 2" onerror="this.style.display='none'">
-          </div>
-          <p class="note" style="margin-top:12px;">이미지가 안 보이면 파일 경로/이름이 다를 수 있어요. 아래 “이미지 넣는 방법”을 따라 주세요.</p>
-        `
-      },
-      history: {
-        html: `
-          <p><b>문화락 연혁/실적</b></p>
-          <p>아래 이미지는 실적(주요실적) 자료를 그대로 넣는 방식입니다.</p>
-          <img src="images/about/문화락소개19.jpg" alt="문화락 주요실적" class="detail-img" onerror="this.style.display='none'">
-        `
-      },
-      works: {
-        html: `
-          <p><b>문화락 제작 공연</b></p>
-          <p>제작 공연 이미지/포스터를 갤러리 형태로 보여줍니다. (필요하면 더 추가 가능)</p>
-          <div class="gallery">
-            <img src="images/about/문화락소개10.jpg" alt="제작공연 1" onerror="this.style.display='none'">
-            <img src="images/about/문화락소개11.jpg" alt="제작공연 2" onerror="this.style.display='none'">
-            <img src="images/about/문화락소개12.jpg" alt="제작공연 3" onerror="this.style.display='none'">
-            <img src="images/about/문화락소개13.jpg" alt="제작공연 4" onerror="this.style.display='none'">
-            <img src="images/about/문화락소개15.jpg" alt="제작공연 5" onerror="this.style.display='none'">
-          </div>
-        `
-      }
-    };
-
-    /***********************
-     * 2) localStorage 로드/세이브
-     ***********************/
-    const LS_KEYS = {
-      shows: "culturelock_shows_v1",
-      rents: "culturelock_rents_v1",
-      hero:  "culturelock_hero_v1"
-    };
-
-    function loadOrDefault(key, fallback){
-      try{
-        const raw = localStorage.getItem(key);
-        if(!raw) return fallback;
-        return JSON.parse(raw);
-      }catch(e){
-        return fallback;
-      }
-    }
-
-    function saveToLS(key, obj){
-      localStorage.setItem(key, JSON.stringify(obj, null, 2));
-    }
-
-    let HERO = loadOrDefault(LS_KEYS.hero, DEFAULT_HERO);
-    let SHOWS = loadOrDefault(LS_KEYS.shows, DEFAULT_SHOWS);
-    let RENTS = loadOrDefault(LS_KEYS.rents, DEFAULT_RENTS);
-
-    /***********************
-     * 3) 라우팅(메뉴 클릭 시 스크롤)
-     ***********************/
+    // 라우팅
     const routeMap = {
-      now:   document.getElementById("nowSection"),
-      past:  document.getElementById("pastSection"),
+      now: document.getElementById("nowSection"),
+      past: document.getElementById("pastSection"),
       about: document.getElementById("aboutSection"),
-      rent:  document.getElementById("rentSection"),
-      admin: document.getElementById("adminSection")
+      rent: document.getElementById("rentSection")
     };
-
     function setActiveNav(route){
       document.querySelectorAll(".nav-link").forEach(a=>{
+        if(!a.dataset.route) return;
         a.classList.toggle("active", a.dataset.route === route);
       });
     }
-
     function go(route){
       const el = routeMap[route] || routeMap.now;
       setActiveNav(route);
       el.scrollIntoView({behavior:"smooth", block:"start"});
     }
-
     window.addEventListener("hashchange", ()=>{
-      const route = (location.hash || "#now").replace("#","");
-      go(route);
+      const r = (location.hash || "#now").replace("#","");
+      go(r);
     });
+    setTimeout(()=>go((location.hash||"#now").replace("#","")), 30);
 
-    // 최초 진입
-    setTimeout(()=>{
-      const route = (location.hash || "#now").replace("#","");
-      go(route);
-    }, 50);
+    // 모달
+    const modalBackdrop = document.getElementById("modalBackdrop");
+    const closeModalBtn = document.getElementById("closeModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalSub = document.getElementById("modalSub");
+    const modalBody = document.getElementById("modalBody");
+    function openDetail(show){
+      modalTitle.textContent = show.title || "상세페이지";
+      modalSub.textContent = show.dateText || "";
+      modalBody.innerHTML = show.detailImage
+        ? `<img class="detail-img" src="${show.detailImage}" alt="${escapeHtml(show.title)} 상세">`
+        : `<p style="color:#444;line-height:1.7;">상세 이미지가 없습니다.</p>`;
+      modalBackdrop.style.display="flex";
+      modalBackdrop.setAttribute("aria-hidden","false");
+      document.body.style.overflow="hidden";
+    }
+    function closeDetail(){
+      modalBackdrop.style.display="none";
+      modalBackdrop.setAttribute("aria-hidden","true");
+      document.body.style.overflow="";
+    }
+    closeModalBtn.addEventListener("click", closeDetail);
+    modalBackdrop.addEventListener("click", (e)=>{ if(e.target===modalBackdrop) closeDetail(); });
 
-    /***********************
-     * 4) 슬라이더
-     ***********************/
+    // 슬라이드
     const slidesEl = document.getElementById("slides");
     const dotsEl = document.getElementById("dots");
+    let HERO = [];
     let slideIndex = 0;
     let slideTimer = null;
 
     function renderSlider(){
       slidesEl.innerHTML = "";
       dotsEl.innerHTML = "";
-
+      if(!HERO.length){
+        HERO = [{img:"/images/hero/slide1.jpg", title:"문화락", desc:""}];
+      }
       HERO.forEach((s, idx)=>{
         const div = document.createElement("div");
         div.className = "slide";
         div.innerHTML = `
-          <img src="${s.img}" alt="${escapeHtml(s.title)}" onerror="this.style.display='none'">
+          <img src="${s.img}" alt="${escapeHtml(s.title)}">
           <div class="slide-overlay">
             <h1>${escapeHtml(s.title)}</h1>
             <p>${escapeHtml(s.desc || "")}</p>
@@ -992,43 +374,27 @@
         dot.addEventListener("click", ()=>{ setSlide(idx); restartSlider(); });
         dotsEl.appendChild(dot);
       });
-
       setSlide(0);
       restartSlider();
     }
-
     function setSlide(i){
       slideIndex = (i + HERO.length) % HERO.length;
       slidesEl.style.transform = `translateX(-${slideIndex * 100}%)`;
       [...dotsEl.children].forEach((d,idx)=> d.classList.toggle("active", idx===slideIndex));
     }
-
     function restartSlider(){
       if(slideTimer) clearInterval(slideTimer);
       slideTimer = setInterval(()=> setSlide(slideIndex+1), 3800);
     }
 
-    /***********************
-     * 5) 공연 카드 렌더
-     ***********************/
+    // 공연 카드
     const nowGrid = document.getElementById("nowGrid");
     const pastGrid = document.getElementById("pastGrid");
-
-    function renderShows(){
-      nowGrid.innerHTML = "";
-      pastGrid.innerHTML = "";
-
-      SHOWS.now.forEach(show => nowGrid.appendChild(makeShowCard(show)));
-      SHOWS.past.forEach(show => pastGrid.appendChild(makeShowCard(show)));
-    }
-
     function makeShowCard(show){
       const card = document.createElement("div");
       card.className = "card";
       card.innerHTML = `
-        <div class="poster">
-          <img src="${show.poster}" alt="${escapeHtml(show.title)} 포스터" onerror="this.style.display='none'">
-        </div>
+        <div class="poster"><img src="${show.poster}" alt="${escapeHtml(show.title)} 포스터"></div>
         <div class="card-body">
           <p class="title-bold">${escapeHtml(show.title)}</p>
           <p class="date-regular">${escapeHtml(show.dateText || "")}</p>
@@ -1037,78 +403,68 @@
       card.addEventListener("click", ()=> openDetail(show));
       return card;
     }
-
-    /***********************
-     * 6) 상세 모달(상세페이지)
-     ***********************/
-    const modalBackdrop = document.getElementById("modalBackdrop");
-    const closeModalBtn = document.getElementById("closeModal");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalSub = document.getElementById("modalSub");
-    const modalBody = document.getElementById("modalBody");
-
-    function openDetail(show){
-      modalTitle.textContent = show.title || "상세페이지";
-      modalSub.textContent = show.dateText || "";
-      modalBody.innerHTML = `
-        ${show.detailImage ? `<img class="detail-img" src="${show.detailImage}" alt="${escapeHtml(show.title)} 상세" onerror="this.style.display='none'">` : ""}
-      `;
-      modalBackdrop.style.display = "flex";
-      modalBackdrop.setAttribute("aria-hidden","false");
-      document.body.style.overflow="hidden";
+    function renderShows(SHOWS){
+      nowGrid.innerHTML = "";
+      pastGrid.innerHTML = "";
+      (SHOWS.now || []).forEach(s => nowGrid.appendChild(makeShowCard(s)));
+      (SHOWS.past || []).forEach(s => pastGrid.appendChild(makeShowCard(s)));
     }
 
-    function closeDetail(){
-      modalBackdrop.style.display = "none";
-      modalBackdrop.setAttribute("aria-hidden","true");
-      document.body.style.overflow="";
-    }
-
-    closeModalBtn.addEventListener("click", closeDetail);
-    modalBackdrop.addEventListener("click", (e)=>{ if(e.target===modalBackdrop) closeDetail(); });
-
-    /***********************
-     * 7) 공연단체소개 탭
-     ***********************/
-    const tabContent = document.getElementById("tabContent");
+    // 공연단체소개(탭)
     const tabs = document.querySelectorAll(".tab");
+    const tabContent = document.getElementById("tabContent");
+    let SITE = null;
 
     function renderTab(key){
       tabs.forEach(t=> t.classList.toggle("active", t.dataset.tab===key));
-      tabContent.innerHTML = ABOUT_CONTENT[key]?.html || "";
+      if(!SITE){ tabContent.innerHTML=""; return; }
+
+      if(key==="intro"){
+        tabContent.innerHTML = `
+          <p><b>(주)문화락 소개</b></p>
+          <p>${escapeHtml(SITE.aboutIntroText || "")}</p>
+          <div class="two-img">
+            ${SITE.aboutImg1 ? `<img src="${SITE.aboutImg1}" alt="소개 이미지 1">` : ""}
+            ${SITE.aboutImg2 ? `<img src="${SITE.aboutImg2}" alt="소개 이미지 2">` : ""}
+          </div>
+        `;
+      }
+      if(key==="history"){
+        tabContent.innerHTML = `
+          <p><b>실적</b></p>
+          ${SITE.aboutHistoryImg ? `<img class="detail-img" src="${SITE.aboutHistoryImg}" alt="주요실적">` : "<p>실적 이미지가 없습니다.</p>"}
+        `;
+      }
+      if(key==="works"){
+        const imgs = (SITE.aboutWorksImgs || []).map(src=>`<img src="${src}" alt="제작공연">`).join("");
+        tabContent.innerHTML = `
+          <p><b>문화락 제작 공연</b></p>
+          <div class="gallery">${imgs || "<p>이미지가 없습니다.</p>"}</div>
+        `;
+      }
     }
+    tabs.forEach(t=> t.addEventListener("click", ()=> renderTab(t.dataset.tab)));
 
-    tabs.forEach(t=>{
-      t.addEventListener("click", ()=> renderTab(t.dataset.tab));
-    });
-
-    /***********************
-     * 8) 공연대관일정(달력)
-     ***********************/
+    // 달력
     const dowRow = document.getElementById("dowRow");
     const calGrid = document.getElementById("calGrid");
     const monthLabel = document.getElementById("monthLabel");
-
     const DOW = ["일","월","화","수","목","금","토"];
     dowRow.innerHTML = DOW.map(d=> `<div class="dow">${d}</div>`).join("");
 
     let viewYear = today.getFullYear();
-    let viewMonth = today.getMonth(); // 0~11
-    // 샘플 이미지처럼 2026.01을 기본으로 보고싶으면 아래 두 줄을 주석 해제하세요.
-    // viewYear = 2026;
-    // viewMonth = 0;
+    let viewMonth = today.getMonth();
 
     document.getElementById("prevMonth").addEventListener("click", ()=>{
-      viewMonth--;
-      if(viewMonth<0){viewMonth=11; viewYear--;}
+      viewMonth--; if(viewMonth<0){viewMonth=11; viewYear--;}
+      renderCalendar();
+    });
+    document.getElementById("nextMonth").addEventListener("click", ()=>{
+      viewMonth++; if(viewMonth>11){viewMonth=0; viewYear++;}
       renderCalendar();
     });
 
-    document.getElementById("nextMonth").addEventListener("click", ()=>{
-      viewMonth++;
-      if(viewMonth>11){viewMonth=0; viewYear++;}
-      renderCalendar();
-    });
+    let RENTS = {items:[]};
 
     function renderCalendar(){
       const ym = `${viewYear}.${String(viewMonth+1).padStart(2,"0")}`;
@@ -1121,7 +477,6 @@
 
       calGrid.innerHTML = "";
 
-      // 앞쪽 빈칸
       for(let i=0;i<startDow;i++){
         const c = document.createElement("div");
         c.className = "cell";
@@ -1129,10 +484,9 @@
         calGrid.appendChild(c);
       }
 
-      // 날짜
       for(let d=1; d<=daysInMonth; d++){
         const dateStr = `${viewYear}-${String(viewMonth+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
-        const dayRents = RENTS.filter(r=> r.date === dateStr);
+        const dayRents = (RENTS.items || []).filter(r=> r.date === dateStr);
 
         const cell = document.createElement("div");
         cell.className = "cell";
@@ -1141,7 +495,7 @@
           <div class="badges">
             ${dayRents.map(r=>`
               <div class="badge" title="${escapeHtml(r.title)}">
-                <span class="hall ${r.hall===1 ? "hall1":"hall2"}">${r.hall===1 ? "1":"2"}</span>
+                <span class="hall ${Number(r.hall)===1 ? "hall1":"hall2"}">${Number(r.hall)===1 ? "1":"2"}</span>
                 <span class="txt">${escapeHtml(r.title)}</span>
               </div>
             `).join("")}
@@ -1150,7 +504,6 @@
         calGrid.appendChild(cell);
       }
 
-      // 마지막 줄 정렬용(7칸 맞추기)
       const totalCells = startDow + daysInMonth;
       const remain = (7 - (totalCells % 7)) % 7;
       for(let i=0;i<remain;i++){
@@ -1161,117 +514,46 @@
       }
     }
 
-    /***********************
-     * 9) 관리자 로그인 + 편집(JSON)
-     ***********************/
-    const adminPanel = document.getElementById("adminPanel");
-    const openLoginBtn = document.getElementById("openLogin");
-    const loginBackdrop = document.getElementById("loginBackdrop");
-    const closeLoginBtn = document.getElementById("closeLogin");
-    const doLoginBtn = document.getElementById("doLogin");
-    const adminPw = document.getElementById("adminPw");
-
-    const showsJson = document.getElementById("showsJson");
-    const rentJson = document.getElementById("rentJson");
-
-    const saveShowsBtn = document.getElementById("saveShows");
-    const resetShowsBtn = document.getElementById("resetShows");
-    const saveRentBtn = document.getElementById("saveRent");
-    const resetRentBtn = document.getElementById("resetRent");
-
-    function openLogin(){
-      loginBackdrop.style.display="flex";
-      loginBackdrop.setAttribute("aria-hidden","false");
-      adminPw.value = "";
-      adminPw.focus();
-      document.body.style.overflow="hidden";
-    }
-    function closeLogin(){
-      loginBackdrop.style.display="none";
-      loginBackdrop.setAttribute("aria-hidden","true");
-      document.body.style.overflow="";
+    // 데이터 불러오기 (Netlify CMS가 GitHub에 저장한 JSON)
+    async function loadJSON(url){
+      const res = await fetch(url + "?v=" + Date.now(), {cache:"no-store"});
+      if(!res.ok) throw new Error("JSON 로드 실패: " + url);
+      return res.json();
     }
 
-    openLoginBtn.addEventListener("click", openLogin);
-    closeLoginBtn.addEventListener("click", closeLogin);
-    loginBackdrop.addEventListener("click", (e)=>{ if(e.target===loginBackdrop) closeLogin(); });
-
-    doLoginBtn.addEventListener("click", ()=>{
-      if(adminPw.value === ADMIN_PASSWORD){
-        closeLogin();
-        adminPanel.style.display="block";
-        openLoginBtn.parentElement.classList.add("hidden");
-        fillAdminTextareas();
-      }else{
-        alert("비밀번호가 틀렸습니다.");
-      }
-    });
-
-    function fillAdminTextareas(){
-      showsJson.value = JSON.stringify(SHOWS, null, 2);
-      rentJson.value = JSON.stringify(RENTS, null, 2);
-    }
-
-    saveShowsBtn.addEventListener("click", ()=>{
+    async function init(){
       try{
-        const parsed = JSON.parse(showsJson.value);
-        if(!parsed.now || !parsed.past) throw new Error("now/past가 필요합니다.");
-        SHOWS = parsed;
-        saveToLS(LS_KEYS.shows, SHOWS);
-        renderShows();
-        alert("공연 데이터 저장 완료!");
-      }catch(e){
-        alert("JSON 형식 오류: " + e.message);
-      }
-    });
+        SITE = await loadJSON("/data/site.json");
+        document.getElementById("headerTitle").childNodes[0].textContent = SITE.headerTitle || "인증사회적기업(주)문화락";
+        document.getElementById("headerSubtitle").textContent = SITE.headerSubtitle || "공연 · 교육 · 문화예술 플랫폼";
 
-    resetShowsBtn.addEventListener("click", ()=>{
-      if(!confirm("공연 데이터를 기본값으로 초기화할까요?")) return;
-      SHOWS = DEFAULT_SHOWS;
-      saveToLS(LS_KEYS.shows, SHOWS);
-      fillAdminTextareas();
-      renderShows();
-      alert("초기화 완료!");
-    });
+        const logoEl = document.getElementById("logoEl");
+        if(SITE.logo){ logoEl.src = SITE.logo; }
 
-    saveRentBtn.addEventListener("click", ()=>{
-      try{
-        const parsed = JSON.parse(rentJson.value);
-        if(!Array.isArray(parsed)) throw new Error("배열 형태여야 합니다.");
-        RENTS = parsed;
-        saveToLS(LS_KEYS.rents, RENTS);
+        HERO = SITE.hero || [];
+        renderSlider();
+        renderTab("intro");
+
+        const SHOWS = await loadJSON("/data/shows.json");
+        renderShows(SHOWS);
+
+        RENTS = await loadJSON("/data/rents.json");
         renderCalendar();
-        alert("대관일정 저장 완료!");
       }catch(e){
-        alert("JSON 형식 오류: " + e.message);
+        console.error(e);
+        // 최소 화면은 뜨게
+        renderSlider();
+        renderCalendar();
       }
-    });
+    }
 
-    resetRentBtn.addEventListener("click", ()=>{
-      if(!confirm("대관일정을 기본값으로 초기화할까요?")) return;
-      RENTS = DEFAULT_RENTS;
-      saveToLS(LS_KEYS.rents, RENTS);
-      fillAdminTextareas();
-      renderCalendar();
-      alert("초기화 완료!");
-    });
-
-    /***********************
-     * 10) 유틸
-     ***********************/
     function escapeHtml(str){
       return String(str ?? "").replace(/[&<>"']/g, (m)=>({
         "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
       }[m]));
     }
 
-    /***********************
-     * 11) 초기 렌더
-     ***********************/
-    renderSlider();
-    renderShows();
-    renderTab("intro");
-    renderCalendar();
+    init();
   </script>
 </body>
 </html>
