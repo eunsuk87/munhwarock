@@ -3,557 +3,1134 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>문화락 | 공연·교육·문화예술 플랫폼</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
-
+  <title>인증사회적기업(주)문화락</title>
   <style>
     :root{
-      --k100:#111; --k70:#444; --k40:#888;
-      --line:#E9E9E9; --bg:#fff; --card:#fff;
-      --shadow: 0 10px 30px rgba(0,0,0,.08);
-      --radius:18px;
-      --footer-bg:#F4E9D8;   /* M15 Y10 근사 */
-      --footer-text:#111;
+      --k100:#000;
+      --gray-1:#111;
+      --gray-2:#333;
+      --gray-3:#666;
+      --line:#e8e8e8;
+
+      /* 요청: 푸터 배경 M15, Y10 느낌(대략) */
+      --footer-bg: #efe6d9;
+
+      --max: 1200px;
+      --shadow: 0 10px 30px rgba(0,0,0,.12);
+      --radius: 14px;
+
+      --badge1:#d81b60; /* ① */
+      --badge2:#039be5; /* ② */
     }
-    *{box-sizing:border-box}
-    html,body{margin:0; padding:0; background:var(--bg); color:var(--k100); font-family:"Noto Sans KR", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;}
-    a{color:inherit; text-decoration:none}
-    img{max-width:100%; display:block}
 
-    .container{width:min(1120px,92vw); margin:0 auto;}
-    .section{padding:48px 0;}
-    .section-title{font-size:26px; font-weight:700; letter-spacing:-.5px; margin:0 0 18px;}
-    .section-sub{color:var(--k70); margin:0 0 24px; line-height:1.6}
+    /* 고딕 */
+    body{
+      margin:0;
+      font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--gray-1);
+      background:#fff;
+    }
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+    button{ font-family:inherit; }
 
+    .wrap{ width:min(var(--max), calc(100% - 32px)); margin:0 auto; }
+
+    /* ===== Header ===== */
     header{
-      position:sticky; top:0; z-index:50;
+      position:sticky;
+      top:0;
+      z-index:50;
       background:rgba(255,255,255,.92);
-      backdrop-filter:saturate(180%) blur(10px);
+      backdrop-filter: blur(8px);
       border-bottom:1px solid var(--line);
     }
     .topbar{
-      display:grid; grid-template-columns:160px 1fr 160px;
-      align-items:center; padding:14px 0 6px; gap:10px;
+      display:grid;
+      grid-template-columns: 220px 1fr 220px;
+      align-items:center;
+      gap:12px;
+      padding:10px 0;
     }
-    .brand-left{display:flex; align-items:center; gap:10px;}
-    .logo{width:44px; height:44px; border-radius:12px; object-fit:cover; border:1px solid var(--line); background:#fff;}
-    .brand-center{text-align:center; font-weight:700; letter-spacing:-.6px; font-size:18px; line-height:1.2;}
-    .brand-center small{display:block; font-weight:400; color:var(--k40); margin-top:4px; font-size:12px;}
-    .topbar-right{display:flex; justify-content:flex-end; gap:10px; align-items:center;}
-    .tiny-pill{border:1px solid var(--line); background:#fff; padding:8px 10px; border-radius:999px; font-size:12px; color:var(--k70);}
+    .brand-left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-height:44px;
+    }
+    .brand-left img{
+      height:34px;
+      width:auto;
+      object-fit:contain;
+    }
+    .brand-title{
+      text-align:center;
+      font-weight:800; /* Bold */
+      letter-spacing:-.02em;
+      font-size:18px;
+    }
+    .brand-right{
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+      gap:8px;
+      min-height:44px;
+    }
 
-    nav{display:flex; justify-content:center; gap:18px; padding:10px 0 14px; flex-wrap:wrap;}
-    .nav-link{
-      font-weight:700; font-size:14px; color:var(--k100);
-      padding:6px 2px; border-bottom:2px solid transparent;
+    /* 메뉴(중앙정렬 / 박스X / 고딕 / K100) */
+    nav{
+      border-top:1px solid var(--line);
     }
-    .nav-link:hover{border-bottom-color:var(--k100);}
-    .nav-link.active{border-bottom-color:var(--k100);}
+    .menu{
+      display:flex;
+      gap:22px;
+      justify-content:center;
+      align-items:center;
+      padding:10px 0;
+      flex-wrap:wrap;
+    }
+    .menu a{
+      font-weight:700;
+      color:var(--k100);
+      font-size:15px;
+      letter-spacing:-.02em;
+      padding:6px 2px; /* 박스/버튼 느낌 없이 */
+    }
+    .menu a.active{
+      text-decoration: underline;
+      text-underline-offset: 6px;
+      text-decoration-thickness: 2px;
+    }
 
-    .hero{padding:18px 0 0;}
-    .slider{
-      position:relative; border-radius:24px; overflow:hidden;
-      border:1px solid var(--line); background:#f7f7f7; box-shadow:var(--shadow);
+    /* ===== Sections ===== */
+    .section{
+      padding:38px 0 26px;
     }
-    .slides{display:flex; transition:transform .6s ease; will-change:transform;}
-    .slide{min-width:100%; height:420px; position:relative; background:#f2f2f2;}
-    .slide img{width:100%; height:100%; object-fit:cover;}
-    .slide-overlay{
-      position:absolute; left:0; right:0; bottom:0; padding:18px 20px;
-      background:linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0));
-      color:#fff;
+    .section-title{
+      font-size:30px;
+      font-weight:800; /* Bold */
+      letter-spacing:-.03em;
+      margin:0 0 18px;
     }
-    .slide-overlay h1{margin:0; font-size:26px; letter-spacing:-.6px; font-weight:700;}
-    .slide-overlay p{margin:6px 0 0; opacity:.9; line-height:1.4; font-size:14px; font-weight:400;}
-    .dots{position:absolute; left:0; right:0; bottom:12px; display:flex; justify-content:center; gap:8px;}
-    .dot{width:8px; height:8px; border-radius:999px; background:rgba(255,255,255,.55); border:1px solid rgba(0,0,0,.15); cursor:pointer;}
-    .dot.active{background:#fff;}
+    .muted{ color:var(--gray-3); }
 
-    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
-    @media (max-width:980px){
-      .grid{grid-template-columns:repeat(2,1fr);}
-      .slide{height:340px;}
-      .topbar{grid-template-columns:120px 1fr 120px;}
+    /* ===== Hero Slider (풀폭, 좌우 꽉 채움) ===== */
+    .hero{
+      position:relative;
+      width:100%;
+      height: clamp(260px, 46vw, 520px);
+      overflow:hidden;
+      background:#000;
     }
-    @media (max-width:620px){
-      .grid{grid-template-columns:1fr;}
-      .slide{height:280px;}
-      .brand-center{font-size:16px;}
+    .hero-track{
+      position:absolute;
+      inset:0;
+      display:flex;
+      height:100%;
+      will-change: transform;
+      transition: transform 1200ms ease-in-out;
+    }
+    .hero-slide{
+      min-width:100%;
+      height:100%;
+      position:relative;
+    }
+    .hero-slide img{
+      width:100%;
+      height:100%;
+      object-fit:cover; /* “좌우 꽉 채움” */
+      opacity:.92;
+    }
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,.15), rgba(0,0,0,.55));
+      pointer-events:none;
+    }
+    .hero-dots{
+      position:absolute;
+      left:0; right:0;
+      bottom:14px;
+      display:flex;
+      justify-content:center;
+      gap:8px;
+      z-index:5;
+    }
+    .dot{
+      width:8px; height:8px;
+      border-radius:999px;
+      background:rgba(255,255,255,.45);
+      border:1px solid rgba(255,255,255,.25);
+    }
+    .dot.active{ background:#fff; }
+
+    /* ===== Posters grid ===== */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:22px;
+    }
+    @media (max-width: 860px){
+      .topbar{ grid-template-columns: 140px 1fr 80px; }
+      .brand-title{ font-size:16px; }
+      .grid{ grid-template-columns: 1fr; }
     }
 
     .card{
-      border:1px solid var(--line); border-radius:var(--radius);
-      overflow:hidden; background:var(--card);
-      box-shadow:0 8px 20px rgba(0,0,0,.06);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      overflow:hidden;
+      background:#fff;
+      box-shadow: 0 1px 0 rgba(0,0,0,.03);
+    }
+    .poster{
+      width:100%;
+      aspect-ratio: 16 / 9;
+      background:#f6f6f6;
+      overflow:hidden;
       cursor:pointer;
-      transition:transform .15s ease, box-shadow .15s ease;
     }
-    .card:hover{transform:translateY(-2px); box-shadow:0 14px 30px rgba(0,0,0,.10);}
-    .poster{aspect-ratio:3/4; background:#f4f4f4; border-bottom:1px solid var(--line);}
-    .poster img{width:100%; height:100%; object-fit:cover;}
-    .card-body{padding:14px 14px 16px;}
-    .title-bold{font-weight:700; font-size:15px; line-height:1.35; margin:0 0 6px;}
-    .date-regular{font-weight:400; color:var(--k70); font-size:13px; margin:0;}
-
-    .sns-row{display:flex; gap:14px; align-items:center; margin-top:18px; flex-wrap:wrap;}
-    .sns-icon{
-      display:inline-flex; gap:8px; align-items:center;
-      padding:10px 12px; border:1px solid var(--line);
-      border-radius:999px; background:#fff; font-size:13px; color:var(--k100);
+    .poster img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transform: scale(1.01);
+      transition: transform .35s ease;
     }
-    .sns-icon:hover{box-shadow:0 8px 18px rgba(0,0,0,.08);}
-    .svg{width:18px; height:18px; display:block;}
+    .poster:hover img{ transform: scale(1.06); }
 
-    .tabs{display:flex; gap:10px; flex-wrap:wrap; margin:0 0 16px;}
-    .tab{border:1px solid var(--line); background:#fff; padding:10px 12px; border-radius:999px; font-weight:700; font-size:13px; cursor:pointer;}
-    .tab.active{border-color:var(--k100);}
-    .tab-content{
-      border:1px solid var(--line); border-radius:18px;
-      padding:18px; background:#fff; box-shadow:0 10px 24px rgba(0,0,0,.06);
+    .meta{
+      padding:14px 14px 16px;
     }
-    .tab-content p{margin:0 0 12px; line-height:1.8; color:var(--k70);}
-    .two-img{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:10px;}
-    @media (max-width:740px){.two-img{grid-template-columns:1fr;}}
-    .two-img img{border-radius:14px; border:1px solid var(--line); height:280px; object-fit:cover; background:#f6f6f6;}
-    .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:10px;}
-    @media (max-width:980px){.gallery{grid-template-columns:repeat(2,1fr);}}
-    @media (max-width:620px){.gallery{grid-template-columns:1fr;}}
-    .gallery img{border-radius:14px; border:1px solid var(--line); height:220px; object-fit:cover; background:#f6f6f6;}
+    .show-title{
+      font-weight:800; /* Bold */
+      font-size:18px;
+      letter-spacing:-.02em;
+      margin:0 0 6px;
+    }
+    .show-date{
+      font-weight:400; /* Regular */
+      color:var(--gray-2);
+      margin:0;
+      line-height:1.5;
+    }
 
-    .cal-wrap{border:1px solid var(--line); border-radius:18px; background:#fff; box-shadow:0 10px 24px rgba(0,0,0,.06); overflow:hidden;}
-    .cal-head{display:flex; align-items:center; justify-content:space-between; padding:14px; border-bottom:1px solid var(--line);}
-    .cal-head .month{font-weight:700; letter-spacing:-.4px;}
-    .cal-btn{border:1px solid var(--line); background:#fff; padding:8px 10px; border-radius:10px; cursor:pointer; font-weight:700; font-size:13px;}
-    .cal-grid{display:grid; grid-template-columns:repeat(7,1fr);}
-    .dow{padding:10px 0; text-align:center; font-size:12px; color:var(--k70); border-bottom:1px solid var(--line); background:#fafafa; font-weight:700;}
-    .cell{min-height:110px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); padding:10px; position:relative;}
-    .cell:nth-child(7n){border-right:none;}
-    .daynum{font-size:12px; color:var(--k70); font-weight:700;}
-    .badges{display:flex; gap:6px; flex-wrap:wrap; margin-top:8px;}
-    .badge{display:inline-flex; align-items:center; gap:6px; padding:6px 8px; border-radius:999px; border:1px solid var(--line); background:#fff; font-size:12px; max-width:100%;}
-    .badge .hall{width:18px; height:18px; border-radius:6px; display:inline-flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; color:#fff; flex:0 0 auto;}
-    .hall1{background:#E11D48;} .hall2{background:#0284C7;}
-    .badge .txt{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--k100); font-weight:700;}
+    /* ===== Social icons row (이전공연 아래 중앙정렬) ===== */
+    .social-row{
+      margin-top:18px;
+      display:flex;
+      justify-content:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+    .icon-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid var(--line);
+      background:#fff;
+      padding:10px 14px;
+      border-radius:999px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.06);
+      font-weight:800;
+    }
+    .icon-btn img{
+      width:22px;
+      height:22px;
+      object-fit:contain;
+    }
 
-    .modal-backdrop{position:fixed; inset:0; background:rgba(0,0,0,.55); display:none; align-items:center; justify-content:center; padding:18px; z-index:100;}
-    .modal{width:min(980px,96vw); max-height:90vh; overflow:auto; background:#fff; border-radius:18px; box-shadow:0 30px 70px rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.25);}
-    .modal-head{display:flex; align-items:flex-start; justify-content:space-between; gap:10px; padding:16px 16px 10px; border-bottom:1px solid var(--line); position:sticky; top:0; background:#fff; z-index:1;}
-    .modal-title{margin:0; font-size:18px; font-weight:700; letter-spacing:-.4px;}
-    .modal-sub{margin:6px 0 0; font-size:13px; color:var(--k70);}
-    .close{border:1px solid var(--line); background:#fff; border-radius:12px; width:40px; height:40px; font-size:18px; cursor:pointer;}
-    .modal-body{padding:16px;}
-    .detail-img{width:100%; border-radius:16px; border:1px solid var(--line); background:#f6f6f6;}
+    /* ===== Modal (상세페이지) ===== */
+    .modal-backdrop{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.55);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:16px;
+      z-index:100;
+    }
+    .modal-backdrop.open{ display:flex; }
+    .modal{
+      width:min(980px, 100%);
+      max-height: 92vh;
+      overflow:auto;
+      background:#fff;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      position:relative;
+    }
+    .modal-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:14px 16px;
+      border-bottom:1px solid var(--line);
+      position:sticky;
+      top:0;
+      background:#fff;
+      z-index:2;
+    }
+    .modal-header .mh-title{
+      font-weight:900;
+      letter-spacing:-.02em;
+    }
+    .close{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:10px;
+      padding:8px 10px;
+      cursor:pointer;
+      font-weight:800;
+    }
+    .modal-body{ padding:16px; }
+    .detail-img{
+      width:100%;
+      height:auto;
+      border-radius:12px;
+      border:1px solid var(--line);
+    }
 
-    footer{background:var(--footer-bg); color:var(--footer-text); padding:26px 0; border-top:1px solid rgba(0,0,0,.08);}
-    .footer-grid{display:grid; grid-template-columns:1fr; gap:10px; font-size:14px; line-height:1.8;}
-    .footer-bold{font-weight:700;}
-    .footer-regular{font-weight:400;}
+    /* ===== About (탭 3개) ===== */
+    .tabs{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin:10px 0 18px;
+    }
+    .tab{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:999px;
+      padding:10px 14px;
+      cursor:pointer;
+      font-weight:800;
+    }
+    .tab.active{
+      border-color:#000;
+      outline:2px solid rgba(0,0,0,.12);
+    }
+    .about-panel{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:18px;
+      background:#fff;
+    }
+    .about-text{
+      font-size:15px;
+      line-height:1.8;
+      color:#222;
+      margin:0;
+    }
+    .about-images{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:14px;
+      margin-top:14px;
+    }
+    @media (max-width: 860px){
+      .about-images{ grid-template-columns: 1fr; }
+    }
+    .about-images img{
+      width:100%;
+      border-radius:12px;
+      border:1px solid var(--line);
+    }
+
+    /* ===== Rental Calendar ===== */
+    .cal-wrap{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      overflow:hidden;
+      background:#fff;
+    }
+    .cal-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 14px;
+      border-bottom:1px solid var(--line);
+    }
+    .cal-head .month{
+      font-weight:900;
+      letter-spacing:-.02em;
+    }
+    .cal-head button{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:10px;
+      padding:8px 10px;
+      cursor:pointer;
+      font-weight:800;
+    }
+    .cal-grid{
+      display:grid;
+      grid-template-columns: repeat(7, minmax(0,1fr));
+    }
+    .dow{
+      background:#fafafa;
+      padding:10px 8px;
+      font-weight:900;
+      border-bottom:1px solid var(--line);
+      border-right:1px solid var(--line);
+      text-align:center;
+      font-size:13px;
+    }
+    .dow:nth-child(7){ border-right:none; }
+    .day{
+      min-height:92px;
+      padding:8px;
+      border-bottom:1px solid var(--line);
+      border-right:1px solid var(--line);
+      position:relative;
+    }
+    .day:nth-child(7n){ border-right:none; }
+    .day .n{
+      position:absolute;
+      top:8px; right:8px;
+      font-size:12px;
+      color:#444;
+      font-weight:800;
+    }
+    .events{
+      margin-top:22px;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    .ev{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      font-size:12px;
+      line-height:1.25;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:20px;
+      height:18px;
+      border-radius:5px;
+      font-weight:900;
+      color:#fff;
+      flex:0 0 auto;
+    }
+    .b1{ background:var(--badge1); }
+    .b2{ background:var(--badge2); }
+    .ev .t{
+      color:#111;
+      font-weight:700;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+
+    /* ===== Admin ===== */
+    .admin-box{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:18px;
+      background:#fff;
+    }
+    .admin-login{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .admin-login input{
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:10px 12px;
+      min-width:240px;
+    }
+    .admin-login button{
+      border:1px solid #000;
+      background:#000;
+      color:#fff;
+      border-radius:10px;
+      padding:10px 12px;
+      cursor:pointer;
+      font-weight:900;
+    }
+    .admin-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      margin-top:14px;
+    }
+    @media (max-width: 860px){
+      .admin-grid{ grid-template-columns: 1fr; }
+    }
+    textarea{
+      width:100%;
+      min-height:320px;
+      resize:vertical;
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size:12px;
+      line-height:1.5;
+    }
+    .savebar{
+      display:flex;
+      gap:10px;
+      margin-top:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .savebar button{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:10px;
+      padding:10px 12px;
+      cursor:pointer;
+      font-weight:900;
+    }
+    .savebar button.primary{
+      border-color:#000;
+      background:#000;
+      color:#fff;
+    }
+    .hint{
+      font-size:12px;
+      color:#555;
+      line-height:1.6;
+      margin:8px 0 0;
+    }
+
+    /* ===== Footer ===== */
+    footer{
+      margin-top:46px;
+      background: var(--footer-bg);
+      border-top:1px solid rgba(0,0,0,.08);
+      padding:22px 0;
+    }
+    .footer-lines{
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      font-size:14px;
+      line-height:1.6;
+      color:#000;
+    }
+    .b{ font-weight:900; } /* Bold */
+    .r{ font-weight:400; } /* Regular */
+    .footer-lines a{ text-decoration: underline; text-underline-offset: 3px; }
+
+    /* anchor offset for sticky header */
+    .anchor { scroll-margin-top: 120px; }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="container">
-      <div class="topbar">
-        <div class="brand-left">
-          <img class="logo" id="logoEl" src="/images/logo.png" alt="문화락 로고" onerror="this.style.display='none'">
-        </div>
 
-        <div class="brand-center" id="headerTitle">
-          인증사회적기업(주)문화락
-          <small id="headerSubtitle">공연 · 교육 · 문화예술 플랫폼</small>
-        </div>
-
-        <div class="topbar-right">
-          <span class="tiny-pill" id="todayText">Today</span>
-        </div>
+<header>
+  <div class="wrap">
+    <div class="topbar">
+      <!-- 1) 상단 왼쪽 로고 -->
+      <div class="brand-left">
+        <!-- ✅ 여기 파일명만 맞추면 됩니다 -->
+        <img src="문화락로고cmyk.png" alt="문화락 로고" />
       </div>
 
-      <nav id="nav">
-        <a class="nav-link" href="#now" data-route="now">현재공연</a>
-        <a class="nav-link" href="#past" data-route="past">이전공연</a>
-        <a class="nav-link" href="#about" data-route="about">공연단체소개</a>
-        <a class="nav-link" href="#rent" data-route="rent">공연대관일정</a>
-        <a class="nav-link" href="/admin/" target="_blank" rel="noopener">관리자</a>
-      </nav>
+      <!-- 2) 상단 중앙 타이틀 -->
+      <div class="brand-title">인증사회적기업(주)문화락</div>
+
+      <div class="brand-right"></div>
     </div>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="container">
-        <div class="slider">
-          <div class="slides" id="slides"></div>
-          <div class="dots" id="dots"></div>
+    <!-- 3) 메뉴 중앙정렬 (박스X) -->
+    <nav>
+      <div class="menu" id="menu">
+        <a href="#current" data-link="current">현재공연</a>
+        <a href="#past" data-link="past">이전공연</a>
+        <a href="#about" data-link="about">공연단체소개</a>
+        <a href="#rental" data-link="rental">공연대관일정</a>
+        <a href="#admin" data-link="admin">관리자</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- 4) 메인 슬라이드(풀폭) -->
+<section class="hero" aria-label="메인 슬라이드">
+  <div class="hero-track" id="heroTrack"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-dots" id="heroDots"></div>
+</section>
+
+<main>
+
+  <!-- 현재공연 -->
+  <section class="section anchor" id="current">
+    <div class="wrap">
+      <h2 class="section-title">현재공연</h2>
+      <div class="grid" id="currentGrid"></div>
+    </div>
+  </section>
+
+  <!-- 이전공연 -->
+  <section class="section anchor" id="past">
+    <div class="wrap">
+      <h2 class="section-title">이전공연</h2>
+      <div class="grid" id="pastGrid"></div>
+
+      <!-- 5) 이전공연 아래: 중앙정렬 SNS 아이콘만 -->
+      <div class="social-row" aria-label="SNS 링크">
+        <a class="icon-btn" href="https://www.instagram.com/gaonarthall" target="_blank" rel="noreferrer">
+          <img src="Instagram로고.png" alt="Instagram" />
+          <span>Instagram</span>
+        </a>
+        <a class="icon-btn" href="https://blog.naver.com/gaonarthall12" target="_blank" rel="noreferrer">
+          <img src="블로그로고.png" alt="Blog" />
+          <span>Blog</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 공연단체소개 -->
+  <section class="section anchor" id="about">
+    <div class="wrap">
+      <h2 class="section-title">공연단체소개</h2>
+
+      <div class="tabs" role="tablist" aria-label="공연단체소개 탭">
+        <button class="tab active" data-tab="intro" type="button">1) (주)문화락 소개</button>
+        <button class="tab" data-tab="history" type="button">2) 실적</button>
+        <button class="tab" data-tab="works" type="button">3) 문화락 제작 공연</button>
+      </div>
+
+      <div class="about-panel" id="aboutPanel"></div>
+    </div>
+  </section>
+
+  <!-- 공연대관일정 -->
+  <section class="section anchor" id="rental">
+    <div class="wrap">
+      <h2 class="section-title">공연대관일정</h2>
+      <p class="muted" style="margin-top:-6px;">
+        달력 날짜 칸에 <b>①(1관)</b> / <b>②(2관)</b> 표시됩니다. (관리자에서 수정 가능)
+      </p>
+
+      <div class="cal-wrap">
+        <div class="cal-head">
+          <button id="prevMonth" type="button">◀</button>
+          <div class="month" id="monthLabel"></div>
+          <button id="nextMonth" type="button">▶</button>
         </div>
+        <div class="cal-grid" id="calDows"></div>
+        <div class="cal-grid" id="calDays"></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section" id="nowSection">
-      <div class="container">
-        <h2 class="section-title">현재공연</h2>
-        <p class="section-sub">포스터를 클릭하면 상세페이지가 열립니다.</p>
-        <div class="grid" id="nowGrid"></div>
-      </div>
-    </section>
+  <!-- 관리자 -->
+  <section class="section anchor" id="admin">
+    <div class="wrap">
+      <h2 class="section-title">관리자</h2>
 
-    <section class="section" id="pastSection">
-      <div class="container">
-        <h2 class="section-title">이전공연</h2>
-        <p class="section-sub">포스터를 클릭하면 상세페이지가 열립니다.</p>
-        <div class="grid" id="pastGrid"></div>
-
-        <div class="sns-row" aria-label="SNS 링크">
-          <a class="sns-icon" href="https://www.instagram.com/gaonarthall" target="_blank" rel="noopener">
-            <svg class="svg" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="#C13584" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z"/>
-              <path fill="#fff" d="M12 7.3A4.7 4.7 0 1 0 16.7 12 4.7 4.7 0 0 0 12 7.3zm0 7.7A3 3 0 1 1 15 12a3 3 0 0 1-3 3z"/>
-              <circle cx="17.7" cy="6.4" r="1.1" fill="#fff"/>
-            </svg>
-            🟣 Instagram
-          </a>
-
-          <a class="sns-icon" href="https://blog.naver.com/gaonarthall12" target="_blank" rel="noopener">
-            <svg class="svg" viewBox="0 0 24 24" aria-hidden="true">
-              <rect x="3" y="3" width="18" height="18" rx="4" fill="#03C75A"/>
-              <path fill="#fff" d="M8 16V8h2.3l3.2 4.6V8H16v8h-2.3l-3.2-4.6V16H8z"/>
-            </svg>
-            🟢 Blog
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="aboutSection">
-      <div class="container">
-        <h2 class="section-title">공연단체소개</h2>
-
-        <div class="tabs" role="tablist">
-          <button class="tab active" data-tab="intro" type="button">문화락 소개</button>
-          <button class="tab" data-tab="history" type="button">실적</button>
-          <button class="tab" data-tab="works" type="button">문화락 제작 공연</button>
+      <div class="admin-box" id="adminBox">
+        <div class="admin-login" id="adminLogin">
+          <input id="adminPass" type="password" placeholder="관리자 비밀번호 입력" />
+          <button id="adminEnter" type="button">로그인</button>
+          <p class="hint">※ 이 페이지는 “브라우저에 저장(localStorage)” 방식입니다. PC가 바뀌면 저장내용도 달라질 수 있어요.</p>
         </div>
 
-        <div class="tab-content" id="tabContent"></div>
-      </div>
-    </section>
-
-    <section class="section" id="rentSection">
-      <div class="container">
-        <h2 class="section-title">공연대관일정</h2>
-        <p class="section-sub">달력의 ①/②는 각 관(1관/2관)을 의미합니다.</p>
-
-        <div class="cal-wrap">
-          <div class="cal-head">
-            <button class="cal-btn" id="prevMonth" type="button">◀</button>
-            <div class="month" id="monthLabel">YYYY.MM</div>
-            <button class="cal-btn" id="nextMonth" type="button">▶</button>
+        <div id="adminPanel" style="display:none;">
+          <div class="admin-grid">
+            <div>
+              <h3 style="margin:0 0 10px; font-weight:900;">현재공연 데이터(JSON)</h3>
+              <textarea id="adminCurrent"></textarea>
+            </div>
+            <div>
+              <h3 style="margin:0 0 10px; font-weight:900;">이전공연 데이터(JSON)</h3>
+              <textarea id="adminPast"></textarea>
+            </div>
           </div>
 
-          <div class="cal-grid" id="dowRow"></div>
-          <div class="cal-grid" id="calGrid"></div>
-        </div>
-      </div>
-    </section>
-  </main>
+          <div style="margin-top:14px;">
+            <h3 style="margin:0 0 10px; font-weight:900;">공연대관일정 데이터(JSON)</h3>
+            <textarea id="adminRental"></textarea>
+          </div>
 
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div><span class="footer-bold">상호명</span><span class="footer-regular"> 주식회사문화락</span></div>
-        <div><span class="footer-bold">사업장 주소</span><span class="footer-regular"> 부산광역시 동구 자성로133번길 지하1층</span></div>
-        <div>
-          <span class="footer-bold">대표전화</span><span class="footer-regular"> 1600-1602</span>
-          <span class="footer-bold" style="margin-left:14px;">이메일</span><span class="footer-regular"> 16001602@hanmail.net</span>
+          <div class="savebar">
+            <button class="primary" id="saveAll" type="button">저장하기</button>
+            <button id="resetAll" type="button">기본값으로 되돌리기</button>
+            <button id="logout" type="button">로그아웃</button>
+          </div>
+
+          <p class="hint">
+            ✅ JSON 예시(공연): {"title":"공연명","dateText":"2026.1.24~4.26","poster":"poster.jpg","detail":"detail.jpg"}<br/>
+            ✅ JSON 예시(대관): {"date":"2026-01-03","hall":1,"title":"리온의 신비한 과자상점"} (hall: 1이면 ① / 2이면 ②)
+          </p>
         </div>
-        <div><span class="footer-bold">홈페이지</span><span class="footer-regular"> https://culturelock.co.kr</span></div>
-        <div><span class="footer-bold">인스타</span><span class="footer-regular"> https://www.instagram.com/gaonarthall</span></div>
-        <div><span class="footer-bold">블로그</span><span class="footer-regular"> https://blog.naver.com/gaonarthall12</span></div>
-        <div><span class="footer-bold">사업자 등록번호</span><span class="footer-regular"> 605-86-13527</span></div>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true">
-      <div class="modal-head">
-        <div>
-          <h3 class="modal-title" id="modalTitle">공연 제목</h3>
-          <div class="modal-sub" id="modalSub">공연일정</div>
-        </div>
-        <button class="close" id="closeModal" type="button" aria-label="닫기">×</button>
+</main>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="footer-lines">
+      <!-- 3줄 / 중앙정렬 -->
+      <div>
+        <span class="b">상호명</span> <span class="r">(주)문화락</span>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span class="b">사업장 주소</span> <span class="r">부산광역시 동구 자성로133번길 지하1층</span>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span class="b">대표전화</span> <span class="r">1600-1602</span>
       </div>
-      <div class="modal-body" id="modalBody"></div>
+      <div>
+        <span class="b">이메일</span> <span class="r">16001602@hanmail.net</span>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span class="b">사업자 등록번호</span> <span class="r">605-86-13527</span>
+      </div>
+      <div>
+        <span class="b">홈페이지</span> <span class="r"><a href="https://culturelock.co.kr" target="_blank" rel="noreferrer">https://culturelock.co.kr</a></span>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span class="b">인스타</span> <span class="r"><a href="https://www.instagram.com/gaonarthall" target="_blank" rel="noreferrer">https://www.instagram.com/gaonarthall</a></span>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span class="b">블로그</span> <span class="r"><a href="https://blog.naver.com/gaonarthall12" target="_blank" rel="noreferrer">https://blog.naver.com/gaonarthall12</a></span>
+      </div>
     </div>
   </div>
+</footer>
 
-  <script>
-    // 오늘 표시
-    const today = new Date();
-    document.getElementById("todayText").textContent =
-      today.toLocaleDateString("ko-KR", {year:"numeric", month:"2-digit", day:"2-digit"});
+<!-- 상세 모달 -->
+<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-label="공연 상세">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="mh-title" id="modalTitle">상세보기</div>
+      <button class="close" id="modalClose" type="button">닫기 ✕</button>
+    </div>
+    <div class="modal-body">
+      <img class="detail-img" id="modalImg" alt="공연 상세 이미지" />
+    </div>
+  </div>
+</div>
 
-    // 라우팅
-    const routeMap = {
-      now: document.getElementById("nowSection"),
-      past: document.getElementById("pastSection"),
-      about: document.getElementById("aboutSection"),
-      rent: document.getElementById("rentSection")
-    };
-    function setActiveNav(route){
-      document.querySelectorAll(".nav-link").forEach(a=>{
-        if(!a.dataset.route) return;
-        a.classList.toggle("active", a.dataset.route === route);
-      });
+<script>
+  /********************
+   * 0) 기본 데이터(초기값)
+   *    - 관리자에서 바꾼 값은 브라우저(localStorage)에 저장됨
+   ********************/
+  const DEFAULT = {
+    hero: [
+      // ✅ 슬라이드 이미지 1~3개 넣기 (포스터/메인 배경)
+      //    파일만 올리고 이름만 바꾸면 됩니다.
+      "slide1.jpg",
+      "slide2.jpg",
+      "slide3.jpg",
+    ],
+    currentShows: [
+      // ✅ 예시(원하시면 제목/날짜/이미지명만 바꾸세요)
+      {"title":"연극 황소와 도깨비","dateText":"2025.12.21 ~ 2026.01.31","poster":"current_01.jpg","detail":"황소와도깨비-상세.jpg"},
+      {"title":"공연·마술 리온의 신비한 과자상점","dateText":"2026.01.24 ~ 2026.04.26","poster":"current_02.jpg","detail":"리온마술-상세.jpg"}
+    ],
+    pastShows: [
+      {"title":"연극 죽여주는 이야기","dateText":"2025.11.27 ~ 2025.12.28","poster":"past_01.jpg","detail":"죽여주는이야기-상세.jpg"},
+      {"title":"조항조 콘서트","dateText":"2025.05.17","poster":"past_02.jpg","detail":"조항조부산-상세페이지2탄.jpg"},
+      {"title":"2025 Jazz Christmas","dateText":"2025.12.05","poster":"past_03.jpg","detail":"25년상세최종.jpg"}
+    ],
+    rental: [
+      // ✅ 대관 예시: 날짜칸에 ①/② 뜨게
+      {"date":"2026-01-03","hall":1,"title":"리온의 신비한 과자상점"},
+      {"date":"2026-01-03","hall":2,"title":"안형순"},
+      {"date":"2026-01-10","hall":1,"title":"리온의 신비한 과자상점"},
+      {"date":"2026-01-10","hall":2,"title":"안형순"}
+    ],
+    about: {
+      introText:
+`(주)문화락은 공연 컨텐츠를 개발, 제작, 육성하여 보급하며 학교 단체공연 및 각종 기업, 지역 축제 등 행사에 적합한 공연 컨텐츠를 추천 및 기획과 연출을 전문으로 하는 공연기획사입니다.
+가온아트홀 1관은 170석 규모를 갖추고 있으며 연극, 뮤지컬 등 다양한 장르의 공연을 수용할 수 있는 다목적 공연장에 음향, 조명설비를 완비하여 각종 공연과 행사를 진행 할 수 있는 공연장입니다.
+가온아트홀 2관은 100석 규모의 공간으로 연극, 뮤지컬 등 각종발표회 강연회, 교육등을 할 수 있도록 꾸며진 공연장입니다.`,
+      // ✅ 요청: 소개글 밑에 이미지(7,8번째 이미지) 넣기
+      //    여기 파일명만 바꿔서 넣으시면 됩니다.
+      introImages: ["문화락소개2.jpg","문화락소개3.jpg"],
+
+      historyImages: ["문화락소개19.jpg"],
+
+      worksImages: ["문화락소개9.jpg"] // 제작공연(포스터 모음) 같은 이미지
     }
-    function go(route){
-      const el = routeMap[route] || routeMap.now;
-      setActiveNav(route);
-      el.scrollIntoView({behavior:"smooth", block:"start"});
+  };
+
+  /********************
+   * 1) 저장/로드 (localStorage)
+   ********************/
+  const LS_KEY = "culturelock_site_v1";
+  function loadData(){
+    try{
+      const raw = localStorage.getItem(LS_KEY);
+      if(!raw) return structuredClone(DEFAULT);
+      const parsed = JSON.parse(raw);
+      return {
+        ...structuredClone(DEFAULT),
+        ...parsed,
+      };
+    }catch(e){
+      return structuredClone(DEFAULT);
     }
-    window.addEventListener("hashchange", ()=>{
-      const r = (location.hash || "#now").replace("#","");
-      go(r);
+  }
+  function saveData(data){
+    localStorage.setItem(LS_KEY, JSON.stringify(data));
+  }
+  function resetData(){
+    localStorage.removeItem(LS_KEY);
+    DATA = loadData();
+    renderAll();
+  }
+
+  let DATA = loadData();
+
+  /********************
+   * 2) 상단 메뉴 active 표시
+   ********************/
+  const menu = document.getElementById("menu");
+  function setActiveMenu(){
+    const hash = (location.hash || "#current").replace("#","");
+    [...menu.querySelectorAll("a")].forEach(a=>{
+      a.classList.toggle("active", a.dataset.link === hash);
     });
-    setTimeout(()=>go((location.hash||"#now").replace("#","")), 30);
+  }
+  window.addEventListener("hashchange", setActiveMenu);
+  setActiveMenu();
 
-    // 모달
-    const modalBackdrop = document.getElementById("modalBackdrop");
-    const closeModalBtn = document.getElementById("closeModal");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalSub = document.getElementById("modalSub");
-    const modalBody = document.getElementById("modalBody");
-    function openDetail(show){
-      modalTitle.textContent = show.title || "상세페이지";
-      modalSub.textContent = show.dateText || "";
-      modalBody.innerHTML = show.detailImage
-        ? `<img class="detail-img" src="${show.detailImage}" alt="${escapeHtml(show.title)} 상세">`
-        : `<p style="color:#444;line-height:1.7;">상세 이미지가 없습니다.</p>`;
-      modalBackdrop.style.display="flex";
-      modalBackdrop.setAttribute("aria-hidden","false");
-      document.body.style.overflow="hidden";
-    }
-    function closeDetail(){
-      modalBackdrop.style.display="none";
-      modalBackdrop.setAttribute("aria-hidden","true");
-      document.body.style.overflow="";
-    }
-    closeModalBtn.addEventListener("click", closeDetail);
-    modalBackdrop.addEventListener("click", (e)=>{ if(e.target===modalBackdrop) closeDetail(); });
+  /********************
+   * 3) Hero Slider
+   *    - 1~3장 반복
+   ********************/
+  const heroTrack = document.getElementById("heroTrack");
+  const heroDots  = document.getElementById("heroDots");
+  let heroIndex = 0;
+  let heroTimer = null;
 
-    // 슬라이드
-    const slidesEl = document.getElementById("slides");
-    const dotsEl = document.getElementById("dots");
-    let HERO = [];
-    let slideIndex = 0;
-    let slideTimer = null;
+  function renderHero(){
+    const slides = (DATA.hero || []).filter(Boolean);
+    const safeSlides = slides.length ? slides : ["slide1.jpg"];
+    heroTrack.innerHTML = safeSlides.map(src => `
+      <div class="hero-slide">
+        <img src="${src}" alt="메인 슬라이드">
+      </div>
+    `).join("");
 
-    function renderSlider(){
-      slidesEl.innerHTML = "";
-      dotsEl.innerHTML = "";
-      if(!HERO.length){
-        HERO = [{img:"/images/hero/slide1.jpg", title:"문화락", desc:""}];
-      }
-      HERO.forEach((s, idx)=>{
-        const div = document.createElement("div");
-        div.className = "slide";
-        div.innerHTML = `
-          <img src="${s.img}" alt="${escapeHtml(s.title)}">
-          <div class="slide-overlay">
-            <h1>${escapeHtml(s.title)}</h1>
-            <p>${escapeHtml(s.desc || "")}</p>
-          </div>
-        `;
-        slidesEl.appendChild(div);
+    heroDots.innerHTML = safeSlides.map((_, i)=>`
+      <span class="dot ${i===0?"active":""}"></span>
+    `).join("");
 
-        const dot = document.createElement("div");
-        dot.className = "dot" + (idx===0 ? " active":"");
-        dot.addEventListener("click", ()=>{ setSlide(idx); restartSlider(); });
-        dotsEl.appendChild(dot);
+    heroIndex = 0;
+    moveHero(0);
+
+    if(heroTimer) clearInterval(heroTimer);
+    heroTimer = setInterval(()=>{
+      heroIndex = (heroIndex + 1) % safeSlides.length;
+      moveHero(heroIndex);
+    }, 5500); // 천천히
+  }
+
+  function moveHero(idx){
+    heroTrack.style.transform = `translateX(-${idx*100}%)`;
+    [...heroDots.querySelectorAll(".dot")].forEach((d,i)=>{
+      d.classList.toggle("active", i===idx);
+    });
+  }
+
+  /********************
+   * 4) 공연 카드 렌더링 (현재/이전)
+   ********************/
+  const currentGrid = document.getElementById("currentGrid");
+  const pastGrid = document.getElementById("pastGrid");
+
+  function showCardHTML(item){
+    return `
+      <div class="card">
+        <div class="poster" data-detail="${item.detail || ""}" data-title="${escapeHtml(item.title || "")}">
+          <img src="${item.poster || ""}" alt="${escapeHtml(item.title || "공연 포스터")}">
+        </div>
+        <div class="meta">
+          <p class="show-title">${escapeHtml(item.title || "")}</p>
+          <p class="show-date">${escapeHtml(item.dateText || "")}</p>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderShows(){
+    currentGrid.innerHTML = (DATA.currentShows || []).map(showCardHTML).join("");
+    pastGrid.innerHTML    = (DATA.pastShows || []).map(showCardHTML).join("");
+
+    // 클릭 → 모달
+    document.querySelectorAll(".poster").forEach(el=>{
+      el.addEventListener("click", ()=>{
+        const detail = el.dataset.detail;
+        const title  = el.dataset.title || "상세보기";
+        if(!detail){
+          alert("상세 이미지(detail)가 아직 없습니다. 관리자에서 detail 파일명을 넣어주세요.");
+          return;
+        }
+        openModal(title, detail);
       });
-      setSlide(0);
-      restartSlider();
-    }
-    function setSlide(i){
-      slideIndex = (i + HERO.length) % HERO.length;
-      slidesEl.style.transform = `translateX(-${slideIndex * 100}%)`;
-      [...dotsEl.children].forEach((d,idx)=> d.classList.toggle("active", idx===slideIndex));
-    }
-    function restartSlider(){
-      if(slideTimer) clearInterval(slideTimer);
-      slideTimer = setInterval(()=> setSlide(slideIndex+1), 3800);
-    }
+    });
+  }
 
-    // 공연 카드
-    const nowGrid = document.getElementById("nowGrid");
-    const pastGrid = document.getElementById("pastGrid");
-    function makeShowCard(show){
-      const card = document.createElement("div");
-      card.className = "card";
-      card.innerHTML = `
-        <div class="poster"><img src="${show.poster}" alt="${escapeHtml(show.title)} 포스터"></div>
-        <div class="card-body">
-          <p class="title-bold">${escapeHtml(show.title)}</p>
-          <p class="date-regular">${escapeHtml(show.dateText || "")}</p>
+  /********************
+   * 5) 모달
+   ********************/
+  const modalBackdrop = document.getElementById("modalBackdrop");
+  const modalClose = document.getElementById("modalClose");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalImg   = document.getElementById("modalImg");
+
+  function openModal(title, imgSrc){
+    modalTitle.textContent = title;
+    modalImg.src = imgSrc;
+    modalBackdrop.classList.add("open");
+  }
+  function closeModal(){
+    modalBackdrop.classList.remove("open");
+    modalImg.src = "";
+  }
+  modalClose.addEventListener("click", closeModal);
+  modalBackdrop.addEventListener("click", (e)=>{
+    if(e.target === modalBackdrop) closeModal();
+  });
+  window.addEventListener("keydown", (e)=>{
+    if(e.key === "Escape") closeModal();
+  });
+
+  /********************
+   * 6) 공연단체소개 탭
+   ********************/
+  const aboutPanel = document.getElementById("aboutPanel");
+  const tabs = [...document.querySelectorAll(".tab")];
+
+  function renderAbout(tabKey){
+    const A = DATA.about || DEFAULT.about;
+
+    if(tabKey === "intro"){
+      aboutPanel.innerHTML = `
+        <p class="about-text">${escapeHtml(A.introText).replaceAll("\n","<br>")}</p>
+        <div class="about-images">
+          ${(A.introImages||[]).map(src=>`<img src="${src}" alt="문화락 소개 이미지">`).join("")}
         </div>
       `;
-      card.addEventListener("click", ()=> openDetail(show));
-      return card;
-    }
-    function renderShows(SHOWS){
-      nowGrid.innerHTML = "";
-      pastGrid.innerHTML = "";
-      (SHOWS.now || []).forEach(s => nowGrid.appendChild(makeShowCard(s)));
-      (SHOWS.past || []).forEach(s => pastGrid.appendChild(makeShowCard(s)));
+      return;
     }
 
-    // 공연단체소개(탭)
-    const tabs = document.querySelectorAll(".tab");
-    const tabContent = document.getElementById("tabContent");
-    let SITE = null;
+    if(tabKey === "history"){
+      aboutPanel.innerHTML = `
+        <p class="about-text"><b>문화락 연혁/실적</b> (이미지로 표시)</p>
+        <div class="about-images">
+          ${(A.historyImages||[]).map(src=>`<img src="${src}" alt="문화락 실적 이미지">`).join("")}
+        </div>
+      `;
+      return;
+    }
 
-    function renderTab(key){
-      tabs.forEach(t=> t.classList.toggle("active", t.dataset.tab===key));
-      if(!SITE){ tabContent.innerHTML=""; return; }
+    // works
+    aboutPanel.innerHTML = `
+      <p class="about-text"><b>문화락 제작 공연</b> (이미지로 표시)</p>
+      <div class="about-images">
+        ${(A.worksImages||[]).map(src=>`<img src="${src}" alt="문화락 제작공연 이미지">`).join("")}
+      </div>
+    `;
+  }
 
-      if(key==="intro"){
-        tabContent.innerHTML = `
-          <p><b>(주)문화락 소개</b></p>
-          <p>${escapeHtml(SITE.aboutIntroText || "")}</p>
-          <div class="two-img">
-            ${SITE.aboutImg1 ? `<img src="${SITE.aboutImg1}" alt="소개 이미지 1">` : ""}
-            ${SITE.aboutImg2 ? `<img src="${SITE.aboutImg2}" alt="소개 이미지 2">` : ""}
+  tabs.forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      tabs.forEach(b=>b.classList.remove("active"));
+      btn.classList.add("active");
+      renderAbout(btn.dataset.tab);
+    });
+  });
+
+  /********************
+   * 7) 대관 달력
+   ********************/
+  const calDows = document.getElementById("calDows");
+  const calDays = document.getElementById("calDays");
+  const monthLabel = document.getElementById("monthLabel");
+  const prevMonth = document.getElementById("prevMonth");
+  const nextMonth = document.getElementById("nextMonth");
+
+  const DOWS = ["일","월","화","수","목","금","토"];
+  calDows.innerHTML = DOWS.map(d=>`<div class="dow">${d}</div>`).join("");
+
+  let viewDate = new Date(); // 현재 달
+  viewDate.setDate(1);
+
+  function ymd(d){
+    const y = d.getFullYear();
+    const m = String(d.getMonth()+1).padStart(2,"0");
+    const day = String(d.getDate()).padStart(2,"0");
+    return `${y}-${m}-${day}`;
+  }
+  function renderCalendar(){
+    const y = viewDate.getFullYear();
+    const m = viewDate.getMonth();
+    monthLabel.textContent = `${y}.${String(m+1).padStart(2,"0")}`;
+
+    const first = new Date(y,m,1);
+    const last  = new Date(y,m+1,0);
+    const startDow = first.getDay();
+    const totalDays = last.getDate();
+
+    // rental map by date
+    const rentalList = DATA.rental || [];
+    const map = new Map();
+    rentalList.forEach(r=>{
+      if(!r?.date) return;
+      const arr = map.get(r.date) || [];
+      arr.push(r);
+      map.set(r.date, arr);
+    });
+
+    const cells = [];
+    // empty before
+    for(let i=0;i<startDow;i++){
+      cells.push(`<div class="day" style="background:#fcfcfc;"></div>`);
+    }
+    // days
+    for(let d=1; d<=totalDays; d++){
+      const dt = new Date(y,m,d);
+      const key = ymd(dt);
+      const evs = map.get(key) || [];
+      const evHtml = evs.slice(0,4).map(ev=>{
+        const is1 = Number(ev.hall) === 1;
+        const badge = is1 ? "①" : "②";
+        const cls = is1 ? "b1" : "b2";
+        return `
+          <div class="ev" title="${escapeHtml(ev.title||"")}">
+            <span class="badge ${cls}">${badge}</span>
+            <span class="t">${escapeHtml(ev.title||"")}</span>
           </div>
         `;
-      }
-      if(key==="history"){
-        tabContent.innerHTML = `
-          <p><b>실적</b></p>
-          ${SITE.aboutHistoryImg ? `<img class="detail-img" src="${SITE.aboutHistoryImg}" alt="주요실적">` : "<p>실적 이미지가 없습니다.</p>"}
-        `;
-      }
-      if(key==="works"){
-        const imgs = (SITE.aboutWorksImgs || []).map(src=>`<img src="${src}" alt="제작공연">`).join("");
-        tabContent.innerHTML = `
-          <p><b>문화락 제작 공연</b></p>
-          <div class="gallery">${imgs || "<p>이미지가 없습니다.</p>"}</div>
-        `;
-      }
+      }).join("");
+
+      cells.push(`
+        <div class="day">
+          <span class="n">${d}</span>
+          <div class="events">${evHtml}</div>
+        </div>
+      `);
     }
-    tabs.forEach(t=> t.addEventListener("click", ()=> renderTab(t.dataset.tab)));
-
-    // 달력
-    const dowRow = document.getElementById("dowRow");
-    const calGrid = document.getElementById("calGrid");
-    const monthLabel = document.getElementById("monthLabel");
-    const DOW = ["일","월","화","수","목","금","토"];
-    dowRow.innerHTML = DOW.map(d=> `<div class="dow">${d}</div>`).join("");
-
-    let viewYear = today.getFullYear();
-    let viewMonth = today.getMonth();
-
-    document.getElementById("prevMonth").addEventListener("click", ()=>{
-      viewMonth--; if(viewMonth<0){viewMonth=11; viewYear--;}
-      renderCalendar();
-    });
-    document.getElementById("nextMonth").addEventListener("click", ()=>{
-      viewMonth++; if(viewMonth>11){viewMonth=0; viewYear++;}
-      renderCalendar();
-    });
-
-    let RENTS = {items:[]};
-
-    function renderCalendar(){
-      const ym = `${viewYear}.${String(viewMonth+1).padStart(2,"0")}`;
-      monthLabel.textContent = ym;
-
-      const first = new Date(viewYear, viewMonth, 1);
-      const last = new Date(viewYear, viewMonth+1, 0);
-      const startDow = first.getDay();
-      const daysInMonth = last.getDate();
-
-      calGrid.innerHTML = "";
-
-      for(let i=0;i<startDow;i++){
-        const c = document.createElement("div");
-        c.className = "cell";
-        c.innerHTML = `<div class="daynum"></div>`;
-        calGrid.appendChild(c);
-      }
-
-      for(let d=1; d<=daysInMonth; d++){
-        const dateStr = `${viewYear}-${String(viewMonth+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
-        const dayRents = (RENTS.items || []).filter(r=> r.date === dateStr);
-
-        const cell = document.createElement("div");
-        cell.className = "cell";
-        cell.innerHTML = `
-          <div class="daynum">${d}</div>
-          <div class="badges">
-            ${dayRents.map(r=>`
-              <div class="badge" title="${escapeHtml(r.title)}">
-                <span class="hall ${Number(r.hall)===1 ? "hall1":"hall2"}">${Number(r.hall)===1 ? "1":"2"}</span>
-                <span class="txt">${escapeHtml(r.title)}</span>
-              </div>
-            `).join("")}
-          </div>
-        `;
-        calGrid.appendChild(cell);
-      }
-
-      const totalCells = startDow + daysInMonth;
-      const remain = (7 - (totalCells % 7)) % 7;
-      for(let i=0;i<remain;i++){
-        const c = document.createElement("div");
-        c.className = "cell";
-        c.innerHTML = `<div class="daynum"></div>`;
-        calGrid.appendChild(c);
-      }
+    // fill trailing to complete rows (optional)
+    const totalCells = startDow + totalDays;
+    const extra = (7 - (totalCells % 7)) % 7;
+    for(let i=0;i<extra;i++){
+      cells.push(`<div class="day" style="background:#fcfcfc;"></div>`);
     }
 
-    // 데이터 불러오기 (Netlify CMS가 GitHub에 저장한 JSON)
-    async function loadJSON(url){
-      const res = await fetch(url + "?v=" + Date.now(), {cache:"no-store"});
-      if(!res.ok) throw new Error("JSON 로드 실패: " + url);
-      return res.json();
+    calDays.innerHTML = cells.join("");
+  }
+
+  prevMonth.addEventListener("click", ()=>{
+    viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth()-1, 1);
+    renderCalendar();
+  });
+  nextMonth.addEventListener("click", ()=>{
+    viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth()+1, 1);
+    renderCalendar();
+  });
+
+  /********************
+   * 8) 관리자(로컬 비번)
+   ********************/
+  const ADMIN_PASS = "1600-1602"; // ✅ 원하시면 바꾸세요
+  const adminEnter = document.getElementById("adminEnter");
+  const adminPass  = document.getElementById("adminPass");
+  const adminLogin = document.getElementById("adminLogin");
+  const adminPanel = document.getElementById("adminPanel");
+
+  const adminCurrent = document.getElementById("adminCurrent");
+  const adminPast    = document.getElementById("adminPast");
+  const adminRental  = document.getElementById("adminRental");
+
+  const saveAll = document.getElementById("saveAll");
+  const resetAllBtn = document.getElementById("resetAll");
+  const logoutBtn = document.getElementById("logout");
+
+  function openAdmin(){
+    adminLogin.style.display = "none";
+    adminPanel.style.display = "block";
+
+    adminCurrent.value = JSON.stringify(DATA.currentShows || [], null, 2);
+    adminPast.value    = JSON.stringify(DATA.pastShows || [], null, 2);
+    adminRental.value  = JSON.stringify(DATA.rental || [], null, 2);
+  }
+
+  adminEnter.addEventListener("click", ()=>{
+    if((adminPass.value || "").trim() === ADMIN_PASS){
+      openAdmin();
+    }else{
+      alert("비밀번호가 틀렸습니다.");
     }
+  });
 
-    async function init(){
-      try{
-        SITE = await loadJSON("/data/site.json");
-        document.getElementById("headerTitle").childNodes[0].textContent = SITE.headerTitle || "인증사회적기업(주)문화락";
-        document.getElementById("headerSubtitle").textContent = SITE.headerSubtitle || "공연 · 교육 · 문화예술 플랫폼";
-
-        const logoEl = document.getElementById("logoEl");
-        if(SITE.logo){ logoEl.src = SITE.logo; }
-
-        HERO = SITE.hero || [];
-        renderSlider();
-        renderTab("intro");
-
-        const SHOWS = await loadJSON("/data/shows.json");
-        renderShows(SHOWS);
-
-        RENTS = await loadJSON("/data/rents.json");
-        renderCalendar();
-      }catch(e){
-        console.error(e);
-        // 최소 화면은 뜨게
-        renderSlider();
-        renderCalendar();
-      }
+  saveAll.addEventListener("click", ()=>{
+    try{
+      const next = structuredClone(DATA);
+      next.currentShows = JSON.parse(adminCurrent.value || "[]");
+      next.pastShows    = JSON.parse(adminPast.value || "[]");
+      next.rental       = JSON.parse(adminRental.value || "[]");
+      DATA = next;
+      saveData(DATA);
+      renderAll();
+      alert("저장되었습니다. (이 브라우저에 저장됨)");
+    }catch(e){
+      alert("JSON 형식이 잘못되었습니다. 쉼표/괄호를 확인해주세요.");
     }
+  });
 
-    function escapeHtml(str){
-      return String(str ?? "").replace(/[&<>"']/g, (m)=>({
-        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
-      }[m]));
+  resetAllBtn.addEventListener("click", ()=>{
+    if(confirm("기본값으로 되돌릴까요?")){
+      resetData();
+      alert("기본값으로 되돌렸습니다.");
+      adminPanel.style.display = "none";
+      adminLogin.style.display = "flex";
+      adminPass.value = "";
     }
+  });
 
-    init();
-  </script>
+  logoutBtn.addEventListener("click", ()=>{
+    adminPanel.style.display = "none";
+    adminLogin.style.display = "flex";
+    adminPass.value = "";
+  });
+
+  /********************
+   * 9) 전체 렌더
+   ********************/
+  function renderAll(){
+    setActiveMenu();
+    renderHero();
+    renderShows();
+    renderAbout("intro");
+    renderCalendar();
+  }
+
+  /********************
+   * Utils
+   ********************/
+  function escapeHtml(str){
+    return String(str ?? "")
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
+
+  renderAll();
+</script>
+
 </body>
 </html>
