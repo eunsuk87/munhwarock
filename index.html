@@ -11,23 +11,17 @@
       --gray-2:#333;
       --gray-3:#666;
       --line:#e8e8e8;
-      --footer-bg: #efe6d9; /* 요청: M15,Y10 느낌 */
-      --max: 1200px;
-      --shadow: 0 10px 30px rgba(0,0,0,.12);
-      --radius: 14px;
+      --footer-bg:#efe6d9;
+      --max:1200px;
+      --shadow:0 10px 30px rgba(0,0,0,.12);
+      --radius:14px;
       --badge1:#d81b60;
       --badge2:#039be5;
-
-      /* 글씨 포인트 조정 */
-      --topTitleSize: 18px; /* 인증사회적기업(주)문화락 크기 */
-      --sectionTitleSize: 18px; /* 요청: 슬라이드 아래 섹션 제목을 타이틀 크기로 */
-      --posterTitleSize: 16px;  /* 요청: 포스터 밑 글씨 2pt 작게 */
-      --posterDateSize: 14px;
     }
 
     body{
       margin:0;
-      font-family: "Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      font-family:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       color:var(--gray-1);
       background:#fff;
     }
@@ -36,6 +30,7 @@
     button{ font-family:inherit; }
     .wrap{ width:min(var(--max), calc(100% - 32px)); margin:0 auto; }
 
+    /* ===== Header ===== */
     header{
       position:sticky;
       top:0;
@@ -46,7 +41,7 @@
     }
     .topbar{
       display:grid;
-      grid-template-columns: 220px 1fr 220px;
+      grid-template-columns:220px 1fr 220px;
       align-items:center;
       gap:12px;
       padding:10px 0;
@@ -62,11 +57,12 @@
       width:auto;
       object-fit:contain;
     }
+    /* 요청: 타이틀 크기 유지 */
     .brand-title{
       text-align:center;
       font-weight:800;
       letter-spacing:-.02em;
-      font-size:var(--topTitleSize); /* 유지 */
+      font-size:18px;
     }
     .brand-right{
       display:flex;
@@ -77,6 +73,7 @@
     }
 
     nav{ border-top:1px solid var(--line); }
+    /* 메뉴 크기 유지 */
     .menu{
       display:flex;
       gap:22px;
@@ -88,7 +85,7 @@
     .menu a{
       font-weight:700;
       color:var(--k100);
-      font-size:15px; /* 유지 */
+      font-size:15px;
       letter-spacing:-.02em;
       padding:6px 2px;
     }
@@ -98,16 +95,20 @@
       text-decoration-thickness: 2px;
     }
 
-    .section{ padding:34px 0 22px; }
+    /* ===== Sections ===== */
+    .section{ padding:38px 0 26px; }
+
+    /* 요청: 슬라이드 아래 섹션 제목들을 '타이틀(18px)' 크기로 */
     .section-title{
-      font-size:var(--sectionTitleSize); /* 요청 반영 */
-      font-weight:800;
+      font-size:18px;      /* <- 기존 30px에서 변경 */
+      font-weight:900;
       letter-spacing:-.02em;
       margin:0 0 14px;
     }
+
     .muted{ color:var(--gray-3); }
 
-    /* Hero */
+    /* ===== Hero ===== */
     .hero{
       position:relative;
       width:100%;
@@ -120,10 +121,10 @@
       inset:0;
       display:flex;
       height:100%;
-      will-change: transform;
-      transition: transform 1200ms ease-in-out;
+      will-change:transform;
+      transition:transform 1200ms ease-in-out;
     }
-    .hero-slide{ min-width:100%; height:100%; position:relative; }
+    .hero-slide{ min-width:100%; height:100%; }
     .hero-slide img{
       width:100%;
       height:100%;
@@ -153,28 +154,28 @@
     }
     .dot.active{ background:#fff; }
 
-    /* Cards */
+    /* ===== Grid / Cards ===== */
     .grid{
       display:grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns:repeat(2, minmax(0,1fr));
       gap:22px;
     }
     @media (max-width: 860px){
-      .topbar{ grid-template-columns: 140px 1fr 80px; }
+      .topbar{ grid-template-columns:140px 1fr 80px; }
       .brand-title{ font-size:16px; }
-      .grid{ grid-template-columns: 1fr; }
+      .grid{ grid-template-columns:1fr; }
     }
 
     .card{
       border:1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius:var(--radius);
       overflow:hidden;
       background:#fff;
-      box-shadow: 0 1px 0 rgba(0,0,0,.03);
+      box-shadow:0 1px 0 rgba(0,0,0,.03);
     }
     .poster{
       width:100%;
-      aspect-ratio: 16 / 9;
+      aspect-ratio:16/9;
       background:#f6f6f6;
       overflow:hidden;
       cursor:pointer;
@@ -183,27 +184,29 @@
       width:100%;
       height:100%;
       object-fit:cover;
-      transform: scale(1.01);
-      transition: transform .35s ease;
+      transform:scale(1.01);
+      transition:transform .35s ease;
     }
-    .poster:hover img{ transform: scale(1.06); }
+    .poster:hover img{ transform:scale(1.06); }
 
     .meta{ padding:12px 14px 14px; }
+
+    /* 요청: 포스터 아래 글씨 2pt 작게 */
     .show-title{
       font-weight:800;
-      font-size:var(--posterTitleSize); /* 요청: 2pt 작게 */
+      font-size:16px;   /* <- 기존 18px에서 -2 */
       letter-spacing:-.02em;
       margin:0 0 6px;
     }
     .show-date{
       font-weight:400;
-      font-size:var(--posterDateSize);
       color:var(--gray-2);
       margin:0;
       line-height:1.5;
+      font-size:13px;   /* 기존 기본보다 약간 작게 */
     }
 
-    /* Social */
+    /* ===== Social row ===== */
     .social-row{
       margin-top:18px;
       display:flex;
@@ -219,12 +222,12 @@
       background:#fff;
       padding:10px 14px;
       border-radius:999px;
-      box-shadow: 0 6px 20px rgba(0,0,0,.06);
+      box-shadow:0 6px 20px rgba(0,0,0,.06);
       font-weight:800;
     }
     .icon-btn img{ width:22px; height:22px; object-fit:contain; }
 
-    /* Modal */
+    /* ===== Modal ===== */
     .modal-backdrop{
       position:fixed;
       inset:0;
@@ -238,11 +241,11 @@
     .modal-backdrop.open{ display:flex; }
     .modal{
       width:min(980px, 100%);
-      max-height: 92vh;
+      max-height:92vh;
       overflow:auto;
       background:#fff;
-      border-radius: 16px;
-      box-shadow: var(--shadow);
+      border-radius:16px;
+      box-shadow:var(--shadow);
       position:relative;
     }
     .modal-header{
@@ -274,7 +277,7 @@
       border:1px solid var(--line);
     }
 
-    /* Tabs */
+    /* ===== Tabs ===== */
     .tabs{
       display:flex;
       justify-content:center;
@@ -296,7 +299,7 @@
     }
     .about-panel{
       border:1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius:var(--radius);
       padding:18px;
       background:#fff;
     }
@@ -308,12 +311,12 @@
     }
     .about-images{
       display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
+      grid-template-columns:repeat(2, minmax(0,1fr));
       gap:14px;
       margin-top:14px;
     }
     @media (max-width: 860px){
-      .about-images{ grid-template-columns: 1fr; }
+      .about-images{ grid-template-columns:1fr; }
     }
     .about-images img{
       width:100%;
@@ -321,43 +324,10 @@
       border:1px solid var(--line);
     }
 
-    /* Gaon Art Hall */
-    .gaon-wrap{
-      border:1px solid var(--line);
-      border-radius: var(--radius);
-      background:#fff;
-      padding:18px;
-    }
-    .gaon-subtitle{
-      font-weight:900;
-      letter-spacing:-.02em;
-      margin:0 0 10px;
-      font-size:16px;
-    }
-    .gaon-desc{
-      margin:0 0 14px;
-      color:#333;
-      line-height:1.7;
-      font-size:14px;
-    }
-    .gaon-grid{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap:14px;
-    }
-    @media (max-width: 860px){
-      .gaon-grid{ grid-template-columns: 1fr; }
-    }
-    .gaon-grid img{
-      width:100%;
-      border-radius:12px;
-      border:1px solid var(--line);
-    }
-
-    /* Calendar */
+    /* ===== Calendar ===== */
     .cal-wrap{
       border:1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius:var(--radius);
       overflow:hidden;
       background:#fff;
     }
@@ -377,7 +347,7 @@
       cursor:pointer;
       font-weight:800;
     }
-    .cal-grid{ display:grid; grid-template-columns: repeat(7, minmax(0,1fr)); }
+    .cal-grid{ display:grid; grid-template-columns:repeat(7, minmax(0,1fr)); }
     .dow{
       background:#fafafa;
       padding:10px 8px;
@@ -431,10 +401,10 @@
       white-space:nowrap;
     }
 
-    /* Admin */
+    /* ===== Admin ===== */
     .admin-box{
       border:1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius:var(--radius);
       padding:18px;
       background:#fff;
     }
@@ -470,7 +440,7 @@
       border:1px solid var(--line);
       border-radius:10px;
       padding:10px 12px;
-      min-width:180px;
+      min-width:200px;
     }
     .admin-tools button{
       border:1px solid var(--line);
@@ -486,12 +456,12 @@
     }
     .admin-grid{
       display:grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns:1fr 1fr;
       gap:14px;
       margin-top:14px;
     }
     @media (max-width: 860px){
-      .admin-grid{ grid-template-columns: 1fr; }
+      .admin-grid{ grid-template-columns:1fr; }
     }
     textarea{
       width:100%;
@@ -500,7 +470,7 @@
       border:1px solid var(--line);
       border-radius:12px;
       padding:12px;
-      font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
       font-size:12px;
       line-height:1.5;
     }
@@ -531,9 +501,10 @@
       margin:8px 0 0;
     }
 
+    /* ===== Footer ===== */
     footer{
       margin-top:46px;
-      background: var(--footer-bg);
+      background:var(--footer-bg);
       border-top:1px solid rgba(0,0,0,.08);
       padding:22px 0;
     }
@@ -548,9 +519,9 @@
     }
     .b{ font-weight:900; }
     .r{ font-weight:400; }
-    .footer-lines a{ text-decoration: underline; text-underline-offset: 3px; }
+    .footer-lines a{ text-decoration:underline; text-underline-offset:3px; }
 
-    .anchor { scroll-margin-top: 120px; }
+    .anchor{ scroll-margin-top:120px; }
   </style>
 </head>
 
@@ -625,35 +596,18 @@
     </div>
   </section>
 
-  <!-- ✅ 가온아트홀 섹션 추가 -->
+  <!-- ✅ 신규: 가온아트홀 -->
   <section class="section anchor" id="gaon">
     <div class="wrap">
       <h2 class="section-title">가온아트홀</h2>
 
-      <div class="gaon-wrap">
-        <h3 class="gaon-subtitle">가온아트홀 1관</h3>
-        <p class="gaon-desc">가온소극장 1관 170석</p>
-        <div class="gaon-grid">
-          <img src="images/gaon/가온소극장1관170석.jpg" alt="가온아트홀 1관 170석" />
-        </div>
-
-        <div style="height:18px;"></div>
-
-        <h3 class="gaon-subtitle">가온아트홀 2관</h3>
-        <p class="gaon-desc">가온소극장 2관 100석</p>
-        <div class="gaon-grid">
-          <img src="images/gaon/가온소극장2관100석.jpg" alt="가온아트홀 2관 100석" />
-        </div>
-
-        <div style="height:18px;"></div>
-
-        <h3 class="gaon-subtitle">로비</h3>
-        <p class="gaon-desc">가온로비</p>
-        <div class="gaon-grid">
-          <img src="images/gaon/가온로비1.jpg" alt="가온로비 1" />
-          <img src="images/gaon/가온로비2.jpg" alt="가온로비 2" />
-        </div>
+      <div class="tabs" role="tablist" aria-label="가온아트홀 탭">
+        <button class="tab active" data-gaon="hall1" type="button">가온아트홀 1관</button>
+        <button class="tab" data-gaon="hall2" type="button">가온아트홀 2관</button>
+        <button class="tab" data-gaon="lobby" type="button">로비</button>
       </div>
+
+      <div class="about-panel" id="gaonPanel"></div>
     </div>
   </section>
 
@@ -719,7 +673,7 @@
 
           <p class="hint">
             ✅ JSON 예시(공연): {"title":"공연명","dateText":"2026.1.24~4.26","poster":"images/posters/current/current_01.jpg","detail":"images/details/리온마술-상세.jpg"}<br/>
-            ✅ JSON 예시(대관): {"date":"2026-01-24","hall":1,"title":"리온의 신비한 과자상점"}
+            ✅ JSON 예시(대관): {"date":"2026-01-24","hall":1,"title":"리온의 신비한 과자상점"} (hall: 1이면 ① / 2이면 ②)
           </p>
         </div>
       </div>
@@ -770,7 +724,7 @@
     hero: [
       "images/slides/slide1.jpg",
       "images/slides/slide2.jpg",
-      "images/slides/slide3.jpg",
+      "images/slides/slide3.jpg"
     ],
     currentShows: [
       {"title":"연극 황소와 도깨비","dateText":"2025.12.21 ~ 2026.01.31","poster":"images/posters/current/current_01.jpg","detail":"images/details/황소와도깨비-상세.jpg"},
@@ -781,10 +735,10 @@
       {"title":"조항조 콘서트","dateText":"2025.05.17","poster":"images/posters/past/past_02.jpg","detail":"images/details/조항조부산-상세페이지2탄.jpg"},
       {"title":"2025 Jazz Christmas","dateText":"2025.12.05","poster":"images/posters/past/past_03.jpg","detail":"images/details/25년상세최종.jpg"}
     ],
-    /* ✅ 요청 반영: 1/3, 1/10 삭제 → 1/24만 등록 */
+    /* ✅ 요청 반영: 1/3, 1/10 삭제 + 1/24 추가 */
     rental: [
       {"date":"2026-01-24","hall":1,"title":"리온의 신비한 과자상점"},
-      {"date":"2026-01-24","hall":2,"title":"공연장정기정검"}
+      {"date":"2026-01-24","hall":2,"title":"공연장 정기점검"}
     ],
     about: {
       introText:
@@ -794,6 +748,12 @@
       introImages: ["images/about/문화락소개2.jpg","images/about/문화락소개3.jpg"],
       historyImages: ["images/about/문화락소개19.jpg"],
       worksImages: ["images/about/문화락소개9.jpg"]
+    },
+    /* ✅ 신규: 가온아트홀 이미지(파일명만 맞춰 업로드) */
+    gaon: {
+      hall1Images: ["images/about/가온소극장1관170석.jpg"],
+      hall2Images: ["images/about/가온소극장2관100석.jpg"],
+      lobbyImages: ["images/about/가온로비1.jpg","images/about/가온로비2.jpg"]
     }
   };
 
@@ -824,6 +784,7 @@
 
   let DATA = loadData();
 
+  /* 메뉴 active */
   const menu = document.getElementById("menu");
   function setActiveMenu(){
     const hash = (location.hash || "#current").replace("#","");
@@ -863,10 +824,12 @@
   }
   function moveHero(idx){
     heroTrack.style.transform = `translateX(-${idx*100}%)`;
-    [...heroDots.querySelectorAll(".dot")].forEach((d,i)=> d.classList.toggle("active", i===idx));
+    [...heroDots.querySelectorAll(".dot")].forEach((d,i)=>{
+      d.classList.toggle("active", i===idx);
+    });
   }
 
-  /* Shows */
+  /* 공연 카드 */
   const currentGrid = document.getElementById("currentGrid");
   const pastGrid = document.getElementById("pastGrid");
 
@@ -900,12 +863,11 @@
     });
   }
 
-  /* Modal */
+  /* 모달 */
   const modalBackdrop = document.getElementById("modalBackdrop");
   const modalClose = document.getElementById("modalClose");
   const modalTitle = document.getElementById("modalTitle");
   const modalImg   = document.getElementById("modalImg");
-
   function openModal(title, imgSrc){
     modalTitle.textContent = title;
     modalImg.src = imgSrc;
@@ -919,10 +881,9 @@
   modalBackdrop.addEventListener("click", (e)=>{ if(e.target === modalBackdrop) closeModal(); });
   window.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeModal(); });
 
-  /* About tabs */
+  /* 공연단체소개 탭 */
   const aboutPanel = document.getElementById("aboutPanel");
-  const tabs = [...document.querySelectorAll(".tab")];
-
+  const tabs = [...document.querySelectorAll('#about .tab')];
   function renderAbout(tabKey){
     const A = DATA.about || DEFAULT.about;
 
@@ -937,7 +898,7 @@
     }
     if(tabKey === "history"){
       aboutPanel.innerHTML = `
-        <p class="about-text"><b>문화락 연혁/실적</b> (이미지로 표시)</p>
+        <p class="about-text"><b>문화락 연혁/실적</b></p>
         <div class="about-images">
           ${(A.historyImages||[]).map(src=>`<img src="${src}" alt="문화락 실적 이미지">`).join("")}
         </div>
@@ -945,7 +906,7 @@
       return;
     }
     aboutPanel.innerHTML = `
-      <p class="about-text"><b>문화락 제작 공연</b> (이미지로 표시)</p>
+      <p class="about-text"><b>문화락 제작 공연</b></p>
       <div class="about-images">
         ${(A.worksImages||[]).map(src=>`<img src="${src}" alt="문화락 제작공연 이미지">`).join("")}
       </div>
@@ -959,16 +920,52 @@
     });
   });
 
-  /* Calendar */
+  /* ✅ 가온아트홀 탭 */
+  const gaonPanel = document.getElementById("gaonPanel");
+  const gaonTabs = [...document.querySelectorAll('#gaon .tab')];
+  function renderGaon(key){
+    const G = DATA.gaon || DEFAULT.gaon;
+    if(key === "hall1"){
+      gaonPanel.innerHTML = `
+        <p class="about-text"><b>가온아트홀 1관</b> (170석)</p>
+        <div class="about-images">
+          ${(G.hall1Images||[]).map(src=>`<img src="${src}" alt="가온아트홀 1관">`).join("")}
+        </div>
+      `;
+      return;
+    }
+    if(key === "hall2"){
+      gaonPanel.innerHTML = `
+        <p class="about-text"><b>가온아트홀 2관</b> (100석)</p>
+        <div class="about-images">
+          ${(G.hall2Images||[]).map(src=>`<img src="${src}" alt="가온아트홀 2관">`).join("")}
+        </div>
+      `;
+      return;
+    }
+    gaonPanel.innerHTML = `
+      <p class="about-text"><b>로비</b></p>
+      <div class="about-images">
+        ${(G.lobbyImages||[]).map(src=>`<img src="${src}" alt="가온아트홀 로비">`).join("")}
+      </div>
+    `;
+  }
+  gaonTabs.forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      gaonTabs.forEach(b=>b.classList.remove("active"));
+      btn.classList.add("active");
+      renderGaon(btn.dataset.gaon);
+    });
+  });
+
+  /* 달력 */
   const calDows = document.getElementById("calDows");
   const calDays = document.getElementById("calDays");
   const monthLabel = document.getElementById("monthLabel");
   const prevMonth = document.getElementById("prevMonth");
   const nextMonth = document.getElementById("nextMonth");
-
   const DOWS = ["일","월","화","수","목","금","토"];
   calDows.innerHTML = DOWS.map(d=>`<div class="dow">${d}</div>`).join("");
-
   let viewDate = new Date();
   viewDate.setDate(1);
 
@@ -978,7 +975,6 @@
     const day = String(d.getDate()).padStart(2,"0");
     return `${y}-${m}-${day}`;
   }
-
   function renderCalendar(){
     const y = viewDate.getFullYear();
     const m = viewDate.getMonth();
@@ -1032,10 +1028,8 @@
     for(let i=0;i<extra;i++){
       cells.push(`<div class="day" style="background:#fcfcfc;"></div>`);
     }
-
     calDays.innerHTML = cells.join("");
   }
-
   prevMonth.addEventListener("click", ()=>{
     viewDate = new Date(viewDate.getFullYear(), viewDate.getMonth()-1, 1);
     renderCalendar();
@@ -1045,22 +1039,19 @@
     renderCalendar();
   });
 
-  /* Admin */
+  /* 관리자 */
   const adminEnter = document.getElementById("adminEnter");
   const adminPass  = document.getElementById("adminPass");
   const adminLogin = document.getElementById("adminLogin");
   const adminPanel = document.getElementById("adminPanel");
-
   const adminTools = document.getElementById("adminTools");
   const newPass = document.getElementById("newPass");
   const newPass2 = document.getElementById("newPass2");
   const changePassBtn = document.getElementById("changePass");
   const resetPassBtn = document.getElementById("resetPass");
-
   const adminCurrent = document.getElementById("adminCurrent");
   const adminPast    = document.getElementById("adminPast");
   const adminRental  = document.getElementById("adminRental");
-
   const saveAll = document.getElementById("saveAll");
   const resetAllBtn = document.getElementById("resetAll");
   const logoutBtn = document.getElementById("logout");
@@ -1069,7 +1060,6 @@
     adminLogin.style.display = "none";
     adminTools.style.display = "flex";
     adminPanel.style.display = "block";
-
     adminCurrent.value = JSON.stringify(DATA.currentShows || [], null, 2);
     adminPast.value    = JSON.stringify(DATA.pastShows || [], null, 2);
     adminRental.value  = JSON.stringify(DATA.rental || [], null, 2);
@@ -1137,11 +1127,13 @@
     adminPass.value = "";
   });
 
+  /* 전체 렌더 */
   function renderAll(){
     setActiveMenu();
     renderHero();
     renderShows();
     renderAbout("intro");
+    renderGaon("hall1");
     renderCalendar();
   }
 
