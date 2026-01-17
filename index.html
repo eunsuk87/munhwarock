@@ -11,20 +11,25 @@
       --gray-2:#333;
       --gray-3:#666;
       --line:#e8e8e8;
-      --footer-bg: #efe6d9;
+      --footer-bg:#efe6d9;
 
-      --max: 1200px;
-      --shadow: 0 10px 30px rgba(0,0,0,.12);
-      --radius: 14px;
+      --max:1200px;
+      --shadow:0 10px 30px rgba(0,0,0,.12);
+      --radius:14px;
+
+      /* 포인트 */
+      --topTitleSize:18px;      /* 상단 타이틀(그대로) */
+      --sectionTitleSize:18px;  /* 슬라이드 아래 섹션 제목 크기 */
+      --posterTitleSize:16px;   /* 포스터 제목 */
+      --posterDateSize:14px;    /* 포스터 날짜 */
+
+      /* ✅ 수정 요청 */
+      --aboutTabSize:15px;              /* 탭 버튼 글씨 */
+      --aboutIntroTextSize:14px;        /* 소개 본문(탭 버튼보다 1pt 작게) */
+      --footerTextSize:11px;            /* ✅ 푸터 전체 3pt 작게(기존 14px → 11px) */
 
       --badge1:#d81b60;
       --badge2:#039be5;
-
-      /* 글씨 포인트 */
-      --topTitleSize: 18px;      /* 상단 '인증사회적기업(주)문화락' */
-      --sectionTitleSize: 18px;  /* 요청: 슬라이드 아래 섹션 제목 크기 */
-      --posterTitleSize: 16px;   /* 요청: 포스터 밑 글씨 2pt 작게 */
-      --posterDateSize: 14px;
     }
 
     body{
@@ -38,6 +43,7 @@
     button{ font-family:inherit; }
     .wrap{ width:min(var(--max), calc(100% - 32px)); margin:0 auto; }
 
+    /* ===== Header ===== */
     header{
       position:sticky;
       top:0;
@@ -48,17 +54,12 @@
     }
     .topbar{
       display:grid;
-      grid-template-columns: 220px 1fr 220px;
+      grid-template-columns:220px 1fr 220px;
       align-items:center;
       gap:12px;
       padding:10px 0;
     }
-    .brand-left{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      min-height:44px;
-    }
+    .brand-left{ display:flex; align-items:center; gap:10px; min-height:44px; }
     .brand-left img{ height:34px; width:auto; object-fit:contain; }
     .brand-title{
       text-align:center;
@@ -80,16 +81,17 @@
     .menu a{
       font-weight:700;
       color:var(--k100);
-      font-size:15px; /* 상단 메뉴 글씨는 기존 유지 */
+      font-size:15px;
       letter-spacing:-.02em;
       padding:6px 2px;
     }
     .menu a.active{
-      text-decoration: underline;
-      text-underline-offset: 6px;
-      text-decoration-thickness: 2px;
+      text-decoration:underline;
+      text-underline-offset:6px;
+      text-decoration-thickness:2px;
     }
 
+    /* ===== Sections ===== */
     .section{ padding:34px 0 22px; }
     .section-title{
       font-size:var(--sectionTitleSize);
@@ -99,11 +101,11 @@
     }
     .muted{ color:var(--gray-3); }
 
-    /* Hero */
+    /* ===== Hero ===== */
     .hero{
       position:relative;
       width:100%;
-      height: clamp(260px, 46vw, 520px);
+      height:clamp(260px, 46vw, 520px);
       overflow:hidden;
       background:#000;
     }
@@ -112,8 +114,8 @@
       inset:0;
       display:flex;
       height:100%;
-      will-change: transform;
-      transition: transform 1200ms ease-in-out;
+      will-change:transform;
+      transition:transform 1200ms ease-in-out;
     }
     .hero-slide{ min-width:100%; height:100%; }
     .hero-slide img{
@@ -125,7 +127,7 @@
     .hero-overlay{
       position:absolute;
       inset:0;
-      background: radial-gradient(ellipse at center, rgba(0,0,0,.12), rgba(0,0,0,.55));
+      background:radial-gradient(ellipse at center, rgba(0,0,0,.12), rgba(0,0,0,.55));
       pointer-events:none;
     }
     .hero-dots{
@@ -145,28 +147,28 @@
     }
     .dot.active{ background:#fff; }
 
-    /* Cards */
+    /* ===== Grid ===== */
     .grid{
       display:grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns:repeat(2, minmax(0, 1fr));
       gap:22px;
     }
-    @media (max-width: 860px){
-      .topbar{ grid-template-columns: 140px 1fr 80px; }
+    @media (max-width:860px){
+      .topbar{ grid-template-columns:140px 1fr 80px; }
       .brand-title{ font-size:16px; }
-      .grid{ grid-template-columns: 1fr; }
+      .grid{ grid-template-columns:1fr; }
     }
 
     .card{
       border:1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius:var(--radius);
       overflow:hidden;
       background:#fff;
-      box-shadow: 0 1px 0 rgba(0,0,0,.03);
+      box-shadow:0 1px 0 rgba(0,0,0,.03);
     }
     .poster{
       width:100%;
-      aspect-ratio: 16 / 9;
+      aspect-ratio:16/9;
       background:#f6f6f6;
       overflow:hidden;
       cursor:pointer;
@@ -175,10 +177,10 @@
       width:100%;
       height:100%;
       object-fit:cover;
-      transform: scale(1.01);
-      transition: transform .35s ease;
+      transform:scale(1.01);
+      transition:transform .35s ease;
     }
-    .poster:hover img{ transform: scale(1.06); }
+    .poster:hover img{ transform:scale(1.06); }
 
     .meta{ padding:12px 14px 14px; }
     .show-title{
@@ -195,7 +197,7 @@
       line-height:1.5;
     }
 
-    /* Social */
+    /* ===== Social ===== */
     .social-row{
       margin-top:18px;
       display:flex;
@@ -211,15 +213,83 @@
       background:#fff;
       padding:10px 14px;
       border-radius:999px;
-      box-shadow: 0 6px 20px rgba(0,0,0,.06);
+      box-shadow:0 6px 20px rgba(0,0,0,.06);
       font-weight:800;
     }
     .icon-btn img{ width:22px; height:22px; object-fit:contain; }
 
-    /* Gaon Hall (4개 섹션) */
+    /* ===== About Tabs ===== */
+    .tabs{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin:10px 0 18px;
+    }
+    .tab{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:999px;
+      padding:10px 14px;
+      cursor:pointer;
+      font-weight:800;
+      font-size:var(--aboutTabSize);
+    }
+    .tab.active{
+      border-color:#000;
+      outline:2px solid rgba(0,0,0,.12);
+    }
+    .about-panel{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      background:#fff;
+    }
+    .about-text{
+      font-size:var(--aboutIntroTextSize); /* ✅ 탭 버튼보다 1pt 작게 */
+      line-height:1.8;
+      color:#222;
+      margin:0;
+    }
+    .about-images{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:14px;
+      margin-top:14px;
+    }
+    @media (max-width:860px){
+      .about-images{ grid-template-columns:1fr; }
+    }
+    .about-images img{
+      width:100%;
+      border-radius:12px;
+      border:1px solid var(--line);
+    }
+
+    /* ===== Gaon Hall ===== */
+    .gaon-submenu{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+      margin:6px 0 16px;
+    }
+    .gaon-submenu a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:9px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-weight:900;
+      font-size:14px;
+      box-shadow:0 6px 20px rgba(0,0,0,.05);
+    }
+
     .gaon-box{
       border:1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius:var(--radius);
       background:#fff;
       padding:18px;
     }
@@ -237,11 +307,11 @@
     }
     .gaon-grid{
       display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
+      grid-template-columns:repeat(2, minmax(0,1fr));
       gap:14px;
     }
-    @media (max-width: 860px){
-      .gaon-grid{ grid-template-columns: 1fr; }
+    @media (max-width:860px){
+      .gaon-grid{ grid-template-columns:1fr; }
     }
     .gaon-grid img{
       width:100%;
@@ -249,10 +319,10 @@
       border:1px solid var(--line);
     }
 
-    /* Calendar */
+    /* ===== Calendar ===== */
     .cal-wrap{
       border:1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius:var(--radius);
       overflow:hidden;
       background:#fff;
     }
@@ -272,7 +342,7 @@
       cursor:pointer;
       font-weight:800;
     }
-    .cal-grid{ display:grid; grid-template-columns: repeat(7, minmax(0,1fr)); }
+    .cal-grid{ display:grid; grid-template-columns:repeat(7, minmax(0,1fr)); }
     .dow{
       background:#fafafa;
       padding:10px 8px;
@@ -311,8 +381,8 @@
       color:#fff;
       flex:0 0 auto;
     }
-    .b1{ background:#d81b60; }
-    .b2{ background:#039be5; }
+    .b1{ background:var(--badge1); }
+    .b2{ background:var(--badge2); }
     .ev .t{
       color:#111;
       font-weight:700;
@@ -321,10 +391,10 @@
       white-space:nowrap;
     }
 
-    /* Admin */
+    /* ===== Admin ===== */
     .admin-box{
       border:1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius:var(--radius);
       padding:18px;
       background:#fff;
     }
@@ -371,15 +441,14 @@
       font-weight:900;
     }
     .admin-tools button.danger{ border-color:#b00020; color:#b00020; }
-
     .admin-grid{
       display:grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns:1fr 1fr;
       gap:14px;
       margin-top:14px;
     }
-    @media (max-width: 860px){
-      .admin-grid{ grid-template-columns: 1fr; }
+    @media (max-width:860px){
+      .admin-grid{ grid-template-columns:1fr; }
     }
     textarea{
       width:100%;
@@ -388,7 +457,7 @@
       border:1px solid var(--line);
       border-radius:12px;
       padding:12px;
-      font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
       font-size:12px;
       line-height:1.5;
     }
@@ -410,9 +479,10 @@
     .savebar button.primary{ border-color:#000; background:#000; color:#fff; }
     .hint{ font-size:12px; color:#555; line-height:1.6; margin:8px 0 0; }
 
+    /* ===== Footer ===== */
     footer{
       margin-top:46px;
-      background: var(--footer-bg);
+      background:var(--footer-bg);
       border-top:1px solid rgba(0,0,0,.08);
       padding:22px 0;
     }
@@ -421,15 +491,16 @@
       display:flex;
       flex-direction:column;
       gap:10px;
-      font-size:14px;
+      font-size:var(--footerTextSize); /* ✅ 전체 3pt 작게 */
       line-height:1.6;
       color:#000;
     }
     .b{ font-weight:900; }
     .r{ font-weight:400; }
-    .footer-lines a{ text-decoration: underline; text-underline-offset: 3px; }
+    .footer-lines a{ text-decoration:underline; text-underline-offset:3px; }
 
-    .anchor { scroll-margin-top: 120px; }
+    /* sticky header offset */
+    .anchor{ scroll-margin-top:120px; }
   </style>
 </head>
 
@@ -504,10 +575,16 @@
     </div>
   </section>
 
-  <!-- ✅ 가온아트홀 + 하위(가온아트홀1 / 가온아트홀2 / 로비) -->
   <section class="section anchor" id="gaon">
     <div class="wrap">
       <h2 class="section-title">가온아트홀</h2>
+
+      <!-- ✅ 소메뉴(바로 이동 버튼) -->
+      <div class="gaon-submenu" aria-label="가온아트홀 바로가기">
+        <a href="#gaon1">가온아트홀1</a>
+        <a href="#gaon2">가온아트홀2</a>
+        <a href="#lobby">로비</a>
+      </div>
 
       <div class="gaon-box anchor" id="gaon1">
         <h3 class="gaon-sub">가온아트홀1</h3>
@@ -600,9 +677,7 @@
             <button id="logout" type="button">로그아웃</button>
           </div>
 
-          <p class="hint">
-            ✅ JSON 예시(대관): {"date":"2026-01-24","hall":1,"title":"리온의 신비한 과자상점"}
-          </p>
+          <p class="hint">✅ JSON 예시(대관): {"date":"2026-01-24","hall":1,"title":"리온의 신비한 과자상점"}</p>
         </div>
       </div>
     </div>
@@ -636,13 +711,13 @@
 </footer>
 
 <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-label="공연 상세">
-  <div class="modal">
-    <div class="modal-header">
-      <div class="mh-title" id="modalTitle">상세보기</div>
-      <button class="close" id="modalClose" type="button">닫기 ✕</button>
+  <div class="modal" style="width:min(980px, 100%); max-height:92vh; overflow:auto; background:#fff; border-radius:16px; box-shadow:var(--shadow); position:relative;">
+    <div class="modal-header" style="display:flex; justify-content:space-between; align-items:center; gap:12px; padding:14px 16px; border-bottom:1px solid var(--line); position:sticky; top:0; background:#fff; z-index:2;">
+      <div class="mh-title" id="modalTitle" style="font-weight:900; letter-spacing:-.02em;">상세보기</div>
+      <button class="close" id="modalClose" type="button" style="border:1px solid var(--line); background:#fff; border-radius:10px; padding:8px 10px; cursor:pointer; font-weight:800;">닫기 ✕</button>
     </div>
-    <div class="modal-body">
-      <img class="detail-img" id="modalImg" alt="공연 상세 이미지" />
+    <div class="modal-body" style="padding:16px;">
+      <img class="detail-img" id="modalImg" alt="공연 상세 이미지" style="width:100%; height:auto; border-radius:12px; border:1px solid var(--line);" />
     </div>
   </div>
 </div>
@@ -748,10 +823,7 @@
     [...heroDots.querySelectorAll(".dot")].forEach((d,i)=> d.classList.toggle("active", i===idx));
   }
 
-  /* 공연 카드 */
-  const currentGrid = document.getElementById("currentGrid");
-  const pastGrid = document.getElementById("pastGrid");
-
+  /* Utils */
   function escapeHtml(str){
     return String(str ?? "")
       .replaceAll("&","&amp;")
@@ -760,6 +832,10 @@
       .replaceAll('"',"&quot;")
       .replaceAll("'","&#039;");
   }
+
+  /* 공연 카드 */
+  const currentGrid = document.getElementById("currentGrid");
+  const pastGrid = document.getElementById("pastGrid");
 
   function showCardHTML(item){
     return `
@@ -801,10 +877,15 @@
   function openModal(title, imgSrc){
     modalTitle.textContent = title;
     modalImg.src = imgSrc;
+    modalBackdrop.style.display = "flex";
     modalBackdrop.classList.add("open");
+    modalBackdrop.style.alignItems = "center";
+    modalBackdrop.style.justifyContent = "center";
+    modalBackdrop.style.padding = "16px";
   }
   function closeModal(){
     modalBackdrop.classList.remove("open");
+    modalBackdrop.style.display = "none";
     modalImg.src = "";
   }
   modalClose.addEventListener("click", closeModal);
@@ -827,6 +908,7 @@
       `;
       return;
     }
+
     if(tabKey === "history"){
       aboutPanel.innerHTML = `
         <p class="about-text"><b>문화락 연혁/실적</b> (이미지로 표시)</p>
@@ -836,6 +918,7 @@
       `;
       return;
     }
+
     aboutPanel.innerHTML = `
       <p class="about-text"><b>문화락 제작 공연</b> (이미지로 표시)</p>
       <div class="about-images">
@@ -958,6 +1041,10 @@
   const resetAllBtn = document.getElementById("resetAll");
   const logoutBtn = document.getElementById("logout");
 
+  function getAdminPass(){ return localStorage.getItem(LS_ADMIN_PASS) || ADMIN_DEFAULT_PASS; }
+  function setAdminPass(pw){ localStorage.setItem(LS_ADMIN_PASS, pw); }
+  function resetAdminPass(){ localStorage.removeItem(LS_ADMIN_PASS); }
+
   function openAdmin(){
     adminLogin.style.display = "none";
     adminTools.style.display = "flex";
@@ -977,7 +1064,7 @@
     }
   });
 
-  changePassBtn.addEventListener("click", ()=>{
+  changePassBtn?.addEventListener("click", ()=>{
     const p1 = (newPass.value||"").trim();
     const p2 = (newPass2.value||"").trim();
     if(!p1 || p1.length < 4){ alert("새 비밀번호를 4자 이상으로 입력하세요."); return; }
@@ -988,7 +1075,7 @@
     alert("비밀번호가 변경되었습니다. (이 브라우저에 저장됨)");
   });
 
-  resetPassBtn.addEventListener("click", ()=>{
+  resetPassBtn?.addEventListener("click", ()=>{
     if(confirm("비밀번호를 기본값(1600-1602)으로 초기화할까요?")){
       resetAdminPass();
       newPass.value = "";
