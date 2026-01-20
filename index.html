@@ -14,24 +14,20 @@
       --footer-bg:#efe6d9;
 
       --max:1200px;
-      --shadow:0 10px 30px rgba(0,0,0,.12);
       --radius:14px;
 
-      /* 상단은 기존 유지 */
       --topTitleSize:18px;
-
-      /* 슬라이드 아래 섹션 제목 = 인증사회적기업(주)문화락 크기 */
       --sectionTitleSize:18px;
 
-      /* ✅ 포스터 아래 글씨 2pt 작게 */
+      /* ✅ 포스터 아래 글씨 */
       --posterTitleSize:14px;
       --posterDateSize:12px;
 
-      /* ✅ 소개 글씨 더 작게 */
+      /* ✅ 소개 글씨 */
       --aboutTabSize:15px;
-      --aboutIntroTextSize:14px; /* 탭보다 1pt 작게 */
+      --aboutIntroTextSize:14px;
 
-      /* ✅ 푸터 전체 3pt 작게 */
+      /* ✅ 푸터 */
       --footerTextSize:11px;
 
       --badge1:#d81b60;
@@ -48,6 +44,7 @@
     img{ max-width:100%; display:block; }
     button{ font-family:inherit; }
     .wrap{ width:min(var(--max), calc(100% - 32px)); margin:0 auto; }
+    .anchor{ scroll-margin-top:120px; }
 
     /* ===== Header ===== */
     header{
@@ -154,6 +151,30 @@
     }
     .dot.active{ background:#fff; }
 
+    /* ===== Social (슬라이드 아래) ===== */
+    .social-between{
+      padding:18px 0 4px;
+      border-bottom:1px solid rgba(0,0,0,.04);
+    }
+    .social-row{
+      display:flex;
+      justify-content:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+    .icon-btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid var(--line);
+      background:#fff;
+      padding:10px 14px;
+      border-radius:999px;
+      box-shadow:0 6px 20px rgba(0,0,0,.06);
+      font-weight:800;
+    }
+    .icon-btn img{ width:22px; height:22px; object-fit:contain; }
+
     /* ===== Grid ===== */
     .grid{
       display:grid;
@@ -174,7 +195,7 @@
       box-shadow:0 1px 0 rgba(0,0,0,.03);
     }
 
-    /* ✅ 포스터 3:4 비율 */
+    /* ✅ 포스터 3:4 */
     .poster{
       width:100%;
       aspect-ratio:3 / 4;
@@ -206,7 +227,7 @@
       line-height:1.5;
     }
 
-    /* ✅ 카드 바로 아래 상세 펼침 영역 */
+    /* ✅ 카드 아래 상세 펼침 */
     .inline-detail{
       border-top:1px solid var(--line);
       padding:12px 14px 14px;
@@ -241,27 +262,6 @@
       border:1px solid var(--line);
     }
 
-    /* ===== Social ===== */
-    .social-row{
-      margin-top:18px;
-      display:flex;
-      justify-content:center;
-      gap:16px;
-      flex-wrap:wrap;
-    }
-    .icon-btn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      border:1px solid var(--line);
-      background:#fff;
-      padding:10px 14px;
-      border-radius:999px;
-      box-shadow:0 6px 20px rgba(0,0,0,.06);
-      font-weight:800;
-    }
-    .icon-btn img{ width:22px; height:22px; object-fit:contain; }
-
     /* ===== About Tabs ===== */
     .tabs{
       display:flex;
@@ -293,19 +293,18 @@
       font-size:var(--aboutIntroTextSize);
       line-height:1.8;
       color:#222;
-      margin:0;
+      margin:0 0 14px;
     }
+
+    /* ✅ 공연단체소개 이미지: 중앙 + 1장씩 크게 */
     .about-images{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0,1fr));
+      display:flex;
+      flex-direction:column;
+      align-items:center;
       gap:14px;
-      margin-top:14px;
-    }
-    @media (max-width:860px){
-      .about-images{ grid-template-columns:1fr; }
     }
     .about-images img{
-      width:100%;
+      width:min(900px, 100%);
       border-radius:12px;
       border:1px solid var(--line);
     }
@@ -342,23 +341,25 @@
       letter-spacing:-.02em;
       margin:0 0 8px;
       font-size:16px;
+      text-align:center;
     }
     .gaon-desc{
       margin:0 0 14px;
       color:#333;
       line-height:1.7;
       font-size:14px;
+      text-align:center;
     }
-    .gaon-grid{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0,1fr));
+
+    /* ✅ 가온 이미지: 중앙(1장씩 크게) */
+    .gaon-images{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
       gap:14px;
     }
-    @media (max-width:860px){
-      .gaon-grid{ grid-template-columns:1fr; }
-    }
-    .gaon-grid img{
-      width:100%;
+    .gaon-images img{
+      width:min(900px, 100%);
       border-radius:12px;
       border:1px solid var(--line);
     }
@@ -425,8 +426,8 @@
       color:#fff;
       flex:0 0 auto;
     }
-    .b1{ background:#d81b60; }
-    .b2{ background:#039be5; }
+    .b1{ background:var(--badge1); }
+    .b2{ background:var(--badge2); }
     .ev .t{
       color:#111;
       font-weight:700;
@@ -434,6 +435,94 @@
       text-overflow:ellipsis;
       white-space:nowrap;
     }
+
+    /* ===== Admin ===== */
+    .admin-box{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      background:#fff;
+    }
+    .admin-login{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .admin-login input{
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:10px 12px;
+      min-width:240px;
+    }
+    .admin-login button{
+      border:1px solid #000;
+      background:#000;
+      color:#fff;
+      border-radius:10px;
+      padding:10px 12px;
+      cursor:pointer;
+      font-weight:900;
+    }
+    .admin-tools{
+      margin-top:10px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .admin-tools input{
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:10px 12px;
+      min-width:180px;
+    }
+    .admin-tools button{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:10px;
+      padding:10px 12px;
+      cursor:pointer;
+      font-weight:900;
+    }
+    .admin-tools button.danger{ border-color:#b00020; color:#b00020; }
+    .admin-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-top:14px;
+    }
+    @media (max-width:860px){
+      .admin-grid{ grid-template-columns:1fr; }
+    }
+    textarea{
+      width:100%;
+      min-height:300px;
+      resize:vertical;
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:12px;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+      font-size:12px;
+      line-height:1.5;
+    }
+    .savebar{
+      display:flex;
+      gap:10px;
+      margin-top:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .savebar button{
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:10px;
+      padding:10px 12px;
+      cursor:pointer;
+      font-weight:900;
+    }
+    .savebar button.primary{ border-color:#000; background:#000; color:#fff; }
+    .hint{ font-size:12px; color:#555; line-height:1.6; margin:8px 0 0; }
 
     /* ===== Footer ===== */
     footer{
@@ -454,8 +543,6 @@
     .b{ font-weight:900; }
     .r{ font-weight:400; }
     .footer-lines a{ text-decoration:underline; text-underline-offset:3px; }
-
-    .anchor{ scroll-margin-top:120px; }
   </style>
 </head>
 
@@ -489,6 +576,22 @@
   <div class="hero-dots" id="heroDots"></div>
 </section>
 
+<!-- ✅ 인스타/블로그: 슬라이드와 현재공연 사이 -->
+<section class="social-between" aria-label="SNS 링크">
+  <div class="wrap">
+    <div class="social-row">
+      <a class="icon-btn" href="https://www.instagram.com/gaonarthall" target="_blank" rel="noreferrer">
+        <img src="images/icons/Instagram로고.png" alt="Instagram" />
+        <span>Instagram</span>
+      </a>
+      <a class="icon-btn" href="https://blog.naver.com/gaonarthall12" target="_blank" rel="noreferrer">
+        <img src="images/icons/블로그로고.png" alt="Blog" />
+        <span>Blog</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <main>
   <section class="section anchor" id="current">
     <div class="wrap">
@@ -501,17 +604,6 @@
     <div class="wrap">
       <h2 class="section-title">이전공연</h2>
       <div class="grid" id="pastGrid"></div>
-
-      <div class="social-row" aria-label="SNS 링크">
-        <a class="icon-btn" href="https://www.instagram.com/gaonarthall" target="_blank" rel="noreferrer">
-          <img src="images/icons/Instagram로고.png" alt="Instagram" />
-          <span>Instagram</span>
-        </a>
-        <a class="icon-btn" href="https://blog.naver.com/gaonarthall12" target="_blank" rel="noreferrer">
-          <img src="images/icons/블로그로고.png" alt="Blog" />
-          <span>Blog</span>
-        </a>
-      </div>
     </div>
   </section>
 
@@ -542,7 +634,7 @@
       <div class="gaon-box anchor" id="gaon1">
         <h3 class="gaon-sub">가온아트홀1</h3>
         <p class="gaon-desc">가온소극장1관 170석</p>
-        <div class="gaon-grid">
+        <div class="gaon-images">
           <img src="images/gaon/가온소극장1관170석.jpg" alt="가온소극장 1관 170석" />
         </div>
       </div>
@@ -552,7 +644,7 @@
       <div class="gaon-box anchor" id="gaon2">
         <h3 class="gaon-sub">가온아트홀2</h3>
         <p class="gaon-desc">가온소극장2관 100석</p>
-        <div class="gaon-grid">
+        <div class="gaon-images">
           <img src="images/gaon/가온소극장2관100석.jpg" alt="가온소극장 2관 100석" />
         </div>
       </div>
@@ -562,7 +654,7 @@
       <div class="gaon-box anchor" id="lobby">
         <h3 class="gaon-sub">로비</h3>
         <p class="gaon-desc">가온로비1 / 가온로비2</p>
-        <div class="gaon-grid">
+        <div class="gaon-images">
           <img src="images/gaon/가온로비1.jpg" alt="가온로비1" />
           <img src="images/gaon/가온로비2.jpg" alt="가온로비2" />
         </div>
@@ -574,7 +666,7 @@
     <div class="wrap">
       <h2 class="section-title">공연대관일정</h2>
       <p class="muted" style="margin-top:-6px;">
-        달력 날짜 칸에 <b>①(1관)</b> / <b>②(2관)</b> 표시됩니다.
+        달력 날짜 칸에 <b>①(1관)</b> / <b>②(2관)</b> 표시됩니다. (관리자에서 수정 가능)
       </p>
 
       <div class="cal-wrap">
@@ -589,7 +681,71 @@
     </div>
   </section>
 
-  <!-- 관리자(원하면 다음 단계에서 다시 넣어드릴게요) -->
+  <!-- ✅ 관리자 완성형 -->
+  <section class="section anchor" id="admin">
+    <div class="wrap">
+      <h2 class="section-title">관리자</h2>
+
+      <div class="admin-box">
+        <div class="admin-login" id="adminLogin">
+          <input id="adminPass" type="password" placeholder="관리자 비밀번호 입력 (기본: 1600-1602)" />
+          <button id="adminEnter" type="button">로그인</button>
+          <p class="hint">※ 데이터는 이 브라우저(localStorage)에 저장됩니다. 다른 PC/폰에서는 따로 저장됩니다.</p>
+        </div>
+
+        <div class="admin-tools" id="adminTools" style="display:none;">
+          <input id="newPass" type="password" placeholder="새 비밀번호" />
+          <input id="newPass2" type="password" placeholder="새 비밀번호 확인" />
+          <button id="changePass" type="button">비밀번호 변경</button>
+          <button class="danger" id="resetPass" type="button">비밀번호 초기화</button>
+        </div>
+
+        <div id="adminPanel" style="display:none;">
+          <div class="admin-grid">
+            <div>
+              <h3 style="margin:0 0 10px; font-weight:900;">슬라이드(hero) 경로(JSON)</h3>
+              <textarea id="adminHero"></textarea>
+              <p class="hint">예: ["images/slides/slide1.jpg","images/slides/slide2.jpg"]</p>
+            </div>
+            <div>
+              <h3 style="margin:0 0 10px; font-weight:900;">공연단체소개(about) JSON</h3>
+              <textarea id="adminAbout"></textarea>
+              <p class="hint">introImages/historyImages/worksImages에 이미지 경로를 넣으세요.</p>
+            </div>
+          </div>
+
+          <div class="admin-grid" style="margin-top:14px;">
+            <div>
+              <h3 style="margin:0 0 10px; font-weight:900;">현재공연 JSON (poster/detail 수정)</h3>
+              <textarea id="adminCurrent"></textarea>
+            </div>
+            <div>
+              <h3 style="margin:0 0 10px; font-weight:900;">이전공연 JSON (poster/detail 수정)</h3>
+              <textarea id="adminPast"></textarea>
+            </div>
+          </div>
+
+          <div style="margin-top:14px;">
+            <h3 style="margin:0 0 10px; font-weight:900;">공연대관일정 JSON</h3>
+            <textarea id="adminRental"></textarea>
+            <p class="hint">예: {"date":"2026-01-24","hall":1,"title":"대관 제목"}</p>
+          </div>
+
+          <div class="savebar">
+            <button class="primary" id="saveAll" type="button">저장하기</button>
+            <button id="resetAll" type="button">기본값으로 되돌리기</button>
+            <button id="logout" type="button">로그아웃</button>
+          </div>
+
+          <p class="hint">
+            ✅ 포스터/상세 불일치 해결법:<br>
+            1) 현재공연 JSON에서 해당 공연의 <b>poster</b> / <b>detail</b> 경로를 정확히 수정<br>
+            2) 저장하기 → 바로 반영
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -620,15 +776,16 @@
 
 <script>
   // =========================
-  // ✅ 기본 데이터
+  // ✅ 기본값(초기 데이터)
   // =========================
-  const DATA = {
+  const DEFAULT = {
     hero: [
       "images/slides/slide1.jpg",
       "images/slides/slide2.jpg",
       "images/slides/slide3.jpg",
     ],
     currentShows: [
+      // ✅ 여기 poster/detail은 관리자에서 언제든 수정 가능
       {"title":"연극 황소와 도깨비","dateText":"2025.12.21 ~ 2026.01.31","poster":"images/posters/current/current_01.jpg","detail":"images/details/황소와도깨비-상세.jpg"},
       {"title":"공연·마술 리온의 신비한 과자상점","dateText":"2026.01.24 ~ 2026.04.26","poster":"images/posters/current/current_02.jpg","detail":"images/details/리온마술-상세.jpg"}
     ],
@@ -646,7 +803,6 @@
 `(주)문화락은 공연 컨텐츠를 개발, 제작, 육성하여 보급하며 학교 단체공연 및 각종 기업, 지역 축제 등 행사에 적합한 공연 컨텐츠를 추천 및 기획과 연출을 전문으로 하는 공연기획사입니다.
 가온아트홀 1관은 170석 규모를 갖추고 있으며 연극, 뮤지컬 등 다양한 장르의 공연을 수용할 수 있는 다목적 공연장에 음향, 조명설비를 완비하여 각종 공연과 행사를 진행 할 수 있는 공연장입니다.
 가온아트홀 2관은 100석 규모의 공간으로 연극, 뮤지컬 등 각종발표회 강연회, 교육등을 할 수 있도록 꾸며진 공연장입니다.`,
-      // ✅ 지금 올린 파일명에 맞춰서 작성
       introImages: [
         "images/about/about_intro1.jpg",
         "images/about/about_intro2.jpg"
@@ -665,6 +821,38 @@
       ]
     }
   };
+
+  const LS_KEY = "culturelock_site_v2";                 // 사이트 데이터
+  const LS_ADMIN_PASS = "culturelock_admin_pass_v2";    // 관리자 비번
+  const ADMIN_DEFAULT_PASS = "1600-1602";
+
+  function structuredCloneSafe(x){
+    return JSON.parse(JSON.stringify(x));
+  }
+
+  function loadData(){
+    try{
+      const raw = localStorage.getItem(LS_KEY);
+      if(!raw) return structuredCloneSafe(DEFAULT);
+      const parsed = JSON.parse(raw);
+      return { ...structuredCloneSafe(DEFAULT), ...parsed };
+    }catch(e){
+      return structuredCloneSafe(DEFAULT);
+    }
+  }
+  function saveData(data){ localStorage.setItem(LS_KEY, JSON.stringify(data)); }
+  function resetData(){
+    localStorage.removeItem(LS_KEY);
+    DATA = loadData();
+    closeOpenedDetail();
+    renderAll();
+  }
+
+  function getAdminPass(){ return localStorage.getItem(LS_ADMIN_PASS) || ADMIN_DEFAULT_PASS; }
+  function setAdminPass(pw){ localStorage.setItem(LS_ADMIN_PASS, pw); }
+  function resetAdminPass(){ localStorage.removeItem(LS_ADMIN_PASS); }
+
+  let DATA = loadData();
 
   // =========================
   // Utils
@@ -738,12 +926,10 @@
   }
 
   // =========================
-  // 공연 카드 + ✅ 그 자리 상세 펼치기
+  // 공연 카드 + 카드 아래 상세 펼치기
   // =========================
   const currentGrid = document.getElementById("currentGrid");
   const pastGrid = document.getElementById("pastGrid");
-
-  // 현재 열려있는 상세(하나만 유지)
   let openedDetailId = null;
 
   function showCardHTML(item, idx, group){
@@ -778,7 +964,6 @@
   }
 
   function openDetail(id, title, detailSrc){
-    // 다른 상세가 열려있으면 닫기
     if(openedDetailId && openedDetailId !== id){
       closeOpenedDetail();
     }
@@ -787,7 +972,6 @@
     const img = document.getElementById(`detail-img-${id}`);
     if(!box || !t || !img) return;
 
-    // 같은 카드 재클릭이면 토글
     const isOpen = box.classList.contains("open");
     if(isOpen){
       box.classList.remove("open");
@@ -796,7 +980,7 @@
     }
 
     if(!detailSrc){
-      alert("상세 이미지(detail)가 없습니다. detail 경로를 넣어주세요.");
+      alert("상세 이미지(detail)가 없습니다. 관리자에서 detail 경로를 넣어주세요.");
       return;
     }
 
@@ -805,7 +989,6 @@
     box.classList.add("open");
     openedDetailId = id;
 
-    // ✅ 클릭한 카드 위치로 스크롤(살짝만)
     const card = document.querySelector(`[data-card="${id}"]`);
     if(card){
       card.scrollIntoView({behavior:"smooth", block:"start"});
@@ -838,13 +1021,13 @@
   }
 
   // =========================
-  // 공연단체소개 탭
+  // 공연단체소개 탭 (1장씩 크게, 중앙)
   // =========================
   const aboutPanel = document.getElementById("aboutPanel");
   const tabs = [...document.querySelectorAll(".tab")];
 
   function renderAbout(tabKey){
-    const A = DATA.about;
+    const A = DATA.about || DEFAULT.about;
 
     if(tabKey === "intro"){
       aboutPanel.innerHTML = `
@@ -858,7 +1041,7 @@
 
     if(tabKey === "history"){
       aboutPanel.innerHTML = `
-        <p class="about-text"><b>문화락 연혁/실적</b> (이미지)</p>
+        <p class="about-text"><b>문화락 실적</b></p>
         <div class="about-images">
           ${(A.historyImages||[]).map(src=>`<img src="${src}" alt="문화락 실적 이미지">`).join("")}
         </div>
@@ -867,7 +1050,7 @@
     }
 
     aboutPanel.innerHTML = `
-      <p class="about-text"><b>문화락 제작 공연</b> (이미지)</p>
+      <p class="about-text"><b>문화락 제작 공연</b></p>
       <div class="about-images">
         ${(A.worksImages||[]).map(src=>`<img src="${src}" alt="문화락 제작공연 이미지">`).join("")}
       </div>
@@ -971,15 +1154,122 @@
   });
 
   // =========================
-  // 시작
+  // 관리자
   // =========================
-  function init(){
+  const adminEnter = document.getElementById("adminEnter");
+  const adminPass  = document.getElementById("adminPass");
+  const adminLogin = document.getElementById("adminLogin");
+  const adminPanel = document.getElementById("adminPanel");
+
+  const adminTools = document.getElementById("adminTools");
+  const newPass = document.getElementById("newPass");
+  const newPass2 = document.getElementById("newPass2");
+  const changePassBtn = document.getElementById("changePass");
+  const resetPassBtn = document.getElementById("resetPass");
+
+  const adminHero    = document.getElementById("adminHero");
+  const adminAbout   = document.getElementById("adminAbout");
+  const adminCurrent = document.getElementById("adminCurrent");
+  const adminPast    = document.getElementById("adminPast");
+  const adminRental  = document.getElementById("adminRental");
+
+  const saveAll = document.getElementById("saveAll");
+  const resetAllBtn = document.getElementById("resetAll");
+  const logoutBtn = document.getElementById("logout");
+
+  function openAdmin(){
+    adminLogin.style.display = "none";
+    adminTools.style.display = "flex";
+    adminPanel.style.display = "block";
+
+    adminHero.value    = JSON.stringify(DATA.hero || [], null, 2);
+    adminAbout.value   = JSON.stringify(DATA.about || DEFAULT.about, null, 2);
+    adminCurrent.value = JSON.stringify(DATA.currentShows || [], null, 2);
+    adminPast.value    = JSON.stringify(DATA.pastShows || [], null, 2);
+    adminRental.value  = JSON.stringify(DATA.rental || [], null, 2);
+  }
+
+  adminEnter.addEventListener("click", ()=>{
+    const input = (adminPass.value || "").trim();
+    if(input === getAdminPass()){
+      openAdmin();
+    }else{
+      alert("비밀번호가 틀렸습니다.\n(기본값: 1600-1602 / 또는 본인이 변경한 비번)");
+    }
+  });
+
+  changePassBtn.addEventListener("click", ()=>{
+    const p1 = (newPass.value||"").trim();
+    const p2 = (newPass2.value||"").trim();
+    if(!p1 || p1.length < 4){ alert("새 비밀번호를 4자 이상으로 입력하세요."); return; }
+    if(p1 !== p2){ alert("새 비밀번호 확인이 일치하지 않습니다."); return; }
+    setAdminPass(p1);
+    newPass.value = "";
+    newPass2.value = "";
+    alert("비밀번호가 변경되었습니다. (이 브라우저에 저장됨)");
+  });
+
+  resetPassBtn.addEventListener("click", ()=>{
+    if(confirm("비밀번호를 기본값(1600-1602)으로 초기화할까요?")){
+      resetAdminPass();
+      newPass.value = "";
+      newPass2.value = "";
+      alert("초기화 완료! 기본 비번은 1600-1602 입니다.");
+    }
+  });
+
+  saveAll.addEventListener("click", ()=>{
+    try{
+      const next = structuredCloneSafe(DATA);
+
+      next.hero        = JSON.parse(adminHero.value || "[]");
+      next.about       = JSON.parse(adminAbout.value || "{}");
+      next.currentShows= JSON.parse(adminCurrent.value || "[]");
+      next.pastShows   = JSON.parse(adminPast.value || "[]");
+      next.rental      = JSON.parse(adminRental.value || "[]");
+
+      DATA = next;
+      saveData(DATA);
+
+      closeOpenedDetail();
+      renderAll();
+
+      alert("저장되었습니다. (이 브라우저에 저장됨)");
+    }catch(e){
+      alert("JSON 형식이 잘못되었습니다.\n쉼표(,), 따옴표(\"), 괄호([ ])를 확인해주세요.");
+    }
+  });
+
+  resetAllBtn.addEventListener("click", ()=>{
+    if(confirm("사이트 데이터(슬라이드/공연/소개/대관)를 기본값으로 되돌릴까요?")){
+      resetData();
+      alert("기본값으로 되돌렸습니다.");
+      adminPanel.style.display = "none";
+      adminTools.style.display = "none";
+      adminLogin.style.display = "flex";
+      adminPass.value = "";
+    }
+  });
+
+  logoutBtn.addEventListener("click", ()=>{
+    adminPanel.style.display = "none";
+    adminTools.style.display = "none";
+    adminLogin.style.display = "flex";
+    adminPass.value = "";
+  });
+
+  // =========================
+  // 렌더 전체
+  // =========================
+  function renderAll(){
+    setActiveMenu();
     renderHero();
     renderShows();
     renderAbout("intro");
     renderCalendar();
   }
-  init();
+
+  renderAll();
 </script>
 </body>
 </html>
