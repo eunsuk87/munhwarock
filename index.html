@@ -19,15 +19,15 @@
       --topTitleSize:18px;
       --sectionTitleSize:18px;
 
-      /* ✅ 포스터 아래 글씨 */
+      /* 포스터 아래 글씨 */
       --posterTitleSize:14px;
       --posterDateSize:12px;
 
-      /* ✅ 소개 글씨 */
+      /* 소개 글씨 */
       --aboutTabSize:15px;
       --aboutIntroTextSize:14px;
 
-      /* ✅ 푸터 */
+      /* 푸터 */
       --footerTextSize:11px;
 
       --badge1:#d81b60;
@@ -681,21 +681,22 @@
     </div>
   </section>
 
-  <!-- ✅ 관리자 완성형 -->
+  <!-- ✅ 관리자 -->
   <section class="section anchor" id="admin">
     <div class="wrap">
       <h2 class="section-title">관리자</h2>
 
       <div class="admin-box">
         <div class="admin-login" id="adminLogin">
-          <input id="adminPass" type="password" placeholder="관리자 비밀번호 입력 (기본: 1600-1602)" />
+          <!-- ✅ 기본비번 노출 완전 제거 -->
+          <input id="adminPass" type="password" placeholder="관리자 비밀번호 입력" autocomplete="current-password" />
           <button id="adminEnter" type="button">로그인</button>
           <p class="hint">※ 데이터는 이 브라우저(localStorage)에 저장됩니다. 다른 PC/폰에서는 따로 저장됩니다.</p>
         </div>
 
         <div class="admin-tools" id="adminTools" style="display:none;">
-          <input id="newPass" type="password" placeholder="새 비밀번호" />
-          <input id="newPass2" type="password" placeholder="새 비밀번호 확인" />
+          <input id="newPass" type="password" placeholder="새 비밀번호" autocomplete="new-password" />
+          <input id="newPass2" type="password" placeholder="새 비밀번호 확인" autocomplete="new-password" />
           <button id="changePass" type="button">비밀번호 변경</button>
           <button class="danger" id="resetPass" type="button">비밀번호 초기화</button>
         </div>
@@ -716,11 +717,11 @@
 
           <div class="admin-grid" style="margin-top:14px;">
             <div>
-              <h3 style="margin:0 0 10px; font-weight:900;">현재공연 JSON (poster/detail 수정)</h3>
+              <h3 style="margin:0 0 10px; font-weight:900;">현재공연 JSON (poster/detail)</h3>
               <textarea id="adminCurrent"></textarea>
             </div>
             <div>
-              <h3 style="margin:0 0 10px; font-weight:900;">이전공연 JSON (poster/detail 수정)</h3>
+              <h3 style="margin:0 0 10px; font-weight:900;">이전공연 JSON (poster/detail)</h3>
               <textarea id="adminPast"></textarea>
             </div>
           </div>
@@ -738,9 +739,8 @@
           </div>
 
           <p class="hint">
-            ✅ 포스터/상세 불일치 해결법:<br>
-            1) 현재공연 JSON에서 해당 공연의 <b>poster</b> / <b>detail</b> 경로를 정확히 수정<br>
-            2) 저장하기 → 바로 반영
+            ✅ 포스터/상세 불일치 해결:<br>
+            현재공연 JSON에서 <b>poster</b> / <b>detail</b> 경로를 정확히 맞추고 저장하세요.
           </p>
         </div>
       </div>
@@ -784,56 +784,51 @@
       "images/slides/slide2.jpg",
       "images/slides/slide3.jpg",
     ],
+
+    // ✅ 현재공연: “정확한 경로” (지금 repo 구조 기준)
     currentShows: [
-      // ✅ 여기 poster/detail은 관리자에서 언제든 수정 가능
-      {"title":"공연·마술 리온의 신비한 과자상점",
-    "dateText":"2026.01.24 ~ 2026.04.26",
-    "poster":"images/posters/current/current_01.jpg",
-    "detail":"images/details/리온마술-상세.jpg"
-  },
-  {
-    "title":"연극 황소와 도깨비",
-    "dateText":"2025.12.21 ~ 2026.01.31",
-    "poster":"images/posters/current/current_02.jpg",
-    "detail":"images/details/황소와도깨비-상세.jpg"
-  }
-],
+      {
+        "title":"공연·마술 리온의 신비한 과자상점",
+        "dateText":"2026.01.24 ~ 2026.04.26",
+        "poster":"images/posters/current/current_01.jpg",
+        "detail":"images/details/리온마술-상세.jpg"
+      },
+      {
+        "title":"연극 황소와 도깨비",
+        "dateText":"2025.12.21 ~ 2026.01.31",
+        "poster":"images/posters/current/current_02.jpg",
+        "detail":"images/details/황소와도깨비-상세.jpg"
+      }
+    ],
+
     pastShows: [
       {"title":"연극 죽여주는 이야기","dateText":"2025.11.27 ~ 2025.12.28","poster":"images/posters/past/past_01.jpg","detail":"images/details/죽여주는이야기-상세.jpg"},
       {"title":"조항조 콘서트","dateText":"2025.05.17","poster":"images/posters/past/past_02.jpg","detail":"images/details/조항조부산-상세페이지2탄.jpg"},
       {"title":"2025 Jazz Christmas","dateText":"2025.12.05","poster":"images/posters/past/past_03.jpg","detail":"images/details/25년상세최종.jpg"}
     ],
+
     rental: [
       {"date":"2026-01-24","hall":1,"title":"리온의 신비한 과자상점"},
-      {"date":"2026-01-24","hall":2,"title":"공연장정기정검"}
+      {"date":"2026-01-24","hall":2,"title":"공연장 정기점검"}
     ],
+
     about: {
       introText:
 `(주)문화락은 공연 컨텐츠를 개발, 제작, 육성하여 보급하며 학교 단체공연 및 각종 기업, 지역 축제 등 행사에 적합한 공연 컨텐츠를 추천 및 기획과 연출을 전문으로 하는 공연기획사입니다.
 가온아트홀 1관은 170석 규모를 갖추고 있으며 연극, 뮤지컬 등 다양한 장르의 공연을 수용할 수 있는 다목적 공연장에 음향, 조명설비를 완비하여 각종 공연과 행사를 진행 할 수 있는 공연장입니다.
 가온아트홀 2관은 100석 규모의 공간으로 연극, 뮤지컬 등 각종발표회 강연회, 교육등을 할 수 있도록 꾸며진 공연장입니다.`,
-      introImages: [
-        "images/about/about_intro1.jpg",
-        "images/about/about_intro2.jpg"
-      ],
-      historyImages: [
-        "images/about/about_history.jpg"
-      ],
-      worksImages: [
-        "images/about/works1.jpg",
-        "images/about/works2.jpg",
-        "images/about/works3.jpg",
-        "images/about/works4.jpg",
-        "images/about/works5.jpg",
-        "images/about/works6.jpg",
-        "images/about/works7.jpg"
-      ]
+
+      // ⚠️ 아래 about 이미지는 “당신 repo 파일명”에 맞게 바꿔야 합니다.
+      // (지금은 예시 이름이라, 이미 올려둔 실제 파일명으로 교체하세요.)
+      introImages: ["images/about/문화락소개2.jpg"],
+      historyImages: ["images/about/문화락소개1.jpg"],
+      worksImages: ["images/about/문화락소개3.jpg"]
     }
   };
 
-  const LS_KEY = "culturelock_site_v2";                 // 사이트 데이터
-  const LS_ADMIN_PASS = "culturelock_admin_pass_v2";    // 관리자 비번
-  const ADMIN_DEFAULT_PASS = "1600-1602";
+  const LS_KEY = "culturelock_site_v3";                 // 사이트 데이터
+  const LS_ADMIN_PASS = "culturelock_admin_pass_v3";    // 관리자 비번
+  const ADMIN_DEFAULT_PASS = "1600-1602";               // 기본값(코드 내부에만 존재 / 화면에 절대 노출 안함)
 
   function structuredCloneSafe(x){
     return JSON.parse(JSON.stringify(x));
@@ -989,7 +984,7 @@
     }
 
     if(!detailSrc){
-      alert("상세 이미지(detail)가 없습니다. 관리자에서 detail 경로를 넣어주세요.");
+      alert("상세 이미지가 없습니다. 관리자에서 detail 경로를 넣어주세요.");
       return;
     }
 
@@ -998,6 +993,7 @@
     box.classList.add("open");
     openedDetailId = id;
 
+    // ✅ “푸터 밑”으로 안 내려가게: 카드 시작 위치로 이동
     const card = document.querySelector(`[data-card="${id}"]`);
     if(card){
       card.scrollIntoView({behavior:"smooth", block:"start"});
@@ -1030,7 +1026,7 @@
   }
 
   // =========================
-  // 공연단체소개 탭 (1장씩 크게, 중앙)
+  // 공연단체소개 탭 (중앙 + 1장씩 크게)
   // =========================
   const aboutPanel = document.getElementById("aboutPanel");
   const tabs = [...document.querySelectorAll(".tab")];
@@ -1163,7 +1159,7 @@
   });
 
   // =========================
-  // 관리자
+  // 관리자 (기본 비번 문구 노출 제거)
   // =========================
   const adminEnter = document.getElementById("adminEnter");
   const adminPass  = document.getElementById("adminPass");
@@ -1203,7 +1199,8 @@
     if(input === getAdminPass()){
       openAdmin();
     }else{
-      alert("비밀번호가 틀렸습니다.\n(기본값: 1600-1602 / 또는 본인이 변경한 비번)");
+      // ✅ 기본 비번을 절대 노출하지 않음
+      alert("비밀번호가 틀렸습니다.");
     }
   });
 
@@ -1223,7 +1220,7 @@
       resetAdminPass();
       newPass.value = "";
       newPass2.value = "";
-      alert("초기화 완료!");
+      alert("초기화 완료");
     }
   });
 
@@ -1231,11 +1228,11 @@
     try{
       const next = structuredCloneSafe(DATA);
 
-      next.hero        = JSON.parse(adminHero.value || "[]");
-      next.about       = JSON.parse(adminAbout.value || "{}");
-      next.currentShows= JSON.parse(adminCurrent.value || "[]");
-      next.pastShows   = JSON.parse(adminPast.value || "[]");
-      next.rental      = JSON.parse(adminRental.value || "[]");
+      next.hero         = JSON.parse(adminHero.value || "[]");
+      next.about        = JSON.parse(adminAbout.value || "{}");
+      next.currentShows = JSON.parse(adminCurrent.value || "[]");
+      next.pastShows    = JSON.parse(adminPast.value || "[]");
+      next.rental       = JSON.parse(adminRental.value || "[]");
 
       DATA = next;
       saveData(DATA);
