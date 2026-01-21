@@ -4,19 +4,25 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>인증사회적기업 (주)문화락 | 부산 가온아트홀 · 공연 제작 · 공연장 대관</title>
+  <!-- ✅ SEO: “문화락 공연”, “부산 소극장” 노출 강화 -->
+  <title>문화락 공연 · 부산 소극장 | (주)문화락 · 가온아트홀 공연/대관</title>
 
-  <meta name="description" content="인증사회적기업 (주)문화락은 부산 가온아트홀을 운영하며 연극·마술·뮤지컬 공연 제작, 기획, 공연장 대관을 전문으로 하는 문화예술 기업입니다." />
-
+  <meta name="description" content="문화락 공연과 부산 소극장 가온아트홀 정보를 한 곳에. (주)문화락은 부산 가온아트홀을 운영하며 연극·마술·뮤지컬 공연 제작·기획과 공연장 대관을 제공합니다." />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://culturelock.co.kr/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="인증사회적기업 (주)문화락 | 부산 가온아트홀" />
-  <meta property="og:description" content="연극·마술·뮤지컬 공연 제작 및 기획, 공연장 대관 전문 문화예술기업" />
-  <meta property="og:url" content="https://culturelock.co.kr" />
+  <meta property="og:title" content="문화락 공연 · 부산 소극장 | (주)문화락 · 가온아트홀" />
+  <meta property="og:description" content="부산 소극장 가온아트홀 운영 · 문화락 공연 제작/기획 · 공연장 대관 안내" />
+  <meta property="og:url" content="https://culturelock.co.kr/" />
   <meta property="og:image" content="https://culturelock.co.kr/images/logo/문화락로고cmyk.png" />
-</head>
+
+  <!-- ✅ 트위터 카드(선택이지만 노출에 도움) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="문화락 공연 · 부산 소극장 | (주)문화락 · 가온아트홀" />
+  <meta name="twitter:description" content="부산 소극장 가온아트홀 운영 · 문화락 공연 제작/기획 · 공연장 대관" />
+  <meta name="twitter:image" content="https://culturelock.co.kr/images/logo/문화락로고cmyk.png" />
 
   <style>
     :root{
@@ -59,6 +65,19 @@
     button{ font-family:inherit; }
     .wrap{ width:min(var(--max), calc(100% - 32px)); margin:0 auto; }
     .anchor{ scroll-margin-top:120px; }
+
+    /* ✅ SEO: 화면에는 보이지 않지만 검색엔 읽힘(접근성 OK) */
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      border:0;
+      white-space:nowrap;
+    }
 
     /* ===== Header ===== */
     header{
@@ -584,13 +603,16 @@
   </div>
 </header>
 
+<!-- ✅ 검색엔진/접근성용 H1(화면 비노출) -->
+<h1 class="sr-only">문화락 공연 · 부산 소극장 가온아트홀 | (주)문화락 공연 제작·기획·대관</h1>
+
 <section class="hero" aria-label="메인 슬라이드">
   <div class="hero-track" id="heroTrack"></div>
   <div class="hero-overlay"></div>
   <div class="hero-dots" id="heroDots"></div>
 </section>
 
-<!-- ✅ 인스타/블로그/유튜브: 슬라이드와 현재공연 사이 -->
+<!-- ✅ 인스타/블로그/유튜브 -->
 <section class="social-between" aria-label="SNS 링크">
   <div class="wrap">
     <div class="social-row">
@@ -629,6 +651,13 @@
     <div class="wrap">
       <h2 class="section-title">공연단체소개</h2>
 
+      <!-- ✅ (요청 문구) “문화락 공연” 자연문장 삽입 -->
+      <p class="about-text">
+        (주)문화락은 부산 가온아트홀을 중심으로
+        어린이 공연, 연극, 마술 등 다양한 <b>문화락 공연</b>을
+        직접 제작·기획·운영하는 인증사회적기업입니다.
+      </p>
+
       <div class="tabs" role="tablist" aria-label="공연단체소개 탭">
         <button class="tab active" data-tab="intro" type="button">1) (주)문화락 소개</button>
         <button class="tab" data-tab="history" type="button">2) 실적</button>
@@ -643,6 +672,12 @@
     <div class="wrap">
       <h2 class="section-title">가온아트홀</h2>
 
+      <!-- ✅ (요청 문구) “부산 소극장” 핵심문장 -->
+      <p class="about-text">
+        가온아트홀은 부산 동구에 위치한 대표적인 <b>부산 소극장</b>으로,
+        170석·100석 규모의 공연장을 갖춘 복합 문화공간입니다.
+      </p>
+
       <div class="gaon-submenu" aria-label="가온아트홀 바로가기">
         <a href="#gaon1">가온아트홀1</a>
         <a href="#gaon2">가온아트홀2</a>
@@ -653,7 +688,7 @@
         <h3 class="gaon-sub">가온아트홀1</h3>
         <p class="gaon-desc">가온소극장1관 170석</p>
         <div class="gaon-images">
-          <img src="images/gaon/가온소극장1관170석.jpg" alt="가온소극장 1관 170석" />
+          <img src="images/gaon/가온소극장1관170석.jpg" alt="부산 소극장 가온아트홀 1관 170석" />
         </div>
       </div>
 
@@ -663,7 +698,7 @@
         <h3 class="gaon-sub">가온아트홀2</h3>
         <p class="gaon-desc">가온소극장2관 100석</p>
         <div class="gaon-images">
-          <img src="images/gaon/가온소극장2관100석.jpg" alt="가온소극장 2관 100석" />
+          <img src="images/gaon/가온소극장2관100석.jpg" alt="부산 소극장 가온아트홀 2관 100석" />
         </div>
       </div>
 
@@ -673,8 +708,8 @@
         <h3 class="gaon-sub">로비</h3>
         <p class="gaon-desc">가온로비1 / 가온로비2</p>
         <div class="gaon-images">
-          <img src="images/gaon/가온로비1.jpg" alt="가온로비1" />
-          <img src="images/gaon/가온로비2.jpg" alt="가온로비2" />
+          <img src="images/gaon/가온로비1.jpg" alt="가온아트홀 로비1" />
+          <img src="images/gaon/가온로비2.jpg" alt="가온아트홀 로비2" />
         </div>
       </div>
     </div>
@@ -683,6 +718,13 @@
   <section class="section anchor" id="rental">
     <div class="wrap">
       <h2 class="section-title">공연대관일정</h2>
+
+      <!-- ✅ (요청 문구) “부산 소극장 대관” 문장 삽입 -->
+      <p class="about-text" style="margin-top:-6px;">
+        부산 소극장 대관을 찾는 단체 및 개인을 위해
+        가온아트홀은 합리적인 조건의 공연장 대관 서비스를 제공합니다.
+      </p>
+
       <p class="muted" style="margin-top:-6px;">
         달력 날짜 칸에 <b>①(1관)</b> / <b>②(2관)</b> 표시됩니다. (관리자에서 수정 가능)
       </p>
@@ -699,14 +741,12 @@
     </div>
   </section>
 
-  <!-- ✅ 관리자 완성형 -->
   <section class="section anchor" id="admin">
     <div class="wrap">
       <h2 class="section-title">관리자</h2>
 
       <div class="admin-box">
         <div class="admin-login" id="adminLogin">
-          <!-- ✅ 기본 비밀번호 노출 문구 전부 삭제 -->
           <input id="adminPass" type="password" placeholder="관리자 비밀번호 입력" />
           <button id="adminEnter" type="button">로그인</button>
           <p class="hint">※ 데이터는 이 브라우저(localStorage)에 저장됩니다. 다른 PC/폰에서는 따로 저장됩니다.</p>
@@ -770,6 +810,9 @@
 <footer>
   <div class="wrap">
     <div class="footer-lines">
+      <!-- ✅ (요청 문구) footer 키워드 -->
+      <div><span class="b">부산 소극장 가온아트홀 운영 · 공연 제작 전문</span> <span class="r">(주)문화락</span></div>
+
       <div>
         <span class="b">상호명</span> <span class="r">(주)문화락</span>
         &nbsp;&nbsp;|&nbsp;&nbsp;
@@ -806,7 +849,7 @@
       "images/slides/slide3.jpg",
     ],
 
-    // ✅ (요청 1) currentShows 순서/내용 그대로
+    // ✅ currentShows 순서/내용 그대로
     currentShows: [
       {
         "title":"공연·마술 리온의 신비한 과자상점",
@@ -1066,7 +1109,7 @@
       aboutPanel.innerHTML = `
         <p class="about-text">${escapeHtml(A.introText).replaceAll("\n","<br>")}</p>
         <div class="about-images">
-          ${(A.introImages||[]).map(src=>`<img src="${src}" alt="문화락 소개 이미지">`).join("")}
+          ${(A.introImages||[]).map(src=>`<img src="${src}" alt="문화락 공연단체 소개 이미지">`).join("")}
         </div>
       `;
       return;
@@ -1085,7 +1128,7 @@
     aboutPanel.innerHTML = `
       <p class="about-text"><b>문화락 제작 공연</b></p>
       <div class="about-images">
-        ${(A.worksImages||[]).map(src=>`<img src="${src}" alt="문화락 제작공연 이미지">`).join("")}
+        ${(A.worksImages||[]).map(src=>`<img src="${src}" alt="문화락 제작 공연 이미지">`).join("")}
       </div>
     `;
   }
@@ -1227,7 +1270,6 @@
     if(input === getAdminPass()){
       openAdmin();
     }else{
-      // ✅ (요청 2) 기본값 노출 문구 전부 삭제
       alert("비밀번호가 틀렸습니다.");
     }
   });
@@ -1244,7 +1286,6 @@
   });
 
   resetPassBtn.addEventListener("click", ()=>{
-    // ✅ (요청 2) 기본값(1600-1602) 문구 노출 금지
     if(confirm("비밀번호를 초기화할까요?")){
       resetAdminPass();
       newPass.value = "";
@@ -1306,7 +1347,9 @@
 
   renderAll();
 </script>
-  <script type="application/ld+json">
+
+<!-- ✅ 구조화 데이터(공연) -->
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TheaterEvent",
@@ -1331,10 +1374,12 @@
   "organizer": {
     "@type": "Organization",
     "name": "(주)문화락",
-    "url": "https://culturelock.co.kr"
+    "url": "https://culturelock.co.kr/"
   }
 }
-</script><script type="application/ld+json">
+</script>
+
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TheaterEvent",
@@ -1345,7 +1390,13 @@
   "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
   "location": {
     "@type": "PerformingArtsTheater",
-    "name": "가온아트홀"
+    "name": "가온아트홀",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "부산광역시 동구 자성로133번길 지하1층",
+      "addressLocality": "부산",
+      "addressCountry": "KR"
+    }
   },
   "image": [
     "https://culturelock.co.kr/images/posters/current/current_02.jpg"
@@ -1353,7 +1404,7 @@
   "organizer": {
     "@type": "Organization",
     "name": "(주)문화락",
-    "url": "https://culturelock.co.kr"
+    "url": "https://culturelock.co.kr/"
   }
 }
 </script>
