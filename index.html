@@ -19,15 +19,15 @@
       --topTitleSize:18px;
       --sectionTitleSize:18px;
 
-      /* 포스터 아래 글씨 */
+      /* ✅ 포스터 아래 글씨 */
       --posterTitleSize:14px;
       --posterDateSize:12px;
 
-      /* 소개 글씨 */
+      /* ✅ 소개 글씨 */
       --aboutTabSize:15px;
       --aboutIntroTextSize:14px;
 
-      /* 푸터 */
+      /* ✅ 푸터 */
       --footerTextSize:11px;
 
       --badge1:#d81b60;
@@ -195,7 +195,7 @@
       box-shadow:0 1px 0 rgba(0,0,0,.03);
     }
 
-    /* 포스터 3:4 */
+    /* ✅ 포스터 3:4 */
     .poster{
       width:100%;
       aspect-ratio:3 / 4;
@@ -227,7 +227,7 @@
       line-height:1.5;
     }
 
-    /* 카드 아래 상세 펼침 */
+    /* ✅ 카드 아래 상세 펼침 */
     .inline-detail{
       border-top:1px solid var(--line);
       padding:12px 14px 14px;
@@ -296,7 +296,7 @@
       margin:0 0 14px;
     }
 
-    /* 공연단체소개 이미지: 중앙 + 1장씩 크게 */
+    /* ✅ 공연단체소개 이미지: 중앙 + 1장씩 크게 */
     .about-images{
       display:flex;
       flex-direction:column;
@@ -351,7 +351,7 @@
       text-align:center;
     }
 
-    /* 가온 이미지: 중앙(1장씩 크게) */
+    /* ✅ 가온 이미지: 중앙(1장씩 크게) */
     .gaon-images{
       display:flex;
       flex-direction:column;
@@ -685,14 +685,14 @@
     </div>
   </section>
 
-  <!-- ✅ 관리자 -->
+  <!-- ✅ 관리자 완성형 -->
   <section class="section anchor" id="admin">
     <div class="wrap">
       <h2 class="section-title">관리자</h2>
 
       <div class="admin-box">
         <div class="admin-login" id="adminLogin">
-          <!-- ✅ 기본 비번 문구 노출 금지 -->
+          <!-- ✅ 기본 비밀번호 노출 문구 전부 삭제 -->
           <input id="adminPass" type="password" placeholder="관리자 비밀번호 입력" />
           <button id="adminEnter" type="button">로그인</button>
           <p class="hint">※ 데이터는 이 브라우저(localStorage)에 저장됩니다. 다른 PC/폰에서는 따로 저장됩니다.</p>
@@ -791,12 +791,23 @@
       "images/slides/slide2.jpg",
       "images/slides/slide3.jpg",
     ],
+
+    // ✅ (요청 1) currentShows 순서/내용 그대로
     currentShows: [
-      // ✅ 정확 매칭 (포스터/상세 불일치 해결)
-      // current_01.jpg = 리온 포스터, current_02.jpg = 황소 포스터 (스크린샷 기준)
-      {"title":"공연·마술 리온의 신비한 과자상점","dateText":"2026.01.24 ~ 2026.04.26","poster":"images/posters/current/current_01.jpg","detail":"images/details/리온마술-상세.jpg"},
-      {"title":"연극 황소와 도깨비","dateText":"2025.12.21 ~ 2026.01.31","poster":"images/posters/current/current_02.jpg","detail":"images/details/황소와도깨비-상세.jpg"}
+      {
+        "title":"공연·마술 리온의 신비한 과자상점",
+        "dateText":"2026.01.24 ~ 2026.04.26",
+        "poster":"images/posters/current/current_01.jpg",
+        "detail":"images/details/리온마술-상세.jpg"
+      },
+      {
+        "title":"연극 황소와 도깨비",
+        "dateText":"2025.12.21 ~ 2026.01.31",
+        "poster":"images/posters/current/current_02.jpg",
+        "detail":"images/details/황소와도깨비-상세.jpg"
+      }
     ],
+
     pastShows: [
       {"title":"연극 죽여주는 이야기","dateText":"2025.11.27 ~ 2025.12.28","poster":"images/posters/past/past_01.jpg","detail":"images/details/죽여주는이야기-상세.jpg"},
       {"title":"조항조 콘서트","dateText":"2025.05.17","poster":"images/posters/past/past_02.jpg","detail":"images/details/조항조부산-상세페이지2탄.jpg"},
@@ -811,26 +822,28 @@
 `(주)문화락은 공연 컨텐츠를 개발, 제작, 육성하여 보급하며 학교 단체공연 및 각종 기업, 지역 축제 등 행사에 적합한 공연 컨텐츠를 추천 및 기획과 연출을 전문으로 하는 공연기획사입니다.
 가온아트홀 1관은 170석 규모를 갖추고 있으며 연극, 뮤지컬 등 다양한 장르의 공연을 수용할 수 있는 다목적 공연장에 음향, 조명설비를 완비하여 각종 공연과 행사를 진행 할 수 있는 공연장입니다.
 가온아트홀 2관은 100석 규모의 공간으로 연극, 뮤지컬 등 각종발표회 강연회, 교육등을 할 수 있도록 꾸며진 공연장입니다.`,
-
-      // ✅ 실제 리포지토리(images/about)에 있던 파일명으로 기본값 설정
-      // (스크린샷 기준: 문화락소개2.jpg, 문화락소개19.jpg 등)
       introImages: [
-        "images/about/문화락소개2.jpg",
-        "images/about/문화락소개3.jpg",
-        "images/about/문화락소개9.jpg"
+        "images/about/about_intro1.jpg",
+        "images/about/about_intro2.jpg"
       ],
       historyImages: [
-        "images/about/문화락소개19.jpg"
+        "images/about/about_history.jpg"
       ],
       worksImages: [
-        "images/about/문화락소개1.jpg"
+        "images/about/works1.jpg",
+        "images/about/works2.jpg",
+        "images/about/works3.jpg",
+        "images/about/works4.jpg",
+        "images/about/works5.jpg",
+        "images/about/works6.jpg",
+        "images/about/works7.jpg"
       ]
     }
   };
 
-  const LS_KEY = "culturelock_site_v3";                 // 사이트 데이터
-  const LS_ADMIN_PASS = "culturelock_admin_pass_v3";    // 관리자 비번
-  const ADMIN_DEFAULT_PASS = "1600-1602";               // ✅ 코드 내부에만 존재(화면 노출 금지)
+  const LS_KEY = "culturelock_site_v2";                 // 사이트 데이터
+  const LS_ADMIN_PASS = "culturelock_admin_pass_v2";    // 관리자 비번
+  const ADMIN_DEFAULT_PASS = "1600-1602";               // ✅ 화면 노출 없음(내부 비교용)
 
   function structuredCloneSafe(x){
     return JSON.parse(JSON.stringify(x));
@@ -1027,7 +1040,7 @@
   }
 
   // =========================
-  // 공연단체소개 탭
+  // 공연단체소개 탭 (1장씩 크게, 중앙)
   // =========================
   const aboutPanel = document.getElementById("aboutPanel");
   const tabs = [...document.querySelectorAll(".tab")];
@@ -1200,8 +1213,8 @@
     if(input === getAdminPass()){
       openAdmin();
     }else{
-      // ✅ 기본 비번/힌트 문구 노출 금지
-     ്      alert("비밀번호가 틀렸습니다.");
+      // ✅ (요청 2) 기본값 노출 문구 전부 삭제
+      alert("비밀번호가 틀렸습니다.");
     }
   });
 
@@ -1217,6 +1230,7 @@
   });
 
   resetPassBtn.addEventListener("click", ()=>{
+    // ✅ (요청 2) 기본값(1600-1602) 문구 노출 금지
     if(confirm("비밀번호를 초기화할까요?")){
       resetAdminPass();
       newPass.value = "";
@@ -1229,11 +1243,11 @@
     try{
       const next = structuredCloneSafe(DATA);
 
-      next.hero         = JSON.parse(adminHero.value || "[]");
-      next.about        = JSON.parse(adminAbout.value || "{}");
-      next.currentShows = JSON.parse(adminCurrent.value || "[]");
-      next.pastShows    = JSON.parse(adminPast.value || "[]");
-      next.rental       = JSON.parse(adminRental.value || "[]");
+      next.hero        = JSON.parse(adminHero.value || "[]");
+      next.about       = JSON.parse(adminAbout.value || "{}");
+      next.currentShows= JSON.parse(adminCurrent.value || "[]");
+      next.pastShows   = JSON.parse(adminPast.value || "[]");
+      next.rental      = JSON.parse(adminRental.value || "[]");
 
       DATA = next;
       saveData(DATA);
