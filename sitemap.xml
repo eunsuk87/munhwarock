@@ -1,8 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- 메인 -->
   <url>
     <loc>https://culturelock.co.kr/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- 현재 공연 -->
+  <url>
+    <loc>https://culturelock.co.kr/#current</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 이전 공연 -->
+  <url>
+    <loc>https://culturelock.co.kr/#past</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- 공연단체 소개 -->
+  <url>
+    <loc>https://culturelock.co.kr/#about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 가온아트홀 -->
+  <url>
+    <loc>https://culturelock.co.kr/#gaon</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 대관 일정 -->
+  <url>
+    <loc>https://culturelock.co.kr/#rental</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
