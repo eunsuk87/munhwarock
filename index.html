@@ -195,7 +195,7 @@
       box-shadow:0 1px 0 rgba(0,0,0,.03);
     }
 
-    /* ✅ 포스터 3:4 */
+    /* 포스터 3:4 */
     .poster{
       width:100%;
       aspect-ratio:3 / 4;
@@ -227,7 +227,7 @@
       line-height:1.5;
     }
 
-    /* ✅ 카드 아래 상세 펼침 */
+    /* 카드 아래 상세 펼침 */
     .inline-detail{
       border-top:1px solid var(--line);
       padding:12px 14px 14px;
@@ -296,7 +296,7 @@
       margin:0 0 14px;
     }
 
-    /* ✅ 공연단체소개 이미지: 중앙 + 1장씩 크게 */
+    /* 공연단체소개 이미지: 중앙 + 1장씩 크게 */
     .about-images{
       display:flex;
       flex-direction:column;
@@ -351,7 +351,7 @@
       text-align:center;
     }
 
-    /* ✅ 가온 이미지: 중앙(1장씩 크게) */
+    /* 가온 이미지: 중앙(1장씩 크게) */
     .gaon-images{
       display:flex;
       flex-direction:column;
@@ -576,7 +576,7 @@
   <div class="hero-dots" id="heroDots"></div>
 </section>
 
-<!-- ✅ 인스타/블로그: 슬라이드와 현재공연 사이 -->
+<!-- ✅ 인스타/블로그/유튜브: 슬라이드와 현재공연 사이 -->
 <section class="social-between" aria-label="SNS 링크">
   <div class="wrap">
     <div class="social-row">
@@ -587,6 +587,10 @@
       <a class="icon-btn" href="https://blog.naver.com/gaonarthall12" target="_blank" rel="noreferrer">
         <img src="images/icons/블로그로고.png" alt="Blog" />
         <span>Blog</span>
+      </a>
+      <a class="icon-btn" href="https://www.youtube.com/@%EB%B6%80%EC%82%B0%EA%B0%80%EC%98%A8%EC%95%84%ED%8A%B8%ED%99%80/videos" target="_blank" rel="noreferrer">
+        <img src="images/icons/Youtube.png" alt="YouTube" />
+        <span>YouTube</span>
       </a>
     </div>
   </div>
@@ -688,15 +692,15 @@
 
       <div class="admin-box">
         <div class="admin-login" id="adminLogin">
-          <!-- ✅ 기본비번 노출 완전 제거 -->
-          <input id="adminPass" type="password" placeholder="관리자 비밀번호 입력" autocomplete="current-password" />
+          <!-- ✅ 기본 비번 문구 노출 금지 -->
+          <input id="adminPass" type="password" placeholder="관리자 비밀번호 입력" />
           <button id="adminEnter" type="button">로그인</button>
           <p class="hint">※ 데이터는 이 브라우저(localStorage)에 저장됩니다. 다른 PC/폰에서는 따로 저장됩니다.</p>
         </div>
 
         <div class="admin-tools" id="adminTools" style="display:none;">
-          <input id="newPass" type="password" placeholder="새 비밀번호" autocomplete="new-password" />
-          <input id="newPass2" type="password" placeholder="새 비밀번호 확인" autocomplete="new-password" />
+          <input id="newPass" type="password" placeholder="새 비밀번호" />
+          <input id="newPass2" type="password" placeholder="새 비밀번호 확인" />
           <button id="changePass" type="button">비밀번호 변경</button>
           <button class="danger" id="resetPass" type="button">비밀번호 초기화</button>
         </div>
@@ -717,11 +721,11 @@
 
           <div class="admin-grid" style="margin-top:14px;">
             <div>
-              <h3 style="margin:0 0 10px; font-weight:900;">현재공연 JSON (poster/detail)</h3>
+              <h3 style="margin:0 0 10px; font-weight:900;">현재공연 JSON (poster/detail 수정)</h3>
               <textarea id="adminCurrent"></textarea>
             </div>
             <div>
-              <h3 style="margin:0 0 10px; font-weight:900;">이전공연 JSON (poster/detail)</h3>
+              <h3 style="margin:0 0 10px; font-weight:900;">이전공연 JSON (poster/detail 수정)</h3>
               <textarea id="adminPast"></textarea>
             </div>
           </div>
@@ -739,8 +743,9 @@
           </div>
 
           <p class="hint">
-            ✅ 포스터/상세 불일치 해결:<br>
-            현재공연 JSON에서 <b>poster</b> / <b>detail</b> 경로를 정확히 맞추고 저장하세요.
+            ✅ 포스터/상세 불일치 해결법:<br>
+            1) 현재공연 JSON에서 해당 공연의 <b>poster</b> / <b>detail</b> 경로를 정확히 수정<br>
+            2) 저장하기 → 바로 반영
           </p>
         </div>
       </div>
@@ -769,6 +774,8 @@
         <span class="b">인스타</span> <span class="r"><a href="https://www.instagram.com/gaonarthall" target="_blank" rel="noreferrer">https://www.instagram.com/gaonarthall</a></span>
         &nbsp;&nbsp;|&nbsp;&nbsp;
         <span class="b">블로그</span> <span class="r"><a href="https://blog.naver.com/gaonarthall12" target="_blank" rel="noreferrer">https://blog.naver.com/gaonarthall12</a></span>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <span class="b">유튜브</span> <span class="r"><a href="https://www.youtube.com/@%EB%B6%80%EC%82%B0%EA%B0%80%EC%98%A8%EC%95%84%ED%8A%B8%ED%99%80/videos" target="_blank" rel="noreferrer">YouTube</a></span>
       </div>
     </div>
   </div>
@@ -784,51 +791,46 @@
       "images/slides/slide2.jpg",
       "images/slides/slide3.jpg",
     ],
-
-    // ✅ 현재공연: “정확한 경로” (지금 repo 구조 기준)
     currentShows: [
-      {
-        "title":"공연·마술 리온의 신비한 과자상점",
-        "dateText":"2026.01.24 ~ 2026.04.26",
-        "poster":"images/posters/current/current_01.jpg",
-        "detail":"images/details/리온마술-상세.jpg"
-      },
-      {
-        "title":"연극 황소와 도깨비",
-        "dateText":"2025.12.21 ~ 2026.01.31",
-        "poster":"images/posters/current/current_02.jpg",
-        "detail":"images/details/황소와도깨비-상세.jpg"
-      }
+      // ✅ 정확 매칭 (포스터/상세 불일치 해결)
+      // current_01.jpg = 리온 포스터, current_02.jpg = 황소 포스터 (스크린샷 기준)
+      {"title":"공연·마술 리온의 신비한 과자상점","dateText":"2026.01.24 ~ 2026.04.26","poster":"images/posters/current/current_01.jpg","detail":"images/details/리온마술-상세.jpg"},
+      {"title":"연극 황소와 도깨비","dateText":"2025.12.21 ~ 2026.01.31","poster":"images/posters/current/current_02.jpg","detail":"images/details/황소와도깨비-상세.jpg"}
     ],
-
     pastShows: [
       {"title":"연극 죽여주는 이야기","dateText":"2025.11.27 ~ 2025.12.28","poster":"images/posters/past/past_01.jpg","detail":"images/details/죽여주는이야기-상세.jpg"},
       {"title":"조항조 콘서트","dateText":"2025.05.17","poster":"images/posters/past/past_02.jpg","detail":"images/details/조항조부산-상세페이지2탄.jpg"},
       {"title":"2025 Jazz Christmas","dateText":"2025.12.05","poster":"images/posters/past/past_03.jpg","detail":"images/details/25년상세최종.jpg"}
     ],
-
     rental: [
       {"date":"2026-01-24","hall":1,"title":"리온의 신비한 과자상점"},
-      {"date":"2026-01-24","hall":2,"title":"공연장 정기점검"}
+      {"date":"2026-01-24","hall":2,"title":"공연장정기정검"}
     ],
-
     about: {
       introText:
 `(주)문화락은 공연 컨텐츠를 개발, 제작, 육성하여 보급하며 학교 단체공연 및 각종 기업, 지역 축제 등 행사에 적합한 공연 컨텐츠를 추천 및 기획과 연출을 전문으로 하는 공연기획사입니다.
 가온아트홀 1관은 170석 규모를 갖추고 있으며 연극, 뮤지컬 등 다양한 장르의 공연을 수용할 수 있는 다목적 공연장에 음향, 조명설비를 완비하여 각종 공연과 행사를 진행 할 수 있는 공연장입니다.
 가온아트홀 2관은 100석 규모의 공간으로 연극, 뮤지컬 등 각종발표회 강연회, 교육등을 할 수 있도록 꾸며진 공연장입니다.`,
 
-      // ⚠️ 아래 about 이미지는 “당신 repo 파일명”에 맞게 바꿔야 합니다.
-      // (지금은 예시 이름이라, 이미 올려둔 실제 파일명으로 교체하세요.)
-      introImages: ["images/about/문화락소개2.jpg"],
-      historyImages: ["images/about/문화락소개1.jpg"],
-      worksImages: ["images/about/문화락소개3.jpg"]
+      // ✅ 실제 리포지토리(images/about)에 있던 파일명으로 기본값 설정
+      // (스크린샷 기준: 문화락소개2.jpg, 문화락소개19.jpg 등)
+      introImages: [
+        "images/about/문화락소개2.jpg",
+        "images/about/문화락소개3.jpg",
+        "images/about/문화락소개9.jpg"
+      ],
+      historyImages: [
+        "images/about/문화락소개19.jpg"
+      ],
+      worksImages: [
+        "images/about/문화락소개1.jpg"
+      ]
     }
   };
 
   const LS_KEY = "culturelock_site_v3";                 // 사이트 데이터
   const LS_ADMIN_PASS = "culturelock_admin_pass_v3";    // 관리자 비번
-  const ADMIN_DEFAULT_PASS = "1600-1602";               // 기본값(코드 내부에만 존재 / 화면에 절대 노출 안함)
+  const ADMIN_DEFAULT_PASS = "1600-1602";               // ✅ 코드 내부에만 존재(화면 노출 금지)
 
   function structuredCloneSafe(x){
     return JSON.parse(JSON.stringify(x));
@@ -984,7 +986,7 @@
     }
 
     if(!detailSrc){
-      alert("상세 이미지가 없습니다. 관리자에서 detail 경로를 넣어주세요.");
+      alert("상세 이미지(detail)가 없습니다. 관리자에서 detail 경로를 넣어주세요.");
       return;
     }
 
@@ -993,7 +995,6 @@
     box.classList.add("open");
     openedDetailId = id;
 
-    // ✅ “푸터 밑”으로 안 내려가게: 카드 시작 위치로 이동
     const card = document.querySelector(`[data-card="${id}"]`);
     if(card){
       card.scrollIntoView({behavior:"smooth", block:"start"});
@@ -1026,7 +1027,7 @@
   }
 
   // =========================
-  // 공연단체소개 탭 (중앙 + 1장씩 크게)
+  // 공연단체소개 탭
   // =========================
   const aboutPanel = document.getElementById("aboutPanel");
   const tabs = [...document.querySelectorAll(".tab")];
@@ -1159,7 +1160,7 @@
   });
 
   // =========================
-  // 관리자 (기본 비번 문구 노출 제거)
+  // 관리자
   // =========================
   const adminEnter = document.getElementById("adminEnter");
   const adminPass  = document.getElementById("adminPass");
@@ -1199,8 +1200,8 @@
     if(input === getAdminPass()){
       openAdmin();
     }else{
-      // ✅ 기본 비번을 절대 노출하지 않음
-      alert("비밀번호가 틀렸습니다.");
+      // ✅ 기본 비번/힌트 문구 노출 금지
+     ്      alert("비밀번호가 틀렸습니다.");
     }
   });
 
@@ -1220,7 +1221,7 @@
       resetAdminPass();
       newPass.value = "";
       newPass2.value = "";
-      alert("초기화 완료");
+      alert("초기화 완료!");
     }
   });
 
